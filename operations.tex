@@ -1,0 +1,36 @@
+% Spacecraft operations
+
+This section gives an overview of the day-to-day spacecraft operations, specifically how Cluster Web fits in the big picture to give some context to its usage.
+
+\section{Cluster II}
+Cluster II is a mission studying Earth's magnetosphere and its interaction with solar wind. It consists of four spacecraft which orbit the Earth together in a tetrahedral formation. Their orbits have apogees (highest point) at about 120 000 km above the Earth and perigees (lowest point) at about 20 000 km. The eccentric orbits take the spacecraft through some key areas of scientific interest in the magnetosphere, such as the magnetopause and the bow shock. The formation between the four spacecraft is important for determining how the properties of the magnetosphere change over time and location.
+
+Launched in 2000, the mission was originally planned to run until the end of 2003 but it has been extended several times, as of 2017 the mission will run until the end of 2018. While the spacecraft are aging and some systems are no longer operational, they're still producing useful science data.
+
+\section{Mission planning}
+The four Cluster II spacecraft are operated from the European Space Operations Centre (ESOC) in Darmstadt, Germany. The scientific operations are planned by Joint Science Operations Team (JSOC) in Chilton, UK.
+
+JSOC sends an OBRQ (Observation Request) file to the flight control team at ESOC for each weekly planning period (PP). The file includes information about which science instruments should be running on the spacecraft at a given time, and what telemetry and data acquisition (TDA) mode should be used. This is planned based on what region of the magnetosphere the spacecraft is flying through.
+
+Mission planner at ESOC uses Cluster Web to create a pass plan for the planning period. Passes are the times when the spacecraft is in contact with a ground station during which data is dumped from the on-board solid state recorder (SSR) and commands can be sent to the spacecraft. 
+
+Mission planner makes sure that the spacecraft is able to contact a ground station during the passes and has sufficient link budget to downlink data. There are different factors affecting the link budget like the spacecraft's distance and elevation angle, and what TDA mode is being used. For maximum efficiency of data collection it is also important to plan the data dump so that the SSR doesn't fill up or empty completely, but is dumped at sufficient intervals.
+
+After the pass plan (PlanCWEB) file has been created and exported from Cluster Web, it is imported to mission planning system (MPS) together with OBRQ and other relevant files. MPS generates three different types of files: DSF's, SOR's and EVFM's. DSF'S are command sequences to be linked to the spacecraft  by the spacecraft controllers, SOR's are procedures to be executed by the automation system, and EVFM's are jobs to be executed by the ground stations.
+
+The forementioned files are then transferred to servers from which they will be used for controlling the spacecraft and the ground stations to achieve the planned sequence of passes during the next planning period.
+
+The data collected during the passes is tranferred to various different data centres around the world in the distributed Cluster Science Data System (CSDS).
+
+\section{Cluster Web}
+Cluster Web is a web portal that the mission planner uses for planning passes as mentioned in the last section. In this section the features and the technology of the software will be detailed more.
+
+
+%Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{old_clusterweb}
+  \end{center}
+  \caption{A screenshot of the Cluster Web main interface}
+  \label{fig:old_clusterweb}
+\end{figure}

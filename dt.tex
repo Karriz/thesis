@@ -42,14 +42,14 @@
 
 %\selectlanguage{finnish}
 
-\otsikko{Suomenkielinen nimi}
-\title{English title}
+\otsikko{Satelliittioperaattoreiden työnkulun optimointi uusien front-end teknologioiden avulla}
+\title{Optimization of spacecraft operator workflow through state-of-the-art front-end technologies}
 
-\etunimi{Teemu}
-\sukunimi{Teekkari}
-\valvoja{prof. Juha Röning}
+\etunimi{Karri}
+\sukunimi{Ojala}
+\valvoja{}
 \koulutusohjelma{information} % {information | electrical}
-\vuosi{2016}
+\vuosi{2017}
 \tyo{Master} % {Bachelor | Master}
 \kieli{english} % {finnish | english}
 
@@ -62,26 +62,30 @@
 	\vspace{65 mm}
 	{\textbf{\fontsize{16}{19pt}\selectfont \getfirstname\ \getlastname }\\}
 	\vspace{15 mm}
-	{\textbf{\fontsize{18}{22pt}\selectfont TESTI TESTI\\TESTI\\}}
-	\vspace{60 mm}
-	{\fontsize{14}{17}\selectfont Master's Thesis \\Degree Programme in Computer Science and Engineering \\ Month 20xx\\}
+	{\textbf{\fontsize{18}{22pt}\selectfont OPTIMIZATION OF SPACECRAFT OPERATOR WORKFLOW THROUGH STATE-OF-THE-ART FRONT-END TECHNOLOGIES\\}}
+	\vspace{53 mm}
+	{\fontsize{14}{17}\selectfont Master's Thesis \\Degree Programme in Computer Science and Engineering \\ June 2017\\}
 	%{\fontsize{14}{17}\selectfont Diplomityö \\Tietotekniikan tutkinto-ohjelma \\ Month 20xx\\}
 \end{titlepage}
 
 \selectlanguage{english}
 
 \begin{abstract}
-This is a sample abstract.
+Various different software tools are used when planning and executing spacecraft operations. European Space Agency's Cluster II mission utilizes a web portal called "ClusterWeb" for scheduling and overviewing mission events. A new version of this tool has been developed using modern web techologies to improve usability and to make the tool adaptable to other missions in the future. 
 
-\keywords sample, keywords
+A comparative study was done between the old and new tool to find out how usability and reliability were improved. It was found that...
+
+\keywords space operation, software, usability, reliability
 
 \end{abstract}
 
 \selectlanguage{finnish}
 \begin{tiivistelma}
-Esimerkkitiivistelmä
+Avaruusoperaatioiden suunnittelussa ja toteutuksessa hyödynnetään paljon erilaisia ohjelmistoja. Euroopan Avaruusjärjestön Cluster II- lennossa käytetään "ClusterWeb"- web-portaalia tapahtumien ajoittamiseen ja antamaan yleiskatsaus lennon tapahtumista. Tästä työkalusta on kehitetty uusi versio moderneja web-teknologioita hyödyntäen. Tarkoituksena on ollut parantaa työkalun käytettävyyttä ja mahdollistaa sen hyödyntäminen myös muiden lentojen yhteydessä.
 
-\avainsanat esimerkki, sanoja
+Vanhan ja uuden ClusterWebin välillä tehtiin vertaileva tutkimus jolla pyritttiin selvittämään millä tavoin käytettävyys ja luotettavuus ovat parantuneet. Tuloksista nähdään että...
+
+\avainsanat avaruusoperaatio, ohjelmisto, käytettävyys, luotettavuus
 \end{tiivistelma}
 
 \selectlanguage{english}
@@ -120,17 +124,20 @@ The template was updated during the summer of 2013 by Juha Kylmänen.
 \sivunumerot
 \input{introduction} % ./introduction.tex
 
-\chapter{Implementing something}
-\input{implementation}  % ./implementation.tex
+\chapter{Spacecraft operations}
+\input{operations}  % ./operations.tex
 
-\chapter{Testing something}
-\input{testing}  % ./testing.tex
+\chapter{Re-engineered Cluster Web}
+\input{cluweb}  % ./cluweb.tex
+
+\chapter{Evaluation}
+\input{evaluation}  % ./evaluation.tex
 
 \chapter{Discussion}
 \input{discussion}  % ./discussion.tex
 
-\chapter{Conclusion}
-\input{conclusion}  % ./conclusion.tex
+\chapter{Summary}
+\input{summary}  % ./summary.tex
 
 \bibliographystyle{di}
 \bibliography{di}
