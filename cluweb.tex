@@ -1,19 +1,32 @@
 % Re-engineered ClusterWeb Chapter
 
-The re-engineering project of Cluster Web has the aim to...
+The re-engineering project of Cluster Web has the aim to make the tool more user-friendly and also expandable to other purposes than Cluster II pass scheduling. In this section the user requirements, development process and the technological architecture of the new Cluster Web (named "CluWeb") is overviewed.
 
 %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
 \begin{figure}[ht]
   \begin{center}
-    \includegraphics*[width=1\textwidth]{old_clusterweb}
+    \includegraphics*[width=1\textwidth]{cluweb_dev}
   \end{center}
-  \caption{A screenshot of the Cluster Web main interface}
-  \label{fig:old_clusterweb}
+  \caption{A screenshot of the in-development CluWeb}
+  \label{fig:cluweb}
 \end{figure}
 
 \section{Requirements}
+The main requirements for the re-engineered Cluster Web are related about making it easier and faster to use and also more configurable.  On the other hand there is also interest from other missions such as ExoMars and Swarm to use a similar tool for planning and overviewing operations. This means that the technical implementation has to be made modular so that it can be expanded with different kinds of visualizations and functionality.
+
+One of the problems with the old CLuster Web is the slowness of navigating the timeline. It can only be moved and zoomed in steps by clicking the buttons in the navigation bar or by selecting a date in the calendar. Each time the timeline moves it is re-drawn and that can take a few seconds. How the data is represented on the timeline is fixed and cannot be edited by the user.
+
+In the new CluWeb this is improved by having a timeline that can be dragged with mouse and zoomed with the mouse wheel. This has the aim make navigating more responsive and intuitive.
+
+
+
+[CluWeb Pass timeline representation brainstorming]
 
 \section{Development}
+CluWeb development follow the Scrum approach, which is an Agile framework. [http://www.scrumguides.org/docs/scrumguide/v2016/2016-Scrum-Guide-US.pdf]
+In Scrum, the development process is split into "sprints" which in the case of CluWeb happen every two weeks. Sprints contain "user stories" which define some functionality from a user's point of view. The user stories are then split into technical tasks by the developers. Each user story is scored based on the approximated workload on three different areas: concept, front-end and back-end.
+Tasks are assigned between the developers and their status is tracked on a Kanban board. There are five different stages for tasks: "new", "in progress", "ready for testing", "closed" and "needs info". Once a developer has completed a task, it is moved to "ready for testing" stage, after which another development tests the functionality and closes the task. Once all tasks in a user story have been completed, it can be closed.
+At the end of a sprint, a sprint review meeting is held in which the progress is presented to the project owner who provides feedback. Then another sprint can start with a new set of user stories, and tasks which were left over from the last sprint.
 
 \section{Technology}
 

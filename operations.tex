@@ -56,15 +56,27 @@ The following table lists the types of visualized data:
 
 The data is aggregated from multiple different sources which are imported into Cluster Web's database periodically to keep it up to date. Ground station passes are the only thing that can be edited by the flight control team, rest of the data can either operational events dictated by other teams, naturally occuring events which depend on the orbit of the spacecraft, or resources on board the spacecraft which are influenced by the operational events.
 
-\subsection{Passes}
-
-\subsection{SSR fill level}
+On the user interface, there are buttons for enabling and disabling certain visualizations like SSR fill leve, ground station visibilities (GS), payload sequences (PL) and multiple spacecraft per aperture markings for passes (MSPA). Ground station visibilities and payload sequences cannot be viewed at the same time as they would be on top of each other.
 
 %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
 \begin{figure}[ht]
   \begin{center}
-    \includegraphics*[width=1\textwidth]{old_clusterweb}
+    \includegraphics*[width=1\textwidth]{clusterweb_visibilities}
   \end{center}
-  \caption{A screenshot of the Cluster Web timeline interface}
-  \label{fig:old_clusterweb}
+  \caption{A screenshot of the Cluster Web timeline interface with ground station visibilities}
+  \label{fig:clusterweb_visibilities}
 \end{figure}
+
+\subsection{Passes}
+Figure~\ref{fig:clusterweb_visibilities} shows the main interface of Cluster Web with ground station visibilities on. The ground station visibilities are displayed as colored bars, each ground station being in its own "lane". Bookings of other missions are shown on top of the visibilities as smaller bars in slightly darker color. From this visualization, the mission planner can determine the times when a ground station is available so that a pass can be scheduled. 
+
+After a pass is created it shows up on the timeline as a rectangle. Different types of passes are displayed in different colors. Light blue rectangle is a normal pass that has both uplink and downlink capacity (commands can be sent to the spacecraft), while a gray pass is downlink-only. If there is a conflict with visibility or another booking, the pass is shown in red color. If the conflict is with another Cluster spacecraft the pass is shown in yellow color.
+
+By clicking a pass, another view opens up that displays further information about the pass. For a pass that was already executed this view displays different kinds of logging data, while for a pass that is in the future, the view shows a link budget graph that can be adjusted by changing parameters.
+
+\subsection{SSR fill level}
+Another thing that can be seen in Figure~\ref{fig:clusterweb_visibilities} is the SSR fill level graph. It is shown for each spacecraft as a red and green line, in which the red part is drawn based on telemetry data about the fill level (that is available until the end of latest pass), and the green part is based on prediction. 
+
+The prediction model works by taking into account the data accumulation bitrates based on TDA modes and downlink bitrates during passes. When passes are edited this also changes the SSR fill level prediction. 
+
+It is important to schedule the passes so that the fill level doesn't completely empty during a pass as that would be a waste of ground station time, or completely fill between passes because then the spacecraft couldn't collect more data before the memory is emptied. Because of the prediction visualization that changes depending on the passes the mission planner can easily do scheduling while taking the SSR fill level into account.
