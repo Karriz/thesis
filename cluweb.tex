@@ -23,10 +23,80 @@ In the new CluWeb this is improved by having a timeline that can be dragged with
 [CluWeb Pass timeline representation brainstorming]
 
 \section{Development}
-CluWeb development follow the Scrum approach, which is an Agile framework. [http://www.scrumguides.org/docs/scrumguide/v2016/2016-Scrum-Guide-US.pdf]
-In Scrum, the development process is split into "sprints" which in the case of CluWeb happen every two weeks. Sprints contain "user stories" which define some functionality from a user's point of view. The user stories are then split into technical tasks by the developers. Each user story is scored based on the approximated workload on three different areas: concept, front-end and back-end.
-Tasks are assigned between the developers and their status is tracked on a Kanban board. There are five different stages for tasks: "new", "in progress", "ready for testing", "closed" and "needs info". Once a developer has completed a task, it is moved to "ready for testing" stage, after which another development tests the functionality and closes the task. Once all tasks in a user story have been completed, it can be closed.
-At the end of a sprint, a sprint review meeting is held in which the progress is presented to the project owner who provides feedback. Then another sprint can start with a new set of user stories, and tasks which were left over from the last sprint.
+This section will detail different tools and methods used in CluWeb's development process to manage the development and to streamline and automatize certain phases like testing and deployment.
+
+\subsection{Scrum}
+CluWeb development uses the Scrum approach, which is an Agile framework. [http://www.scrumguides.org/docs/scrumguide/v2016/2016-Scrum-Guide-US.pdf]
+In Scrum, the development process is split into "sprints" which in the case of CluWeb happen every two weeks. Sprints contain "user stories" defined by the project owner which describe some functionality from a user's point of view. A sprint planning meeting is held at a beginning of a sprint to choose the user stories in that sprint and to score them by their workload in three different categories: concept, front-end and back-end. User stories are split into technical tasks which are then assigned among the developers. A Scrum master who is a member of the development team manages these meetings.
+
+During a sprint, a daily stand-up meeting is held every morning during which the developers tell others what they did during the last day and what they will be doing that day. This is to stay updated of everyone's progress and to exchange ideas and ask for help if necessary.
+
+Task status is tracked on a Kanban board. There are five different stages for tasks: "new", "in progress", "ready for testing", "closed" and "needs info". Once a developer has completed a task, it is moved to "ready for testing" stage, after which another development tests the functionality and closes the task. Once all tasks in a user story have been completed, it can be closed.
+
+At the end of a sprint, a sprint review meeting is held in which the progress is presented to the project owner who provides feedback. Then another sprint can start with a new set of user stories, and unfinished user stories. which were left over from the last sprint.
+
+Taiga project management platform is used for managing the Scrum process.
+
+\subsection{Continuous integration and deployment}
+CluWeb's code is managed in two GitLab repositories, one for front-end and another for back-end. Initially both used to be in one repository but they were separated for easier and cleaner management.
+
+The repositories have a master branch that is supposed to contain table release code, and a development branch that contains new features which have been added after every sprint. User stories are developed separately in their own branches which are based on development branch, and merged back into development branch when ready.
+
+GitLab has built-in continuous integration features which are utilized in CluWeb's repositories. It's possible to define scripts defining different jobs which are run automatically after a push on a GitLab runner that is a Docker container running on the GitLab server. The idea is to run test first and then deploy the new version on a server.
+
+GitLab's continuous integration jobs are separated into stages which are run in a sequence. In CluWeb's case what needs to be achieved is to run tests first to validate the commits which were pushed, and if the tests were successful, deploy the new version to a server. Specific jobs can be set to run only for specific branches, which would for example allow deployment to branch-specific servers.
+
+Figure There
 
 \section{Technology}
+CluWeb uses modern web technologies which are in widespread use across the industry. The overall architecture consists of a front- and a back-end which are separate software components. Front-end provides a browser-based user interface, while the back-end together with a database serves data to the front-end. As long as the interfaces stay the same, the individual components could be updated or replaced.
+Figure here
+\subsection{Front-end}
+CluWeb's front-end is powered by Angular, which is a Javascript framework for developing web applications. It provides useful functionality to structure the application into separate views and services for accessing data through API's. Coding is done in Typescript which is a superset of Javascript that has type definitions and classes, making the code easier to read and maintain than regular Javascript.
 
+For drawing the timeline and visualizing data on it, D3.js is used. It is a Javascript library for binding data to DOM elements, and applying transformations to the elements based on that data. In CluWeb's case these features are used for drawing a timeline axis and placing elements on the timeline based on the corresponding data objects' properties like start and end time and spacecraft number.
+
+\subsection{Back-end}
+Back-end of CluWeb is built using the Django Python framework. The back-end defines data models, interfaces with a database and provides the data through a RESTful API in JSON format.
+
+The back-end also has importers for various different file formats so that new data can be added to the database. 
+
+\section{Configurability}
+Making CluWeb configurable for different purposes was one of the driving factors for the re-engineering project. Ultimately, users should be able to visualize anything they want on the timeline, not necessarily even in the context of spacecraft operations. To achieve this, the timeline configuration needs to be defined in a way that can be easily edited, instead of having the attributes of the timeline and the visualizations hard-coded.
+
+Finding similarities between features was an important step of making CluWeb more generic than its predecessor. It should be able to recreate the functionality of the old Cluster Web but also have the configurability for adding visualizations for other types of data without having to re-write large parts of the code. Because a lot of the visualizations in Cluster Web had common attributes between them it made sense to make those commonalities into superclasses from which the visualizations could inherit.
+
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+\begin{center}
+  \caption{Cluster Web data visualizations categorized by type}
+  \label{tab:clusterweb_data_types_table}
+  \begin{tabular}{| l | l | }
+    \hline
+    Name & Type \\
+    \hline
+    Passes & Time interval \\
+    Visibilities & Time interval \\
+    Bookings & Time interval  \\
+    TDA modes & State \\
+    SSR fill level & Time series \\
+    Payload sequences & Time interval \\
+    Maneuver times & Time instant \\
+    Apogees/perigees & Time instant \\
+    Eclipses & Time interval \\
+    \hline
+  \end{tabular}
+
+  \end{center}
+\end{table}
+
+Table~\ref{tab:clusterweb_data_table} shows how the different data types in Cluster Web can be split into categories based on their common attributes. Time intervals are any data in which an instance has a defined beginning and end time. They're usually visualized by a rectangle that has starting time on its left edge on the horizontal axis and ending time on the right edge.
+
+Time instants are data that contain only one point in time per instance, i.e. events which don't have a defined length. These are visualized by a point in time.
+
+State data contains times in which some state changes. There can only be one state at a time, so whenever a state changes it replaces the previous one. These can be visualized by the timeline background color.
+
+Time series data contains numerical values at different points in time. The possible visualizations for this type of data can be for example line or bar charts.
+
+These four types (time intervals, time instants, states and time series) would become superclasses for the visualizations themselves. Practically the only differences between them could be considered to be things like color and height of the element on the timeline.

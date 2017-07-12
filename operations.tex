@@ -27,7 +27,7 @@ Cluster Web is a web portal that the mission planner uses for planning passes as
 
 The main interface of Cluster Web is a timeline that offers an overview of the mission plan. The timeline is split vertically into four sections, one for each spacecraft in the mission. Different types of data are visualized on the timeline, some of which events or states with a start and end time, some are events at a specific point in time and some are time-value sets shown as graphs on the timeline.
 
-The following table lists the types of visualized data:
+Table~\ref{tab:clusterweb_data_table} lists the types of visualized data:
 
 \begin{table}[!ht]
 % Add some padding to the table cells:
@@ -54,7 +54,7 @@ The following table lists the types of visualized data:
   \end{center}
 \end{table}
 
-The data is aggregated from multiple different sources which are imported into Cluster Web's database periodically to keep it up to date. Ground station passes are the only thing that can be edited by the flight control team, rest of the data can either operational events dictated by other teams, naturally occuring events which depend on the orbit of the spacecraft, or resources on board the spacecraft which are influenced by the operational events.
+The data is aggregated from multiple different sources which are imported into Cluster Web's database periodically to keep it up to date. Ground station passes are the only thing that can be edited by the flight control team, rest of the data is either operational events dictated by other teams, naturally occuring events which depend on the orbit of the spacecraft, or resources on board the spacecraft which are influenced by the operational events.
 
 On the user interface, there are buttons for enabling and disabling certain visualizations like SSR fill leve, ground station visibilities (GS), payload sequences (PL) and multiple spacecraft per aperture markings for passes (MSPA). Ground station visibilities and payload sequences cannot be viewed at the same time as they would be on top of each other.
 
@@ -72,11 +72,11 @@ Figure~\ref{fig:clusterweb_visibilities} shows the main interface of Cluster Web
 
 After a pass is created it shows up on the timeline as a rectangle. Different types of passes are displayed in different colors. Light blue rectangle is a normal pass that has both uplink and downlink capacity (commands can be sent to the spacecraft), while a gray pass is downlink-only. If there is a conflict with visibility or another booking, the pass is shown in red color. If the conflict is with another Cluster spacecraft the pass is shown in yellow color.
 
-By clicking a pass, another view opens up that displays further information about the pass. For a pass that was already executed this view displays different kinds of logging data, while for a pass that is in the future, the view shows a link budget graph that can be adjusted by changing parameters.
+By clicking a pass, another view opens up in which the user can edit the pass and access different kinds of information about the pass such as a bitrate forecast and log entries. There is also a checklist of things which should be checked every time a pass is edited.
 
 \subsection{SSR fill level}
-Another thing that can be seen in Figure~\ref{fig:clusterweb_visibilities} is the SSR fill level graph. It is shown for each spacecraft as a red and green line, in which the red part is drawn based on telemetry data about the fill level (that is available until the end of latest pass), and the green part is based on prediction. 
+Another important visualization that can be seen in Figure~\ref{fig:clusterweb_visibilities} is the SSR fill level graph. It is shown for each spacecraft as a red and green line, in which the red part is drawn based on telemetry data about the fill level (that is available until the end of latest pass), and the green part is based on prediction. 
 
-The prediction model works by taking into account the data accumulation bitrates based on TDA modes and downlink bitrates during passes. When passes are edited this also changes the SSR fill level prediction. 
+The prediction model takes into account the data accumulation bitrates based on TDA modes and downlink bitrates during passes. When pass times and modes are edited this also changes the SSR fill level prediction. 
 
-It is important to schedule the passes so that the fill level doesn't completely empty during a pass as that would be a waste of ground station time, or completely fill between passes because then the spacecraft couldn't collect more data before the memory is emptied. Because of the prediction visualization that changes depending on the passes the mission planner can easily do scheduling while taking the SSR fill level into account.
+It is important to schedule the passes so that the fill level doesn't completely empty during a pass as that would be a waste of ground station time, or completely fill between passes because then the spacecraft couldn't collect more data before the memory is emptied. Because of the prediction visualization that changes depending on the passes the mission planner can easily take the SSR fill level into account while scheduling passes.
