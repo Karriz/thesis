@@ -10,11 +10,11 @@ Launched in 2000, the mission was originally planned to run until the end of 200
 \section{Mission planning}
 The four Cluster II spacecraft are operated from the European Space Operations Centre (ESOC) in Darmstadt, Germany. The scientific operations are planned by Joint Science Operations Team (JSOC) in Chilton, UK.
 
-JSOC sends an OBRQ (Observation Request) file to the flight control team at ESOC for each weekly planning period (PP). The file includes information about which science instruments should be running on the spacecraft at a given time, and what telemetry and data acquisition (TDA) mode should be used. This is planned based on what region of the magnetosphere the spacecraft is flying through.
+JSOC sends an OBRQ (Observation Request) file to the flight control team at ESOC for each weekly planning period (PP). The file includes information about which science instruments should be running on the spacecraft at a given time, and what telemetry and data acquisition (TDA) mode should be used. TDA mode affects what telemetry the spacecraft is transmitting and at what rate it saves data to the on-board solid state recorder (SSR).
 
-Mission planner at ESOC uses Cluster Web to create a pass plan for the planning period. Passes are the times when the spacecraft is in contact with a ground station during which data is dumped from the on-board solid state recorder (SSR) and commands can be sent to the spacecraft. 
+Mission planner at ESOC uses Cluster Web to create a pass plan for the planning period. Passes are the times when the spacecraft is in contact with a ground station during which the ground station can uplink commands to the spacecraft and listen to the downlink signal from the spacecraft that includes telemetry and usually science data that is being dumped from the solid state recorder.
 
-Mission planner makes sure that the spacecraft is able to contact a ground station during the passes and has sufficient link budget to downlink data. There are different factors affecting the link budget like the spacecraft's distance and elevation angle, and what TDA mode is being used. For maximum efficiency of data collection it is also important to plan the data dump so that the SSR doesn't fill up or empty completely during a pass, but is dumped at sufficient intervals.
+When scheduling passes, mission planner makes sure that the spacecraft signal can be heard from the ground station during the pass and has a sufficient link budget to downlink data at the planned bitrate. There are different factors affecting the link budget like the spacecraft's distance and elevation angle, and what TDA mode is being used. For maximum efficiency it is also important to plan the data dump times so that the SSR doesn't get full between passes or empty completely during a pass.
 
 After the pass plan (PlanCWEB) file has been created and exported from Cluster Web, it is imported to mission planning system (MPS) together with OBRQ and other relevant files. MPS generates three different types of files: DSF's, SOR's and EVFM's. DSF'S are command sequences to be linked to the spacecraft  by the spacecraft controllers, SOR's are procedures to be executed by the automation system, and EVFM's are jobs to be executed by the ground stations.
 
@@ -47,7 +47,7 @@ Table~\ref{tab:clusterweb_data_table} lists the types of visualized data:
     Payload sequences & Rectangles & No & Operational & Science operations \\
     Mneuver times & Diamonds & No & Operational & Flight dynamics \\
     Apogees/perigees & Small points & No & Environment & Flight dynamics \\
-    Eclipses & Background & No & Environment & Flight dynamics \\
+    Eclipses & Rectangles & No & Environment & Flight dynamics \\
     \hline
   \end{tabular}
 
@@ -67,16 +67,35 @@ On the user interface, there are buttons for enabling and disabling certain visu
   \label{fig:clusterweb_visibilities}
 \end{figure}
 
-\subsection{Passes}
+\subsection{Pass scheduling}
 Figure~\ref{fig:clusterweb_visibilities} shows the main interface of Cluster Web with ground station visibilities on. The ground station visibilities are displayed as colored bars, each ground station being in its own "lane". Bookings of other missions are shown on top of the visibilities as smaller bars in slightly darker color. From this visualization, the mission planner can determine the times when a ground station is available so that a pass can be scheduled. 
 
 After a pass is created it shows up on the timeline as a rectangle. Different types of passes are displayed in different colors. Light blue rectangle is a normal pass that has both uplink and downlink capacity (commands can be sent to the spacecraft), while a gray pass is downlink-only. If there is a conflict with visibility or another booking, the pass is shown in red color. If the conflict is with another Cluster spacecraft the pass is shown in yellow color.
 
-By clicking a pass, another view opens up in which the user can edit the pass and access different kinds of information about the pass such as a bitrate forecast and log entries. There is also a checklist of things which should be checked every time a pass is edited.
+By clicking a pass, another view opens up in which the user can edit the pass properties like ranging signal and power mode, and access different kinds of information about the pass such as a bitrate forecast and log entries. There is also a checklist of things which should be checked every time a pass is edited.
 
-\subsection{SSR fill level}
+\subsection{SSR fill level graph}
 Another important visualization that can be seen in Figure~\ref{fig:clusterweb_visibilities} is the SSR fill level graph. It is shown for each spacecraft as a red and green line, in which the red part is drawn based on telemetry data about the fill level (that is available until the end of latest pass), and the green part is based on prediction. 
 
-The prediction model takes into account the data accumulation bitrates based on TDA modes and downlink bitrates during passes. When pass times and modes are edited this also changes the SSR fill level prediction. 
+The prediction model takes into account the data accumulation bitrates based on TDA modes and downlink bitrates during passes. When pass times and modes are edited this also changes the SSR fill level prediction. Visualizing this prediction makes it convenient for the mission planner to see what are good times for dumping the data.
 
-It is important to schedule the passes so that the fill level doesn't completely empty during a pass as that would be a waste of ground station time, or completely fill between passes because then the spacecraft couldn't collect more data before the memory is emptied. Because of the prediction visualization that changes depending on the passes the mission planner can easily take the SSR fill level into account while scheduling passes.
+\subsection{Eclipse times}
+
+%Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{clusterweb_eclipses}
+  \end{center}
+  \caption{A screenshot of the Cluster Web timeline interface showing an eclipse season}
+  \label{fig:clusterweb_eclipses}
+\end{figure}
+
+Cluster Web displays the times each spacecraft is in the shadow of Earth or the Moon, i.e. in an eclipse. During full eclipses which can last a few of hours the spacecraft doesn't receive any power from solar cells so it shuts down.
+
+Most of the time there are no Earth eclipses, they only happen in two eclipse seasons during a year which can last a week or two. During these seasons the spacecraft go through an eclipse once per orbit, that is about every 54 hours.
+
+Before an eclipse some preparation needs to be done, like dumping the SSR data and shutting down the science instruments. After an eclipse the spacecraft starts receiving power and wakes up in a fail-safe mode. In this mode the spacecraft doesn't transmit telemetry or collect data so a pass is required to set the spacecraft back to operational configuration.
+
+ An eclipse season requires special planning and attention to keep the spacecraft healthy, so it is useful to be able to overview the situation in Cluster Web. 
+ 
+ Eclipses are displayed as black rectangles as can be seen in Figure~\ref{fig:clusterweb_eclipses}, and by hovering mouse over them some additional information can be seen like which engineers are assigned to the operations of that eclipse, and if the spacecraft will power down.

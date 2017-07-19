@@ -40,15 +40,23 @@ Taiga project management platform is used for managing the Scrum process.
 \subsection{Continuous integration and deployment}
 CluWeb's code is managed in two GitLab repositories, one for front-end and another for back-end. Initially both used to be in one repository but they were separated for easier and cleaner management.
 
-The repositories have a master branch that is supposed to contain table release code, and a development branch that contains new features which have been added after every sprint. User stories are developed separately in their own branches which are based on development branch, and merged back into development branch when ready.
+The repositories have a master branch that is supposed to contain stable release code, and a development branch that contains new features which have been added after every sprint. User stories are developed separately in their own branches which are based on development branch, and merged back into development branch when ready.
 
 GitLab has built-in continuous integration features which are utilized in CluWeb's repositories. It's possible to define scripts defining different jobs which are run automatically after a push on a GitLab runner that is a Docker container running on the GitLab server. The idea is to run test first and then deploy the new version on a server.
 
 GitLab's continuous integration jobs are separated into stages which are run in a sequence. In CluWeb's case what needs to be achieved is to run tests first to validate the commits which were pushed, and if the tests were successful, deploy the new version to a server. Specific jobs can be set to run only for specific branches, which would for example allow deployment to branch-specific servers.
 
+Front-end tests are written using Jasmine framework, and run using Karma test runner on PhantomJS headless browser. The tests define expected outcomes for certain function calls, run them and then report the results.
+
+Something about backend testing
+
+Deployment is done after the test stage has passed. For the front-end this is done by connecting to the server using SSH, pulling the commit there, and then compiling the Typescript. Then the compiled Javascript is copied into a static files folders served by Nginx.
+
+Back-end deployment similarly connects to the server with SSH, pulls the commit and then runs a script to migrate any model changes to the database. Django automatically restarts the server when changes are detected.
+
 Figure There
 
-\section{Technology}
+\section{Architecture}
 CluWeb uses modern web technologies which are in widespread use across the industry. The overall architecture consists of a front- and a back-end which are separate software components. Front-end provides a browser-based user interface, while the back-end together with a database serves data to the front-end. As long as the interfaces stay the same, the individual components could be updated or replaced.
 Figure here
 \subsection{Front-end}
@@ -64,7 +72,9 @@ The back-end also has importers for various different file formats so that new d
 \section{Configurability}
 Making CluWeb configurable for different purposes was one of the driving factors for the re-engineering project. Ultimately, users should be able to visualize anything they want on the timeline, not necessarily even in the context of spacecraft operations. To achieve this, the timeline configuration needs to be defined in a way that can be easily edited, instead of having the attributes of the timeline and the visualizations hard-coded.
 
-Finding similarities between features was an important step of making CluWeb more generic than its predecessor. It should be able to recreate the functionality of the old Cluster Web but also have the configurability for adding visualizations for other types of data without having to re-write large parts of the code. Because a lot of the visualizations in Cluster Web had common attributes between them it made sense to make those commonalities into superclasses from which the visualizations could inherit.
+In Cluster Web, the main view is a schedule that consists of four timelines stacked vertically, one for each spacecraft. The timelines then display different groups of data on top of each other. In CluWeb this view can be configured freely by the user to fit the use case. Timelines can be added and removed, their height and order can be edited. Data groups can be added and removed, and their display order (z-index) can be changed.
+
+Finding similarities between features was an important step of making CluWeb more generic than its predecessor. It should be able to recreate the functionality of the old Cluster Web but also have the configurability for adding visualizations for other types of data without having to re-write large parts of the code. Because a lot of the visualizations in Cluster Web had common attributes between them it made sense to make superclasses out of those commonalities from which the different visualizations could then inherit.
 
 \begin{table}[!ht]
 % Add some padding to the table cells:
@@ -95,8 +105,8 @@ Table~\ref{tab:clusterweb_data_table} shows how the different data types in Clus
 
 Time instants are data that contain only one point in time per instance, i.e. events which don't have a defined length. These are visualized by a point in time.
 
-State data contains times in which some state changes. There can only be one state at a time, so whenever a state changes it replaces the previous one. These can be visualized by the timeline background color.
+State data contains times in which some state changes. There can only be one state at a time, so whenever a state changes it replaces the previous one, and lasts until the next change. These can be visualized by the timeline background color.
 
 Time series data contains numerical values at different points in time. The possible visualizations for this type of data can be for example line or bar charts.
 
-These four types (time intervals, time instants, states and time series) would become superclasses for the visualizations themselves. Practically the only differences between them could be considered to be things like color and height of the element on the timeline.
+These four types (time intervals, time instants, states and time series) would become superclasses for the visualizations themselves. Things like color and height of the elements can then be edited without needlessly repeating  code.
