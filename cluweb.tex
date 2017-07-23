@@ -12,13 +12,9 @@ The re-engineering project of Cluster Web has the aim to make the tool more user
 \end{figure}
 
 \section{Requirements}
-The main requirements for the re-engineered Cluster Web are related about making it easier and faster to use and also more configurable.  On the other hand there is also interest from other missions such as ExoMars and Swarm to use a similar tool for planning and overviewing operations. This means that the technical implementation has to be made modular so that it can be expanded with different kinds of visualizations and functionality.
+    The main requirements for the re-engineered Cluster Web are related about making it easier and faster to use and also more configurable. There is also interest from other missions such as ExoMars and Swarm to use a similar tool for planning and overviewing operations. This means that the technical implementation has to be made modular so that it can be expanded with different kinds of visualizations and functionality.
 
-One of the problems with the old CLuster Web is the slowness of navigating the timeline. It can only be moved and zoomed in steps by clicking the buttons in the navigation bar or by selecting a date in the calendar. Each time the timeline moves it is re-drawn and that can take a few seconds. How the data is represented on the timeline is fixed and cannot be edited by the user.
-
-In the new CluWeb this is improved by having a timeline that can be dragged with mouse and zoomed with the mouse wheel. This has the aim make navigating more responsive and intuitive.
-
-
+One of the problems with the old Cluster Web is the slowness of navigating the timeline. It can only be moved and zoomed in steps by clicking the buttons in the navigation bar or by selecting a date in the calendar. Each time the timeline moves it is re-drawn and that can take a few seconds. It also takes too many clicks to create passes.
 
 [CluWeb Pass timeline representation brainstorming]
 
@@ -69,12 +65,21 @@ Back-end of CluWeb is built using the Django Python framework. The back-end defi
 
 The back-end also has importers for various different file formats so that new data can be added to the database. 
 
+\section{Usability}
+CluWeb has the aim of providing a faster and more intuitive user experience. One of the main differences to the old Cluster Web is that the user can drag and zoom the schedule in real time by using a mouse. There's no need to redraw the entire schedule when zooming or dragging, instead it just translates to the new position at the same rate with the mouse cursor. On a touch screen the schedule can be dragged with a finger and zoomed by pinching.
+
+User can also choose a range between two dates on a calendar, and then the schedule is moved to that range through an animation. This is intended to give the user a better idea of where in time the schedule moved, rather than just directly jumping to a new time.
+
+ A new feature that has been added is the "live mode" in which the schedule shows a default timerange in past and future and moves with the current time. This could potentially be useful for getting a real-time overview of ongoing activities in the mission control room. The time range can be configured, so in more long-term operations it could be a few days, while during more short-term mission events it could be just minutes.
+ 
+Screenshot here
+
 \section{Configurability}
 Making CluWeb configurable for different purposes was one of the driving factors for the re-engineering project. Ultimately, users should be able to visualize anything they want on the timeline, not necessarily even in the context of spacecraft operations. To achieve this, the timeline configuration needs to be defined in a way that can be easily edited, instead of having the attributes of the timeline and the visualizations hard-coded.
 
 In Cluster Web, the main view is a schedule that consists of four timelines stacked vertically, one for each spacecraft. The timelines then display different groups of data on top of each other. In CluWeb this view can be configured freely by the user to fit the use case. Timelines can be added and removed, their height and order can be edited. Data groups can be added and removed, and their display order (z-index) can be changed.
 
-Finding similarities between features was an important step of making CluWeb more generic than its predecessor. It should be able to recreate the functionality of the old Cluster Web but also have the configurability for adding visualizations for other types of data without having to re-write large parts of the code. Because a lot of the visualizations in Cluster Web had common attributes between them it made sense to make superclasses out of those commonalities from which the different visualizations could then inherit.
+Finding similarities between features was an important step of making CluWeb more generic than its predecessor. It should be able to recreate the functionality of the old Cluster Web but also have the configurability for adding visualizations for other types of data without having to re-write large parts of the code each time. Because a lot of the visualizations in Cluster Web had common attributes between them it made sense to make superclasses out of those commonalities from which the different visualizations could then inherit.
 
 \begin{table}[!ht]
 % Add some padding to the table cells:
@@ -110,3 +115,9 @@ State data contains times in which some state changes. There can only be one sta
 Time series data contains numerical values at different points in time. The possible visualizations for this type of data can be for example line or bar charts.
 
 These four types (time intervals, time instants, states and time series) would become superclasses for the visualizations themselves. Things like color and height of the elements can then be edited without needlessly repeating  code.
+
+These data types can be added to timelines, and there can be multiple timelines in a schedule. In Cluster Web's case there are four timelines in a schedule that are all of the same size, but in some other use case it may be necessary to have for example one or ten timelines, and varying heights. This is configurable in CluWeb through a JSON- based configuration grammar.
+
+Diagram here
+
+On the top level in the configuration, general parameters of the entire schedule are defined. These include the allowed zoom level range, live mode time range, schedule size (in pixels or. automated), and whether timeline labels should be shown.
