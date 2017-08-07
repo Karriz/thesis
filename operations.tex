@@ -23,7 +23,9 @@ The forementioned files are then transferred to servers from which they will be 
 The data collected during the passes is tranferred to various different data centres around the world in the distributed Cluster Science Data System (CSDS).
 
 \section{Cluster Web}
-Cluster Web is a web portal that the mission planner uses for planning passes as mentioned in the last section. In this section the features and the technology of the software will be detailed more.
+Cluster Web is a web portal that the mission planner uses for planning passes as mentioned in the last section. In this section the features of the software will be detailed more.
+
+In addition to pass planning, Cluster Web is also used for overviewing the operations schedule by displayign the timeline on a big screen on the flight control room, and during meetings engineers use it to visualize relevant information that's being discussed, like the pass times for the upcoming week.
 
 The main interface of Cluster Web is a timeline that offers an overview of the mission plan. The timeline is split vertically into four sections, one for each spacecraft in the mission. Different types of data are visualized on the timeline, some of which events or states with a start and end time, some are events at a specific point in time and some are time-value sets shown as graphs on the timeline.
 
@@ -72,12 +74,21 @@ Figure~\ref{fig:clusterweb_visibilities} shows the main interface of Cluster Web
 
 After a pass is created it shows up on the timeline as a rectangle. Different types of passes are displayed in different colors. Light blue rectangle is a normal pass that has both uplink and downlink capacity (commands can be sent to the spacecraft), while a gray pass is downlink-only. If there is a conflict with visibility or another booking, the pass is shown in red color. If the conflict is with another Cluster spacecraft the pass is shown in yellow color.
 
-By clicking a pass, another view opens up in which the user can edit the pass properties like ranging signal and power mode, and access different kinds of information about the pass such as a bitrate forecast and log entries. There is also a checklist of things which should be checked every time a pass is edited.
+By clicking a pass, another view opens up in which the user can edit the pass properties, and access different kinds of information about the pass such as a bitrate forecast and log entries. There is also a checklist of things which should be checked every time a pass is edited.
+
+%Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{clusterweb_pass_edit}
+  \end{center}
+  \caption{A screenshot of Cluster Web pass editing and info view}
+  \label{fig:clusterweb_pass_edit}
+\end{figure}
 
 \subsection{SSR fill level graph}
 Another important visualization that can be seen in Figure~\ref{fig:clusterweb_visibilities} is the SSR fill level graph. It is shown for each spacecraft as a red and green line, in which the red part is drawn based on telemetry data about the fill level (that is available until the end of latest pass), and the green part is based on prediction. 
 
-The prediction model takes into account the data accumulation bitrates based on TDA modes and downlink bitrates during passes. When pass times and modes are edited this also changes the SSR fill level prediction. Visualizing this prediction makes it convenient for the mission planner to see what are good times for dumping the data.
+The prediction model takes into account the data recording bitrates based on TDA modes and downlink bitrates during passes. When pass times and modes are edited this also changes the SSR fill level prediction. Visualizing this prediction makes it convenient for the mission planner to see what are good times for dumping the data.
 
 \subsection{Eclipse times}
 
@@ -96,6 +107,22 @@ Most of the time there are no Earth eclipses, they only happen in two eclipse se
 
 Before an eclipse some preparation needs to be done, like dumping the SSR data and shutting down the science instruments. After an eclipse the spacecraft starts receiving power and wakes up in a fail-safe mode. In this mode the spacecraft doesn't transmit telemetry or collect data so a pass is required to set the spacecraft back to operational configuration.
 
- An eclipse season requires special planning and attention to keep the spacecraft healthy, so it is useful to be able to overview the situation in Cluster Web. 
+ An eclipse season requires special planning and attention to keep the spacecraft healthy, so it is useful to be able to overview the situation in Cluster Web well in advance.
  
  Eclipses are displayed as black rectangles as can be seen in Figure~\ref{fig:clusterweb_eclipses}, and by hovering mouse over them some additional information can be seen like which engineers are assigned to the operations of that eclipse, and if the spacecraft will power down.
+ 
+ \subsection{Überlog integration}
+ Cluster Web is integrated with another tool that is used by spacecraft controllers, named Überlog. It is a web application for logging operations events like opening and closing communications links, and any issues that may occur. Automation system also inserts log entries when it conducts operations by itself.
+ 
+ On Cluster Web, the log entries can be displayed on a sidebar in the schedule view and filtered by spacecraft, or in the pass information view for that particular pass.
+ 
+ This functionality can for example be used in meetings by displaying log entries that occured during a pass when troubleshooting an issue.
+ 
+ %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{clusterweb_uberlog}
+  \end{center}
+  \caption{Cluster Web's Überlog sidebar}
+  \label{fig:clusterweb_uberlog}
+\end{figure}

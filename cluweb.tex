@@ -36,7 +36,7 @@ Taiga project management platform is used for managing the Scrum process.
 \subsection{Continuous integration and deployment}
 CluWeb's code is managed in two GitLab repositories, one for front-end and another for back-end. Initially both used to be in one repository but they were separated for easier and cleaner management.
 
-The repositories have a master branch that is supposed to contain stable release code, and a development branch that contains new features which have been added after every sprint. User stories are developed separately in their own branches which are based on development branch, and merged back into development branch when ready.
+Both repositories have a master branch that is supposed to contain stable release code, and a development branch that contains new features which have been added after every sprint. User stories are developed separately in their own branches which are based on development branch, and merged back into development branch when ready.
 
 GitLab has built-in continuous integration features which are utilized in CluWeb's repositories. It's possible to define scripts defining different jobs which are run automatically after a push on a GitLab runner that is a Docker container running on the GitLab server. The idea is to run test first and then deploy the new version on a server.
 
@@ -54,18 +54,39 @@ Figure There
 
 \section{Architecture}
 CluWeb uses modern web technologies which are in widespread use across the industry. The overall architecture consists of a front- and a back-end which are separate software components. Front-end provides a browser-based user interface, while the back-end together with a database serves data to the front-end. As long as the interfaces stay the same, the individual components could be updated or replaced.
-Figure here
-\subsection{Front-end}
-CluWeb's front-end is powered by Angular, which is a Javascript framework for developing web applications. It provides useful functionality to structure the application into separate views and services for accessing data through API's. Coding is done in Typescript which is a superset of Javascript that has type definitions and classes, making the code easier to read and maintain than regular Javascript.
 
-For drawing the timeline and visualizing data on it, D3.js is used. It is a Javascript library for binding data to DOM elements, and applying transformations to the elements based on that data. In CluWeb's case these features are used for drawing a timeline axis and placing elements on the timeline based on the corresponding data objects' properties like start and end time and spacecraft number.
+%Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{architecture}
+  \end{center}
+  \caption{Overall software architecture of CluWeb}
+  \label{fig:cluweb_architecture}
+\end{figure}
+
+\subsection{Front-end}
+CluWeb's front-end is powered by Angular, which is a Javascript framework for developing web applications. It provides useful functionality for structuring the application logic and different views and services.
+
+An Angular application consists of modules which consist of different components and services. Components contain the application logic and have different lifecycle events that fire when the view is created or destroyed, for example.
+
+Each component has a template that defines the user interface of the component in HTML. The template can have data bindings to the component's variables inside HTML, reflecting changes in data. Bindings also work the other way around, and can be used for inserting user input into the component's data.
+
+Services provide data that components can obtain through change listeners or by calling request functions. They are injected in the component constructor.
+
+Angular applications are programmed in Typescript which is a superset of Javascript that adds optional static typing, making the code easier to read and maintain than regular Javascript.
+
+For drawing the schedule and visualizing data on it, D3.js is used. It is a Javascript library for binding data to DOM elements, and applying transformations to the elements based on that data. In CluWeb's case these features are used for drawing a timeline axis and placing elements on the timeline based on the corresponding data objects' properties like start and end time and spacecraft number.
 
 \subsection{Back-end}
 Back-end of CluWeb is built using the Django Python framework. The back-end defines data models, interfaces with a database and provides the data through a RESTful API in JSON format.
 
 The back-end also has importers for various different file formats so that new data can be added to the database. Some of the data is retrieved from external databases. Passes, ground station bookings and visibilities come from ESTRACK's API.
 
-SSR fill level is retrieved from ESA's telemetry-collecting MUSTLink database when requested and processed to remove invalid data. 
+SSR fill level is retrieved from ESA's telemetry-collecting MUSTLink database when requested and processed to remove invalid and unnecessary data. Fill level is a derived value and not a telemetry value from the spacecraft itself. It is calculated by dividing the difference between read and write pointers with the total storage capacity. The value can only be properly calculated during a pass when SSR is in standby or reproduce mode, i.e. reading data and downlinking it. 
+
+Between passes there is no telemetry, so those times can be ignored as the SSR fill level would just show as zero.
+
+For passes it's not optimal to get values for every frame (about 15 seconds) as that would be too much data for drawing the SSR fill level for long time periods. What needs to be retrieved is the times when the slope of the SSR fill level changes, and just draw the line between those points of time. Getting the points where SSR changes to either standby or reproduce mode or back to record is enough for achieving this.
 
 \section{Usability}
 CluWeb has the aim of providing a faster and more intuitive user experience. One of the main differences to the old Cluster Web is that the user can drag and zoom the schedule in real time by using a mouse. There's no need to redraw the entire schedule when zooming or dragging, instead it just translates to the new position at the same rate with the mouse cursor. On a touch screen the schedule can be dragged with a finger and zoomed by pinching.
