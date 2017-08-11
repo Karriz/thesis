@@ -135,4 +135,30 @@ Timelines contain a list of what data visualizations are displayed on them. The 
 
 Other attributes of data visualizations vary depending on the data type. For time intervals these are for example color, height and label text.
 
-Diagram here
+%Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{schedule_diagram}
+  \end{center}
+  \caption{A diagram describing the relationship between timelines and data types in the schedule configuration}
+  \label{fig:schedule_diagram}
+\end{figure}
+
+
+\section{Überlog integration}
+Like the old Cluster Web, CluWeb integrates the viewing of Überlog entries, however in a different way. In CluWeb, the log entries are visible as icons on the timeline, their positions corresponding the log event time. 
+
+Because there are so many entries close to each other, it would not be viable to display them all as the icons would overlap each other when zoomed out. To improve the readability of the timeline, log entries which are close are grouped together and shown as a single icon with a number next to it. The icon being displayed depends on the highest severity level log entry in that group. The groups change dynamically when zoom level changes. This solution was inspired by PowerHA timeline displays log entries at different severity levels in a similar way. [http://www.iftekhar.me/ibm/ibm-project-timeline]
+
+When the user hovers the cursor over an icon, the times of the first and last entry in the group are displayed in a tooltip as well as the amount of entries for each severity level. If there is only one entry for the icon, the actual text of the log entry is displayed.
+
+The icon grouping was implemented as a generic class that can be extended for other purposes as well.
+ 
+%Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{cluweb_uberlog}
+  \end{center}
+  \caption{A screenshot demonstrating how Uberlog entries are displayed on the timeline}
+  \label{fig:cluweb_uberlog}
+\end{figure}
