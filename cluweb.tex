@@ -1,6 +1,6 @@
 % Re-engineered ClusterWeb Chapter
 
-The re-engineering project of Cluster Web has the aim to make the tool more user-friendly and also expandable to other purposes than Cluster II pass scheduling. In this section the user requirements, development process and the technological architecture of the new Cluster Web (named "CluWeb") is overviewed.
+The re-engineering project of Cluster Web has the aim to make the tool more user-friendly and also expandable to other purposes than Cluster II monitoring and pass scheduling. In this section the user requirements, development process and the technological architecture of the new Cluster Web (named "CluWeb") is overviewed.
 
 %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
 \begin{figure}[ht]
@@ -17,6 +17,26 @@ The re-engineering project of Cluster Web has the aim to make the tool more user
 One of the problems with the old Cluster Web is the slowness of navigating the timeline. It can only be moved and zoomed in steps by clicking the buttons in the navigation bar or by selecting a date in the calendar. Each time the timeline moves it is re-drawn and that can take a few seconds. It also takes too many clicks to create passes.
 
 [CluWeb Pass timeline representation brainstorming]
+
+Because the aim is to create a modular and generic tool, it also makes sense to involve people outside the Cluster II flight control team in the development, and to eventually open-source the tool once the core functionality has been implemented on top of which new features can be built. Initially this could happen within ESA but there is also potential for applications outside the field of spacecraft operations for this type of timeline-based data visualization.
+
+Related work section somewhere?
+
+One example of a successfully open-sourced project within spacecraft operations is NASA's Open MCT (Mission Control Technologies) which is a web-based platform for visualizing real-time data. Users can build dashboards and place different data visualization widgets them which are linked to real-time data sources.
+
+OpenMCT is currently being used by NASA as a mission control system for a future Lunar Resource Prospector rover mission and as a telemetry analysis tool for JASON-3 Earth observation mission. It is being evaluated for other missions as well, and anyone in the general public can use the source code for their own purposes.
+
+[https://nasa.github.io/openmct/]
+[A New Architecture for
+Visualization: Open Mission
+Control Technologies]
+
+On the commercial side there are also many spacecraft operations software built on modern web technologies. BOSS dashboard by Solenix is an example of such a tool. Similarly to OpenMCT it is also allows the users to build monitoring dashboards with various different widgets for monitoring the spacecraft status. Cluster Flight Control team is plannign to incorporate this tool into their operations.
+[https://www.solenix.ch/boss]
+
+Tools like OpenMCT and BOSS are examples of modern web technologies being used in supporting spacecraft operations. While they are operations dashboards, CluWeb is an operations schedule, and there aren't existing off-the-shelf solutions which would recreate the functionality of the old Cluster Web. 
+
+Some libraries for creating timelines do exist and provide similar functionality, such as VisJS timeline [http://visjs.org/examples/timeline/other/groupsPerformance.html], however it doesn't have the ability to draw a line graph on top of the timeline that is needed for the SSR fill level.
 
 \section{Development}
 This section will detail different tools and methods used in CluWeb's development process to manage the development and to streamline and automatize certain phases like testing and deployment.
