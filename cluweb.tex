@@ -12,44 +12,43 @@ The re-engineering project of Cluster Web has the aim to make the tool more user
 \end{figure}
 
 \section{Requirements}
-    The main requirements for the re-engineered Cluster Web are related about making it easier and faster to use and also more configurable. There is also interest from other missions such as ExoMars and Swarm to use a similar tool for planning and overviewing operations. This means that the technical implementation has to be made modular so that it can be expanded with different kinds of visualizations and functionality.
+    The main requirements for the re-engineered Cluster Web are related about making it easier and faster to use and also more configurable. There is also interest from other missions such as ExoMars and Swarm to use a similar tool for planning and overviewing operations. This means that the technical implementation has to be made modular so that it can be expanded with different kinds of visualizations and functionality in the future.
 
 One of the problems with the old Cluster Web is the slowness of navigating the timeline. It can only be moved and zoomed in steps by clicking the buttons in the navigation bar or by selecting a date in the calendar. Each time the timeline moves it is re-drawn and that can take a few seconds. It also takes too many clicks to create passes.
 
-[CluWeb Pass timeline representation brainstorming]
-
 Because the aim is to create a modular and generic tool, it also makes sense to involve people outside the Cluster II flight control team in the development, and to eventually open-source the tool once the core functionality has been implemented on top of which new features can be built. Initially this could happen within ESA but there is also potential for applications outside the field of spacecraft operations for this type of timeline-based data visualization.
 
-Related work section somewhere?
-
-One example of a successfully open-sourced project within spacecraft operations is NASA's Open MCT (Mission Control Technologies) which is a web-based platform for visualizing real-time data. Users can build dashboards and place different data visualization widgets them which are linked to real-time data sources.
+One example of a successfully open-sourced project within spacecraft operations is NASA's Open MCT (Mission Control Technologies) which is a web-based platform for visualizing real-time data. Users can build dashboards and place different data visualization widgets them which are linked to real-time data sources. This level of configurability is similar to what is hoped to be achieved in CluWeb.
 
 OpenMCT is currently being used by NASA as a mission control system for a future Lunar Resource Prospector rover mission and as a telemetry analysis tool for JASON-3 Earth observation mission. It is being evaluated for other missions as well, and anyone in the general public can use the source code for their own purposes.
 
-[https://nasa.github.io/openmct/]
-[A New Architecture for
-Visualization: Open Mission
-Control Technologies]
+\cite{openmct_site, openmct_presentation}
 
 On the commercial side there are also many spacecraft operations software built on modern web technologies. BOSS dashboard by Solenix is an example of such a tool. Similarly to OpenMCT it is also allows the users to build monitoring dashboards with various different widgets for monitoring the spacecraft status. Cluster Flight Control team is plannign to incorporate this tool into their operations.
-[https://www.solenix.ch/boss]
+\cite{boss}
 
 Tools like OpenMCT and BOSS are examples of modern web technologies being used in supporting spacecraft operations. While they are operations dashboards, CluWeb is an operations schedule, and there aren't existing off-the-shelf solutions which would recreate the functionality of the old Cluster Web. 
 
-Some libraries for creating timelines do exist and provide similar functionality, such as VisJS timeline [http://visjs.org/examples/timeline/other/groupsPerformance.html], however it doesn't have the ability to draw a line graph on top of the timeline that is needed for the SSR fill level.
+Some libraries for creating timelines do exist and provide similar functionality, such as VisJS timeline \cite{visjs}, however it doesn't have the ability to draw a line graph on top of the timeline that is needed for the SSR fill level.
 
 \section{Development}
 This section will detail different tools and methods used in CluWeb's development process to manage the development and to streamline and automatize certain phases like testing and deployment.
 
 \subsection{Scrum}
-CluWeb development uses the Scrum approach, which is an Agile framework. [http://www.scrumguides.org/docs/scrumguide/v2016/2016-Scrum-Guide-US.pdf]
-In Scrum, the development process is split into "sprints" which in the case of CluWeb happen every two weeks. Sprints contain "user stories" defined by the project owner which describe some functionality from a user's point of view. A sprint planning meeting is held at a beginning of a sprint to choose the user stories in that sprint and to score them by their workload in three different categories: concept, front-end and back-end. User stories are split into technical tasks which are then assigned among the developers. A Scrum master who is a member of the development team manages these meetings.
+CluWeb development uses the Scrum approach, which is an Agile framework.
+In Scrum, the development process is split into "sprints" which in the case of CluWeb happen every two weeks. Sprints contain "user stories" defined by the project owner which describe system functionality from a user's point of view.
+
+One of the memebrs of the developed team is assigned as the Scrum master who oversees the Scrum process, which includes managing meetings and staying updated on what everyone is doing.
+
+A sprint planning meeting is held at a beginning of a sprint to choose the user stories in that sprint and to score them by their workload in three different categories: concept, front-end and back-end. User stories are split into technical tasks which are then assigned among the developers, depending on their skills and interests. In CluWeb's case this means that some developers are more focused on the frontend and some on backend.
 
 During a sprint, a daily stand-up meeting is held every morning during which the developers tell others what they did during the last day and what they will be doing that day. This is to stay updated of everyone's progress and to exchange ideas and ask for help if necessary.
 
 Task status is tracked on a Kanban board. There are five different stages for tasks: "new", "in progress", "ready for testing", "closed" and "needs info". Once a developer has completed a task, it is moved to "ready for testing" stage, after which another development tests the functionality and closes the task. Once all tasks in a user story have been completed, it can be closed.
 
 At the end of a sprint, a sprint review meeting is held in which the progress is presented to the project owner who provides feedback. Then another sprint can start with a new set of user stories, and unfinished user stories. which were left over from the last sprint.
+
+\cite{scrum}
 
 Taiga project management platform is used for managing the Scrum process.
 
@@ -69,8 +68,6 @@ Something about backend testing
 Deployment is done after the test stage has passed. For the front-end this is done by connecting to the server using SSH, pulling the commit there, and then compiling the Typescript. Then the compiled Javascript is copied into a static files folders served by Nginx.
 
 Back-end deployment similarly connects to the server with SSH, pulls the commit and then runs a script to migrate any model changes to the database. Django automatically restarts the server when changes are detected.
-
-Figure There
 
 \section{Architecture}
 CluWeb uses modern web technologies which are in widespread use across the industry. The overall architecture consists of a front- and a back-end which are separate software components. Front-end provides a browser-based user interface, while the back-end together with a database serves data to the front-end. As long as the interfaces stay the same, the individual components could be updated or replaced.
@@ -114,8 +111,6 @@ CluWeb has the aim of providing a faster and more intuitive user experience. One
 User can also choose a range between two dates on a calendar, and then the schedule is moved to that range through an animation. This is intended to give the user a better idea of where in time the schedule moved, rather than just directly jumping to a new time.
 
  A new feature that has been added is the "live mode" in which the schedule shows a default timerange in past and future and moves with the current time. This could potentially be useful for getting a real-time overview of ongoing activities in the mission control room. The time range can be configured, so in more long-term operations it could be a few days, while during more short-term mission events it could be just minutes.
- 
-Screenshot here
 
 \section{Configurability}
 Making CluWeb configurable for different purposes was one of the driving factors for the re-engineering project. Ultimately, users should be able to visualize anything they want on the schedule, not necessarily even in the context of spacecraft operations. To achieve this, the schedule configuration needs to be defined in a way that can be easily edited, instead of having the attributes of the schedule and the visualizations hard-coded.
