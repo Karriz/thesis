@@ -22,7 +22,7 @@ One example of a successfully open-sourced project within spacecraft operations 
 
 OpenMCT is currently being used by NASA as a mission control system for a future Lunar Resource Prospector rover mission and as a telemetry analysis tool for JASON-3 Earth observation mission. It is being evaluated for other missions as well, and anyone in the general public can use the source code for their own purposes.
 
-\cite{openmct_site, openmct_presentation}
+\cite{trimble2014reconfigurable, trimble2016open}
 
 On the commercial side there are also many spacecraft operations software built on modern web technologies. BOSS dashboard by Solenix is an example of such a tool. Similarly to OpenMCT it is also allows the users to build monitoring dashboards with various different widgets for monitoring the spacecraft status. Cluster Flight Control team is plannign to incorporate this tool into their operations.
 \cite{boss}
@@ -163,7 +163,7 @@ Other attributes of data visualizations vary depending on the data type. For tim
 \section{Überlog integration}
 Like the old Cluster Web, CluWeb integrates the viewing of Überlog entries, however in a different way. In CluWeb, the log entries are visible as icons on the timeline, their positions corresponding the log event time. 
 
-Because there are so many entries close to each other, it would not be viable to display them all as the icons would overlap each other when zoomed out. To improve the readability of the timeline, log entries which are close are grouped together and shown as a single icon with a number next to it. The icon being displayed depends on the highest severity level log entry in that group. The groups change dynamically when zoom level changes. This solution was inspired by PowerHA timeline displays log entries at different severity levels in a similar way. [http://www.iftekhar.me/ibm/ibm-project-timeline]
+Because there are so many entries close to each other, it would not be viable to display them all as the icons would overlap each other when zoomed out. To improve the readability of the timeline, log entries which are close are grouped together and shown as a single icon with a number next to it. The icon being displayed depends on the highest severity level log entry in that group. The groups change dynamically when zoom level changes. This solution was inspired by PowerHA timeline groups log entries at different severity levels in a similar way. \cite{ibm_timeline}
 
 When the user hovers the cursor over an icon, the times of the first and last entry in the group are displayed in a tooltip as well as the amount of entries for each severity level. If there is only one entry for the icon, the actual text of the log entry is displayed.
 
