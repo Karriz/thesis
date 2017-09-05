@@ -8,6 +8,13 @@ The evaluation was done in two phases: at first, focusing only on how, why and w
 
 In the second phase of the evaluation, an evaluation of CluWeb was performed to find out how it improved in terms of user experience. CluWeb wasn't functionally yet on par with the old Culster Web at this point of development as it was missing the pass planning functionality entirely, so the evaluation focused on two aspects which could be compared: monitoring and data visualization.
 
+\section{Evaluation or inspection?}
+Software can be evaluated in various different ways. Testing the system with real users in an empirical evaluation is time-consuming but is often the best way to identify usability problems. During the development cycle, using usability inspection methods like heuristic evaluation is sometimes used, which involves an expert going through the interface and comparing it against a set of criteria such as Nielsens ten heuristics \cite{nielsen2005ten, nielsen1995usability}. This is faster and easier than doing full usability evaluation with users, but doesn't identify as many problems.
+
+Hollingsed and Novick note that using both empirical evaluation and usability inspection would be the most effective solution that is often overlooked. \cite{hollingsed2007usability}
+
+During the development of CluWeb, formal usability inspections were not done. It was up to the developers to identify potential usability problems. It is helpful that some members of the development team are future users of the software themselves. An usability inspection such as heuristic evaluation could be performed, but the main focus of this thesis is on empirical user evaluation which should produce more useful and interesting results.
+
 \section{Definitions of usability and user experience}\label{definitions_section}
 
 There are many different established methods for evaluating software usability and user experience. At first it is important to define what exactly these terms mean in scientific consensus so that there is no misunderstanding.
@@ -20,7 +27,7 @@ User experience on the other hand is defined as "A person's perceptions and resp
 
 There are many ways to interpret how these terms relate to each other. If the concept of "satisfaction" in the definition of usability is considered to cover "a person's perceptions and responses" in the definition of user experience, then usability can be seen as a umbrella term that covers both the actual measurable work efficiency and personal feelings that stem from using the system.
 
-Bevan notes that in industry it is often user experience that is used as an umbrella term that includes the work efficiency component of usability, while in research community user experience is seen as the subjective perception that user gets from using a system.
+Väänänen-Vainio-Mattila et al. and Bevan note that in industry it is often user experience that is used as an umbrella term that includes the work efficiency component of usability, while in research community user experience is seen as the subjective perception that user gets from using a system. Because of its subjective nature, evaluation methods for this this academic definition of user experience aren't well-established yet. \cite{bevan2009difference, vaananen2008towards}
 
 In the end there are three different interpretations of user experience according to Bevan: \begin{itemize}
 \item An  elaboration  of  the  satisfaction  component  of usability
@@ -88,12 +95,27 @@ There's also potential use cases entirely unrelated to space industry which coul
 
 Because tailoring CluWeb for other uses would take some time, and its first use is going to be for Cluster II mission, the evaluation will start with them, and will potentially be expanded later if possible. However, even with the Cluster II use case it may be interesting to get some participants from outside of the team to get better data on learnability.
 
+Some preliminary information should be collected from each user that is relevant to the evaluation. In Cluster Web's case, the level of expertise could be one metric. This information could be collected by asking for how long the participant has been using Cluster Web, how often they use it and what is their self-reported level of expertise on a Likert scale. \cite{likert1932technique} Also what could be considered is how much they use Cluster Web's different functionalities.
+
 \cite{rubin2008handbook, albert2013measuring}
 
 \subsection{Evaluation methods}
 Now that the different attributes of user experience have been overviewed in section \ref{usability_attributes}, the next step is to determine what kind of metrics should be collected to gain valuable insight about the user experience, and how these metrics should be collected.
 
-%\cite{hollingsed2007usability}
+Data can be collected concurrently during the test or after it retrospectively. Van den Haak et al. performed a comparative test between concurrent think-aloud (CTA) and retrospective think-aloud (RTA).
+
+CTA was found to find more task-oriented errors while RTA was good for gaining broader user reactions. There is some debate on whether or not CTA has a negative effect on task performance because talking aloud would distract the user, but some have found it to have a positive effect. When performing a complex task the user may verbalize less. RTA is less susceptible this problem. Task complexity for evaluation should be designed so that the users are required to think, but aren't over-burdened so much that they cannot make verbal observations.
+\cite{van2003retrospective}
+
+In this evaluation, participants will be encouraged to talk about their observations during the evaluation, but the main focus will be on the retrospective questionnaire which makes it easier to collect more comprehensive and quantitative data.
+
+
+\cite{laugwitz2008construction, bevanevaluation, rubin2008handbook, albert2013measuring}
+
+%laugwitz2008construction
+
+%vaananen2008towards
+
 %\cite{vermeeren2010user}
 
 \section{Results}
