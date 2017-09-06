@@ -1,16 +1,35 @@
 % Evaluation Chapter
 
-This section covers the evaluation done on the old Cluster Web and the new CluWeb. The aim of the evaluation is to gain knowledge about how CluWeb compares to Cluster Web in terms of user experience and usability. In particular the configurable timelines are a new feature that could have a big effect on how people use Cluster Web, because it allows visualizing data from many different perspectives.
+This section covers the evaluation done on the old Cluster Web and the new CluWeb. The aim of the evaluation is to gain knowledge about how CluWeb compares to Cluster Web in terms of user experience and usability. Research questions will be defined, methods will be overviewed and the evaluation plan will be constructed in this section.
 
-Because CluWeb wasn't functionally yet on par with the old Culster Web at this point of development as it was missing the pass planning functionality entirely, the evaluation focused on the data visualization functionality entirely; how well users can find information using the timeline interface.
+Because CluWeb wasn't functionally yet on par with the old Cluster Web at this point of development as it was missing the pass planning functionality entirely, the evaluation focused on the data visualization functionality entirely; how well users can find information using the timeline interface.
+
+There are some differences and new features in CluWeb, and their effect on the user experience should be evaluated. In particular the configurable timelines are a new feature that could have a big effect on how people use Cluster Web, because it allows visualizing data from many different perspectives. This is arguably the largest addition compared to the old Cluster Web. Other features include the mouse-based timeline navigation, Uberlog integration on the timeline, and a moving live mode.
 
 The results will hopefully shed some light on how much the re-engineered CluWeb improves the user experience and opens up new possibilities with its new features. Having information about this could also help with setting goals and priorities for future development, but the study is more summative than formative as doing follow-up evaluations is outside of the scope of this thesis. \cite{albert2013measuring}
-
-Something human computer interaction \cite{4839639}
 
 The evaluation was done in two phases: in the first phase, focusing only on how the old Cluster Web fares in a set of tasks and how the users perceive it.
 
 In the second phase of the evaluation, CluWeb was evaluated with the same tasks to find out if its an improvement over Cluster Web and if its new features are helpful. Some additional tasks and questions were also added which are specific to the new features.
+
+\section{Research questions} \label{research_questions}
+The following main research question is the one that this thesis aims to answer in a reasonably comprehensive way:
+
+\textbf{"How usable is a modern and configurable timeline visualization of spacecraft operations schedule compared to its predecessor?"}
+
+This research question aims to cover all aspects of the evaluation, however there are a few more specific questions which can be made:
+
+The configurability aspect of CluWeb is the main focus of the evaluation as it is the biggest new feature. In particular what could be interesting is how quickly people find data using different arrangements of timelines. This leads to the research question:
+
+\textit{"How do different timeline visualization configurations affect usability?"}
+
+Another aspect that can reasonably be expected to have a noticeable effect on usability is the ability to pan and zoom the timeline using the mouse. It should make user interaction more direct than clicking on buttons and waiting for the system to respond. This can be formulated into the following research question:
+
+\textit{"How does direct mouse navigation affect the usability of a timeline interface compared to UI button-based navigation?"}
+
+Displaying the Uberlog entries on the timeline could have a positive effect on usability, as there is a visual link between the log entries and time. A research question about this could therefore be formulated as follows:
+
+\textit{"What kind of an effect does the visualization of log entries on a timeline have on usability as opposed to a more traditional list interface?"}
 
 \section{Evaluation or inspection?}
 Software can be evaluated in various different ways. Testing the system with real users in an empirical evaluation is time-consuming but is often the best way to identify usability problems. During the development cycle, using usability inspection methods like heuristic evaluation is sometimes used, which involves an expert going through the interface and comparing it against a set of criteria such as Nielsens ten heuristics \cite{nielsen2005ten, nielsen1995usability}. This is faster and easier than doing full usability evaluation with users, but doesn't identify as many problems.
@@ -19,10 +38,10 @@ Hollingsed and Novick note that using both empirical evaluation and usability in
 
 During the development of CluWeb, formal usability inspections were not done. It was up to the developers to identify potential usability problems. It is helpful that some members of the development team are future users of the software themselves. An usability inspection such as heuristic evaluation could be performed, but the main focus of this thesis is on empirical user evaluation which should produce more useful and interesting results.
 
-\section{Definitions of usability and user experience}\label{definitions_section}
+\section{Definitions}
+There are different interpretations on what usability and user experience mean. It is important to understand these words so that a clearer idea can be formed on what needs to be evaluated. In this section, an overview is done on what these terms generally refer to.
 
-There are many different established methods for evaluating software usability and user experience. At first it is important to define what exactly these terms mean in scientific consensus so that there is no misunderstanding.
-
+\subsection{Usability and user experience} \label{definitions_section}
 The definitions of usability and user experience in the context of software evaluation aren't self-evident, and they can be interpreted in many different ways. However, these terms do have official ISO standards defining them. Bevan et al.talk about the importance of using these standards so that the criteria against which software is evaluated stays consistent. \cite{bevanstandard}
 
 In  ISO FDIS 9241-210, usability is defined as "Extent to which  a system, product or service can be used by specified users to achieve specified goals with effectiveness, efficiency and satisfaction in a specified context of use." Therefore, usability seems to have its main focus on the pragmatic goal of achieving some task in a efficient way while using the system, however it also includes the concept of satisfaction.
@@ -60,21 +79,18 @@ For consistency's sake and  to not use words interchargeably in this thesis, "us
 
 Both pragmatic and hedonic goals of information system usage should be considered, and user experience seems to be a better word for this than just usability.
 
-\section{Evaluation planning}
-In this section the methods of evaluation will be detailed. This includes what metrics are going to be collected and how. An overview of related literature is done to make sure that the evaluation is done following generally accepted standards in the industry and scientific community. Also, what is considered relevant in the context of Cluster Web and CluWeb has to be considered when designing the evaluation plan.
-
 \subsection{Attributes of user experience}\label{usability_attributes}
 The concept of usability and user experience should be split into different subcategories to form an understanding of what kind of questions the evaluation results should be able to answer. If we combine what was covered in section \ref{definitions_section}, at least the following categories can be found:
 
 \textbf{Usefulness} is a measure of whether the system is actually needed. The task the system is designed for should be something that people need to or want to do, and the system should be helpful in completing that task. As Cluster Web has been in active use for many years, its usefulness is well established within its userbase, but this should still be evaluated to better find out what it is used for and how useful people find it for different purposes.It is also important to evaluate the usefulness of CluWeb's new features.
 
-\textbf{Efficiency} is a measure of how good are the results of using the system relative to the resources it needs. This is often measured in the amount of time required to complete a task, which is possible to evaluate as long as the task is well defined and has a starting and an ending time. For Cluster Web, a task
+\textbf{Efficiency} is a measure of how good are the results of using the system relative to the resources it needs. This is often measured in the amount of time required to complete a task, which is possible to evaluate as long as the task is well defined and has a starting and an ending time. For Cluster Web, a task could  consist of finding some information about a specific data item at a given time.
 
 \textbf{Effectiveness} is defined as how well the users can complete tasks using the system. The system should act reliably in a way that the user expects it to in order to be properly usable. Otherwise, the tasks may end up with erroneous results or not completed at all. Error rate is an usual way of measuring this. For Cluster Web's evaluation, a set of test tasks could be defined with their intended outcomes, and whether or not the users could reach the right outcome would be tested.
 
-\textbf{Learnability} means how quickly and how well the users are able to learn the system so that they can use it effectively. If the system is hard to learn, this will lead to problems in effectiveness. Too long learning period is not efficient either. Because Cluster Web's current users have been using it for many years, this cannot be evaluated very well with them, but the new features of CluWeb can be. Prior experience of participants should be asked at the beginning of the evaluation. Some people from outside of the Cluster II flight control team could be used in evaluation for better comparison.
+\textbf{Learnability} means how quickly and how well the users are able to learn the system so that they can use it effectively. If the system is hard to learn, this will lead to problems in effectiveness. Too long learning period is not efficient either. Because Cluster Web's current users have been using it for many years, this cannot be evaluated very well with them, but the new features of CluWeb can be. Prior experience of participants should be asked at the beginning of the evaluation.
 
-\textbf{Satisfaction} is a qualitative measure that covers the user's feelings about using the system. While many other things can be measured as quantitative numbers, it is useful to directly ask the users about their opinions and preferences. At very least, the user shouldn't feel negative emotions like frustration or confusion while and after using the system. Optimally the system would evoke some positive reaction that could encourage the user to interact with the system more. A questionnaire at the end of evaluation and also asking questions and observing the participant during the evaluation would be some ways of collecting data about user satisfaction.
+\textbf{Satisfaction} is a hedonic measure that covers the user's feelings about using the system. While many other things can be measured as quantitative numbers, it is useful to directly ask the users about their opinions and preferences. At very least, the user shouldn't feel negative emotions like frustration or confusion while and after using the system. Optimally the system would evoke some positive reaction that could encourage the user to interact with the system more. A questionnaire at the end of evaluation and also asking questions and observing the participant during the evaluation would be some ways of collecting data about user satisfaction.
 
 \textbf{Accessibility} often deals with how well the system can be used by people with disabilities, for example poor eyesight or coordination. To some extent this could be taken into account when testing Cluster Web like the visibility of small icons, but finding test subjects could be relatively hard. This is left outside of the scope of this thesis.
 
@@ -82,14 +98,15 @@ The concept of usability and user experience should be split into different subc
 
 \textbf{Safety} covers the aspects of the system protecting the user from dangerous situations and undesirable conditions. It's not clear if this applies to Cluster Web, as even though it is used extensively, it doesn't play a critical part in spacecraft operations and doesn't interface with any physical actuators. Information security could perhaps be considered a part of safety, but that is outside of the scope of this thesis.
 
-\cite{rubin2008handbook, bevanevaluation, albert2013measuring}
+\section{Formulating an evaluation plan}
+In this section the methods of evaluation will be detailed. This includes what metrics are going to be collected, how they are collected, who are the participants and what is the overall course of the evaluation.
 
 \subsection{Participant selection}
 Selecting the right participants for the study is a very important aspect of user experience evaluation. The participants should be a representative sample of the target userbase of the system. If the test users are selected incorrectly the test results would not be a useful metric of the user experience in real use.
 
-In Cluster Web's case, it is reasonably easy to  define and test the entire userbase as it is the Cluster II flight control team which is around 12 people. These will be among the first people to use the new CluWeb.
+In Cluster Web's case, it is reasonably easy to  define and test the entire userbase as it is the Cluster II flight control team which is around 12 people. These will be among the first people to use the new CluWeb. Testing people from outside of the team could be considered as well as it might give more results on learnability.
 
-However, CluWeb has the potential of attaining a larger userbase, as it could be used for visualizing any type of data which fit the descriptions defined in section \ref{vis_types}. 
+CluWeb has the potential of attaining a larger userbase, as it could be used for visualizing any type of data which fit the descriptions defined in section \ref{vis_types}. 
 
 A clear example of another userbase would be other ESA missions which have similar needs as Cluster II for visualizing operations schedules. Apart from space missions, it could also be used by ground station teams.
 
@@ -97,11 +114,11 @@ There's also potential use cases entirely unrelated to space industry which coul
 
 These other use cases are outside of the scope of this evaluation as it would take some time to make tailored solutions for other clients even though CluWeb's modular and configurable design would make it relatively convenient.
 
-Some preliminary information should be collected from each user that is relevant to the evaluation. In Cluster Web's case, the level of expertise could be one metric. This information could be collected by asking for how long the participant has been using Cluster Web, how often they use it and what is their self-reported level of expertise on a Likert scale. \cite{likert1932technique} Also what could be considered is how much they use Cluster Web's different functionalities, as peopel may have different needs depending on their job.
+Some preliminary information should be collected from each user that is relevant to the evaluation. In Cluster Web's case, the level of expertise could be one metric. This information could be collected by asking for how long the participant has been using Cluster Web, how often they use it and what is their self-reported level of expertise on a Likert scale. \cite{likert1932technique} Also what could be considered is how much they use Cluster Web's different functionalities, as people may have different needs depending on their job.
 
 \cite{rubin2008handbook, albert2013measuring}
 
-\subsection{Evaluation methods}
+\subsection{Data collection}
 Now that the different attributes of user experience have been overviewed in section \ref{usability_attributes}, the next step is to determine what kind of metrics should be collected to gain valuable insight about the user experience, and how these metrics should be collected.
 
 Data can be collected concurrently during the test or after it retrospectively. Van den Haak et al. performed a comparative test between concurrent think-aloud (CTA) and retrospective think-aloud (RTA).
@@ -111,24 +128,22 @@ CTA was found to find more task-oriented errors while RTA was good for gaining b
 
 In this evaluation, participants will be encouraged to talk about their observations during the evaluation, but the main focus will be on the retrospective questionnaire which makes it easier to collect more comprehensive and quantitative data.
 
-Selecting the methods depends on what questions need to be answered, how many participants there are and how much resources can be used. As the participant count is rather small, the user evaluations can be performed in-person. To minimize the effect of external factors on the results, the evaluation should be performed with all participants in the same setting with the same equipment.
+As the participant count is rather small, the user evaluations can be performed in-person. To minimize the effect of external factors on the results, the evaluation should be performed with all participants in the same setting with the same equipment.
 
-What needs to be done is to define what questions the evaluation should answer and what data is collected in the evaluation to answer those questions. To help with this, the attributes of user experience overviewed in section \ref{usability_attributes} are used. Out of these, usefulness, efficiency, effectiveness, learnability and satisfaction can be evaluated reasonably well within the scope of this thesis.
+The evaluation should try to answer the questions defined in section \ref{research_questions}. To do this, data needs to be collected on different aspects of usability, which were defined in the section \ref{usability_attributes}.
 
-\section{Evaluation plan}
-To sum up what has been discussed in earlier sections, the evaluation will have the following attributes:
+The dependent variables of the evaluation could be considered to be the following:
 
-\textbf{Setting:} because of the small number of participants, it is possible to do the evaluation in-person. The evaluation should be done in the same setting with the same equipment for all participants to avoid prevent things like computer performance and noisy environment from influencing the results. A meeting room can be reserved for this purpose and participants should be evaluated one-by-one.
+\begin{itemize}
+\item Usefulness of something on a scale 1-10
+\item Time to complete a task in seconds
+\item Effectiveness of completing a task as a success/failure ratio
+\item The amount of effort a task took to complete on a scale 1-10
+\item How satisfying something is on a scale 1-10
+\end{itemize}
 
-\textbf{Participants:} evaluation participants are mainly from the Cluster II flight control team, but in order to evaluate learnability better, some volunteers from outside of the team should be recruited, and the evaluation questions should collect data about the prior experience of the participants.
-
-\subsection{Research questions}
-The following main research question was formulated based on what was discussed in earlier sections:
-
-\textit{"In the field of spacecraft operations, how does re-engineering software using modern web technologies while also introducing novel features affect the usability and user experience?"}
-
-This can be split into sub-questions to be more specific:
 
 \cite{laugwitz2008construction, bevanevaluation, rubin2008handbook, albert2013measuring}
+
 
 \section{Results}
