@@ -1,12 +1,14 @@
 % Evaluation Chapter
 
-This section covers the evaluation done on the old Cluster Web and the new CluWeb. The aim of the evaluation is to gain knowledge about the users'opinions on Cluster Web and CluWeb and how they meet the needs of the users.
+This section covers the evaluation done on the old Cluster Web and the new CluWeb. The aim of the evaluation is to gain knowledge about how usable Cluster Web and CluWeb are compared to each other based on different metrics, how they are used and how the users think and feel about these tools.
+
+The collected data will hopefully shed some light on how much the re-engineered CluWeb improves the user experience and opens up new possibilities with its new features. The results could help with setting goals and priorities for future development. The study is more summative than formative as doing follow-up evaluations is outside of the scope of this thesis. \cite{albert2013measuring}
 
 Something human computer interaction \cite{4839639}
 
 The evaluation was done in two phases: at first, focusing only on how, why and when operations engineers and spacecraft controllers use the old Cluster Web and what are its strengths and shortcomings. The results can then help in understanding what is required from the new CluWeb to fullfill the users' needs and on what areas in particular should be a focus for improving the user experience.
 
-In the second phase of the evaluation, an evaluation of CluWeb was performed to find out how it improved in terms of user experience. CluWeb wasn't functionally yet on par with the old Culster Web at this point of development as it was missing the pass planning functionality entirely, so the evaluation focused on two aspects which could be compared: monitoring and data visualization.
+In the second phase of the evaluation, CluWeb was evaluated to find out how it improved in terms of user experience. CluWeb wasn't functionally yet on par with the old Culster Web at this point of development as it was missing the pass planning functionality entirely, so the evaluation focused on two aspects which could be compared: monitoring and data visualization.
 
 \section{Evaluation or inspection?}
 Software can be evaluated in various different ways. Testing the system with real users in an empirical evaluation is time-consuming but is often the best way to identify usability problems. During the development cycle, using usability inspection methods like heuristic evaluation is sometimes used, which involves an expert going through the interface and comparing it against a set of criteria such as Nielsens ten heuristics \cite{nielsen2005ten, nielsen1995usability}. This is faster and easier than doing full usability evaluation with users, but doesn't identify as many problems.
@@ -109,13 +111,34 @@ CTA was found to find more task-oriented errors while RTA was good for gaining b
 
 In this evaluation, participants will be encouraged to talk about their observations during the evaluation, but the main focus will be on the retrospective questionnaire which makes it easier to collect more comprehensive and quantitative data.
 
+Selecting the methods depends on what questions need to be answered, how many participants there are and how much resources can be used. As the participant count is rather small, the user evaluations can be performed in-person. To minimize the effect of external factors on the results, the evaluation should be performed with all participants in the same setting with the same equipment.
+
+What needs to be done is to define what questions the evaluation should answer and what data is collected in the evaluation to answer those questions. To help with this, the attributes of user experience overviewed in section \ref{usability_attributes} are used. Out of these, usefulness, efficiency, effectiveness, learnability and satisfaction can be evaluated reasonably well within the scope of this thesis. 
+
+Memorability is difficult to evaluate because it would require the participants some time to "forget" how to use the system. Evaluating this would require recruiting many participants from outside of the flight control team and running the same evaluation with them twice with at least some days in between to gain meaningful data. What could be done is to ask experienced users if they feel that they ever forget how some features of Cluster Web are used.
+
+It isn't clear what safety could mean within the context of Cluster Web so it is not a focus of the evaluation, however, experienced users of Cluster Web could be asked with an open question if they think that Cluster Web could possibly have safety problems.
+
+\section{Evaluation plan}
+To sum up what has been discussed in earlier sections, the evaluation will have the following attributes:
+
+\textbf{Setting:} because of the small number of participants, it is possible to do the evaluation in-person. The evaluation should be done in the same setting with the same equipment for all participants to avoid prevent things like computer performance and noisy environment from influencing the results.
+
+\textbf{Participants:} evaluation participants are mainly from the Cluster II flight control team, but in order to evaluate learnability better, volunteers from outside of the team could be recruited, and the evaluation questions should collect data on the prior experience of the participants.
+
+\subsection{Research questions}
+The following research questions were defined based on what was discussed in the earlier sections:
+
+\begin{enumerate}
+\item How useful is Cluster Web?
+\item How useful are the new features of CluWeb?
+\item How useful various different timeline configurations are?
+\item How efficiently can users find information with Cluster Web?
+\item How efficiently can users find information with CluWeb?
+\item How effectively can users find information with Cluster Web?
+\item How effectively can users find information with CluWeb?
+\end{enumerate}
 
 \cite{laugwitz2008construction, bevanevaluation, rubin2008handbook, albert2013measuring}
-
-%laugwitz2008construction
-
-%vaananen2008towards
-
-%\cite{vermeeren2010user}
 
 \section{Results}
