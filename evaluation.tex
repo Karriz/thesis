@@ -1,12 +1,12 @@
 % Evaluation Chapter
 
-This section covers the evaluation done on the old Cluster Web and the new CluWeb. The aim of the evaluation is to gain knowledge about how CluWeb compares to Cluster Web in terms of user experience and usability and to find possible usability problems. Research questions will be defined, methods will be overviewed and the evaluation plan will be constructed in this section.
+This section covers the evaluation done on Cluster Web and CluWeb. The aim of the evaluation is to gain knowledge about how the old and new version compare in terms of user experience and usability and to find possible usability problems. Research questions will be defined, methods will be overviewed and the evaluation plan will be constructed in this section.
 
 Because CluWeb wasn't functionally yet on par with the old Cluster Web at this point of development as it was missing the pass planning functionality entirely, the evaluation focused on the data visualization functionality entirely; how well users can find information using the timeline interface.
 
 There are some differences and new features in CluWeb, and their effect on the user experience should be evaluated. In particular the configurable timelines are a new feature that could have a big effect on how people use Cluster Web, because it allows visualizing data from many different perspectives. This is arguably the largest addition compared to the old Cluster Web. Other features include the mouse-based timeline navigation, Uberlog integration on the timeline, and a moving live mode.
 
-The results will hopefully shed some light on how much the re-engineered CluWeb improves the user experience and opens up new possibilities with its new features. Having information about this could also help with setting goals and priorities for future development, but the study is more summative than formative as doing follow-up evaluations is outside of the scope of this thesis. \cite{albert2013measuring}
+The results will hopefully shed some light on how much CluWeb improves the user experience and opens up new possibilities with its new features. Having information about this could also help with setting goals and priorities for future development, but the study is more summative than formative as doing follow-up evaluations is outside of the scope of this thesis. \cite{albert2013measuring}
 
 \section{Research questions} \label{research_questions}
 The following main research question is the one that this thesis aims to answer in a reasonably comprehensive way:
@@ -168,16 +168,62 @@ Laugwitz et al. suggest some factors consisting of different items which apply p
 
 \textbf{Stimulation:} how engaged users feel when using the system. "Boring - interesting" could be one item.
 
-Perspiquity, dependability and efficiency are task-oriented factors and should show a negative correlation with task completion time and error rate. Novelty and stimulation factors only show a weak correlation according to Laugwitz et al.
-
-\cite{laugwitz2008construction}
-
-As this is a comparative evaluation, some questions will have to deal with that in particular. How likely the participant is to choose either between old and new Cluster Web, or between different timeline configurations? This is something that should be asked once the participant has seen all the options.
-
-\cite{bevanevaluation, rubin2008handbook, albert2013measuring}
+Perspiquity, dependability and efficiency are task-oriented factors and should show a negative correlation with task completion time and error rate. Novelty and stimulation factors only show a weak correlation according to Laugwitz et al. \cite{laugwitz2008construction}
 
 \section{Evaluation plan}
 In this section the finalized evaluation plan will be overviewed, includign the task definitions and the questions which will be asked from the participants.
 
+\subsection{Course of the evaluation}
+The evaluation is done one participant at a time, in a closed space like a meeting room. All participants perform the evaluation on the same computer.
+
+At the beginning of the evaluation, the participant is asked a set of background questions about their prior experience level with Cluster Web and CluWeb. This is defined in section \ref{pre-evaluation}
+
+The evaluation is split into two parts; Cluster Web and CluWeb. The order in which they are evaluated is variated to prevent the order from having an effect on the results. This will also have to be done when evaluation CluWeb's different timeline configurations.
+
+During the evaluation, participants will perform tasks which should mimic actual use scenarios as closely as possible. Because CluWeb only has the ability to visualize data and doesn't allow the user to edit the data at this point of the development, the focus will be on the data visualization aspect. 
+
+For CluWeb, various different timeline configurations are evaluated to find out how they can help users to browse different types of data. The participants are used to the old Cluster Web's schedule display that is divided by spacecraft, but other timeline views could also prove to be useful. The configurations which will be evaluated are detailed in section \ref{configurations_section}. 
+
+The time to complete each task will be noted down from start to finish, and after each task the user will be asked how what kind of experience they had while doing that task. The tasks themselves and the collected metrics will be listed in section \ref{tasks_section}.
+
+After the evaluation, the participants are asked about how their overall experience with the evaluation was. 
+
+\subsection{Configurations} \label{configurations_section}
+
+\textbf{Default:} this configuration is the basic view that will be used for direct comparison between Cluster Web and CluWeb. The schedule is split by spacecraft into four timelines, each of them displaying passes, SSR fill level, science modes, visibilities, bookings and apogees/perigees.
+
+\subsection{Tasks} \label{tasks_section}
+The tasks for the participants will be defined in this section. Firstly, the tasks which will compare the user experience between Cluster Web and CluWeb's default configuration, both of which have the schedule divided by the spacecrafts into four timelines. Some tasks will be focused on just navigating to a specific date on the timeline, while others will require the participants to read information from the visualized data.
+
+Participants will perform the same type of tasks with both Cluster Web and CluWeb to gain comparable data, but the same exact task should not be given to the same participant twice if the task requires the user to find some information from the timeline, because they could remember the answer. Instead there should be different variations of the same type of task.
+
+The Cluster Web - CluWeb comparison tasks are as follows:
+\begin{enumerate}
+\item Navigate the timeline to show 2nd of September 2017.
+\item Navigate the timeline back to today.
+\item How many ground station passes did Cluster 3 have on...
+\begin{enumerate}
+\item 15th of September 2017?
+\item 14th of September 2017?
+\end{enumerate}
+\item How long is the next...
+\begin{enumerate}
+\item Cluster 1 pass?
+\item Cluster 4 pass?
+\end{enumerate}
+\item When does the next...
+\begin{enumerate}
+\item Cluster 2 pass begin?
+\item Cluster 3 pass begin?
+\end{enumerate}
+\end{enumerate}
+
+\subsection{Pre-evaluation questionnaire} \label{pre-evaluation}
+
+\subsection{Post-evaluation questionnaire} \label{post-evaluation}
+
 \section{Results}
 In this section the results of the evaluation will be presented.
+
+
+\cite{bevanevaluation, rubin2008handbook, albert2013measuring}
