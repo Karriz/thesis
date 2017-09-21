@@ -87,10 +87,41 @@ The concept of usability and user experience should be split into different subc
 
 \textbf{Safety} covers the aspects of the system protecting the user from dangerous situations and undesirable conditions. It's not clear if this applies to Cluster Web, as even though it is used extensively, it doesn't play a critical part in spacecraft operations and doesn't interface with any physical actuators. Information security could perhaps be considered a part of safety, but that is outside of the scope of this thesis.
 
-\cite{bevanevaluation, rubin2008handbook, albert2013measuring, laugwitz2008construction}
+\cite{bevanevaluation, rubin2008handbook, albert2013measuring, laugwitz2008construction, hornbaek2006current}
 
 \section{Formulating an evaluation plan}
 In this section the available methods of evaluation will be overviewed to get a better understanding on what data should be collected and how, and what are particularly important things to take into account to ensure the validity of the data.
+
+\subsection{Evaluation methods}
+According to Rubin and Chisnell, an usability evaluation has the following basic elements:
+\begin{itemize}
+\item Develop research questions
+\item Use a representative sample of end users
+\item Represent the actual work environment
+\item Observe the end users using the product
+\item Interview the participants
+\item Collect quantitative and qualitative performance and preference measures
+\item Recommend improvements to design
+\end{itemize}
+
+\cite{rubin2008handbook}
+
+The evaluation done on Cluster Web and CluWeb follows this basic structure. While using real users in an empirical evaluation is time-consuming, is often the best way to identify usability problems. During the development cycle, using usability inspection methods like heuristic evaluation is sometimes used, which involves an expert going through the interface and comparing it against a set of criteria such as Nielsens ten heuristics \cite{Solr-oula.410573, nielsen1995usability}. This is faster and easier than doing full usability evaluation with users, but doesn't identify as many problems.
+
+Hollingsed and Novick note that using both empirical evaluation and usability inspection would be the most effective solution that is often overlooked. \cite{hollingsed2007usability}
+
+During the development of CluWeb, formal usability inspections were not done. It was up to the developers to identify potential usability problems. It is helpful that some members of the development team are future users of the software themselves. An usability inspection such as heuristic evaluation could be performed by doing a walkthrough of the system from a developer's perspective, but the main focus of this thesis is on empirical user evaluation which should produce more useful and interesting results.
+
+User evaluations can be done by collecting data during day-to-day usage, for example by showing a survey to the user at random times, or by inspecting from logs how the users interact with the system. \cite{bevanevaluation} In this evaluation though, this won't be done as it would require additional development, which could be difficult especially in old Cluster Web's case.
+
+Data can be collected concurrently during the test or after it retrospectively. Van den Haak et al. performed a comparative test between concurrent think-aloud (CTA) and retrospective think-aloud (RTA).
+
+CTA was found to find more task-oriented errors while RTA was good for gaining broader user reactions. There is some debate on whether or not CTA has a negative effect on task performance because talking aloud would distract the user, but some have found it to have a positive effect. When performing a complex task the user may verbalize less. RTA is less susceptible this problem. Task complexity for evaluation should be designed so that the users are required to think, but aren't over-burdened so much that they cannot make verbal observations.
+\cite{van2003retrospective}
+
+In this evaluation, participants will be encouraged think aloud about their observations during the evaluation, and those observations will be noted down, and afterwards there will be a retrospective questionnaire.
+
+As the participant count is rather small, the user evaluations can be performed in-person. To minimize the effect of external factors on the results, the evaluation should be performed with all participants in the same setting with the same equipment.
 
 \subsection{Participant selection}
 Selecting the right participants for the study is a very important aspect of user experience evaluation. The participants should be a representative sample of the target userbase of the system. If the test users are selected incorrectly the test results would not be a useful metric of the user experience in real use.
@@ -107,24 +138,6 @@ These other use cases are outside of the scope of this evaluation as it would ta
 
 \cite{rubin2008handbook, albert2013measuring}
 
-\subsection{Evaluation methods}
-Software can be evaluated in various different ways. Testing the system with real users in an empirical evaluation is time-consuming but is often the best way to identify usability problems. During the development cycle, using usability inspection methods like heuristic evaluation is sometimes used, which involves an expert going through the interface and comparing it against a set of criteria such as Nielsens ten heuristics \cite{nielsen2005ten, nielsen1995usability}. This is faster and easier than doing full usability evaluation with users, but doesn't identify as many problems.
-
-Hollingsed and Novick note that using both empirical evaluation and usability inspection would be the most effective solution that is often overlooked. \cite{hollingsed2007usability}
-
-During the development of CluWeb, formal usability inspections were not done. It was up to the developers to identify potential usability problems. It is helpful that some members of the development team are future users of the software themselves. An usability inspection such as heuristic evaluation could be performed, but the main focus of this thesis is on empirical user evaluation which should produce more useful and interesting results.
-
-User evaluations can be done by collecting data during day-to-day usage, for example by showing a survey to the user at random times, or by inspecting from logs how the users interact with the system. \cite{bevanevaluation} In this evaluation though, this won't be done as it would require additional development, which could be difficult especially in old Cluster Web's case.
-
-Data can be collected concurrently during the test or after it retrospectively. Van den Haak et al. performed a comparative test between concurrent think-aloud (CTA) and retrospective think-aloud (RTA).
-
-CTA was found to find more task-oriented errors while RTA was good for gaining broader user reactions. There is some debate on whether or not CTA has a negative effect on task performance because talking aloud would distract the user, but some have found it to have a positive effect. When performing a complex task the user may verbalize less. RTA is less susceptible this problem. Task complexity for evaluation should be designed so that the users are required to think, but aren't over-burdened so much that they cannot make verbal observations.
-\cite{van2003retrospective}
-
-In this evaluation, participants will be encouraged think aloud about their observations during the evaluation, and those observations will be noted down, and afterwards there will be a retrospective questionnaire.
-
-As the participant count is rather small, the user evaluations can be performed in-person. To minimize the effect of external factors on the results, the evaluation should be performed with all participants in the same setting with the same equipment.
-
 \subsection{Tasks}
 The users will perform different tasks during the evaluation. These tasks should represent some real use case of the system that is intended to be evaluated. In this evaluation, the tasks are going to focus on navigating the timeline and finding information by using the timeline data visualization, because these are linked to the research questions defined in section \ref{research_questions}.
 
@@ -138,40 +151,78 @@ One thing that is worth noticing is that when users perform tasks, they graduall
 \subsection{Metrics}
 The evaluation should try to answer the questions defined in section \ref{research_questions}. To do this, data metrics needs to be collected on different aspects of usability, which were defined in the section \ref{usability_attributes}.
 
-Some preliminary information should be collected from each user that is relevant to the evaluation. In Cluster Web's case, the level of expertise could be one metric. This information could be collected by asking for how long the participant has been using Cluster Web, how often they use it and what is their self-reported level of expertise on a Likert scale. \cite{likert1932technique} Also what could be considered is how much they use Cluster Web's different functionalities, as people may have different needs depending on their job.
+For measuring pragmatic usability, as mentioned in section \ref{usability_attributes}, common measures are task completion time and error rate. Sometimes a task may require multiple steps during which the user can make multiple errors. 
 
-Independent variables of the evaluation will be the version of Cluster Web (old/new), different timeline configurations and the participants' self-reported level of experience. The dependent variables of the evaluation could be considered to be something like this:
+It is also possible to measure the input rate e.g. the amount of mouse clicks the user makes while performing a task.
 
-\begin{itemize}
-\item Usefulness of something on a scale 1-10
-\item Time to complete a task in seconds
-\item Effectiveness of completing a task as a success/failure ratio
-\item The amount of effort a task took to complete on a scale 1-10
-\item How satisfying something is on a scale 1-10
-\end{itemize}
+Users may do things in different ways if the system gives them a choice. In this case what can also be measured is the frequency in which different functionalities are used. 
 
-Asking the participant's spontaneous and immediate reactions at the end of the evaluation is important on gaining understanding of the user experience. The participants shouldn't be forced to analyze small details which they may not properly remember anymore at the end of the evaluation. 
+Some tasks can have a pre-defined optimal solution that is as efficient as possible; users may not take this optimal path, so the amount of extra steps taken can be measured. \cite{hornbaek2006current}
 
-The evaluation "item pool" will be formed from opposite adjectives that describe something about the user's experience with the system. These should be symmetrically ranges of numbers from which the participants can choose from. Likert scale is a simple choice for this. \cite{laugwitz2008construction} \cite{likert1932technique}
+Measuring hedonic user experience is commonly done by asking the participant a set of questions about their experience. Getting spontaneous and immediate reactions from the user at the end of the evaluation is an important part of gaining understanding about the user experience. The participants shouldn't be forced to analyze small details which they may not properly remember anymore at the end of the evaluation. \cite{laugwitz2008construction}
 
-The questions should always ask just about one thing; there shouldn't be a question that for example asks "How useful and easy to use you found the system?" as these are two separate concepts.
+Hornbaek notes that there are many already validated questionnaires for measuring usability and user experience, but despite this, studies often create their own questionnaires in ad hoc basis. \cite{hornbaek2006current} Some common examples of questionnaires are Attrakdiff \cite{hassenzahl2003attrakdiff}, Questionnaire for User Interaction Satisfaction (QUIS) \cite{chin1988questionnaire}, System Usability Scale (SUS) \cite{brooke1996sus} and User Experience Questionnaire (UEQ) \cite{laugwitz2008construction}.
 
-Laugwitz et al. suggest some factors consisting of different items which apply particularly for user experience. These are following:
+In a study by Tullis et al. that compares SUS, QUIS and a few other questionnaires, SUS was found to be the simplest and often most reliable one. UEQ was not in this comparison. \cite{tullis2004comparison}
 
-\textbf{Perspiquity:} how easy to understand and clear the participants find the system to use, for example on a range "difficult to understand - easy to understand". This overlaps with learnability that was covered in section \ref{usability_attributes}
+The questions in SUS are as follows, all of them rated on a five-choice scale from strongly disagree to strongly agree:
 
-\textbf{Dependability:} how well the user can trust the system and predict what it does. For example on a scale "unpredictable - predictable". This is linked to how effectively the users can use the system.
+\begin{enumerate}
+\item I think that I would like to use this system frequently
+\item I found the system unnecessarily complex
+\item I thought the system was easy to use                      
+\item I think that I would need the support of a technical person to be able to use this system
+\item I found the various functions in this system were well integrated
+\item I thought there was too much inconsistency in this system
+\item I would imagine that most people would learn to use this system very quickly
+\item I found the system very cumbersome to use
+\item I felt very confident using the system
+\item I needed to learn a lot of things before I could get going with this system 
+\end{enumerate}
 
-\textbf{Efficiency:} this is the perceived efficiency of the system. Also considers how organized the interface is. Scale "inefficient - efficient" is one item of this.
+\cite{brooke1996sus}
 
-\textbf{Novelty:} the novelty factor of the system has an effect on how eager people are to use it, and how much they will explore different options. This includes items like "uninnovative - innovative" and "uncreative - creative".
+UEQ is split five different scales altogether containing 26 items which apply particularly for hedonic user experience. The items are mainly opposite adjectives on a scale from 1 to 7. The scales are as follows:
 
-\textbf{Stimulation:} how engaged users feel when using the system. "Boring - interesting" could be one item.
+\textbf{Perspiquity:} how easy to understand and clear the participants find the system to use, for example on a range "not understandable - understandable". This overlaps with learnability that was covered in section \ref{usability_attributes}
+
+\textbf{Dependability:} how well the user can trust the system and predict what it does, for example on a scale "unpredictable - predictable". This is linked to how effectively the users can use the system.
+
+\textbf{Efficiency:} this is the perceived efficiency of the system. Also considers how organized the interface is. Scale "impractical - practical" is one item of this.
+
+\textbf{Novelty:} the novelty factor of the system has an effect on how eager people are to use it, and how much they will explore different options. This includes items like "creative - dull" and "conservative - innovative".
+
+\textbf{Stimulation:} how engaged users feel when using the system. "Boring - exciting" is an example of this, as well as "motivating - demotivating".
 
 Perspiquity, dependability and efficiency are task-oriented factors and should show a negative correlation with task completion time and error rate. Novelty and stimulation factors only show a weak correlation according to Laugwitz et al. \cite{laugwitz2008construction}
 
+UEQ is particularly meant for measuring user experience, not only usability. It has been found to be fast and efficient to implement, the drawback being that the information is rather high level and doesn't go into specific details. However, by combining the questionnaire with a concrete usability evaluation it is possible to get more comprehensive results. \cite{schrepp2014applying, rauschenberger2013efficient}
+
+UEQ's item pool overlaps a lot with what is covered in SUS, while presenting the questions in a simpler format, and also going into more detail than SUS. For these reasons, UEQ will be used in this evaluation. It will be filled by each participant twice; after using Cluster Web, and after using CluWeb.
+
+Some preliminary information should be collected from each user that is relevant to the evaluation. In Cluster Web's case, the level of expertise could be one metric. This information could be collected by asking for how long the participant has been using Cluster Web, how often they use it and what is their self-reported level of expertise. Also what could be considered is how much they use Cluster Web's different functionalities, as people may have different needs depending on their job.
+
+Independent variables of the evaluation will be the version of Cluster Web (old/new), different timeline configurations and the participants' self-reported level of prior experience. The dependent variables of the evaluation could be considered to be as follows, gathered from what was discussed earlier in this section:
+
+\begin{itemize}
+\item Objective measures:
+\begin{itemize}
+\item Time to complete a task in seconds
+\item Binary success/failure of task completion
+\item Amount of clicks a task took to complete
+\item Distance of mouse movements a task took to complete
+\end{itemize}
+\item Subjective measures:
+\begin{itemize}
+\item Perspiquity
+\item Efficiency
+\item Novelty
+\item Stimulation
+\end{itemize}
+\end{itemize}
+
 \section{Evaluation plan}
-In this section the finalized evaluation plan will be overviewed, includign the task definitions and the questions which will be asked from the participants.
+In this section the finalized evaluation plan will be overviewed, including the task definitions and the questions which will be asked from the participants.
 
 \subsection{Course of the evaluation}
 The evaluation is done one participant at a time, in a closed space like a meeting room. All participants perform the evaluation on the same computer.
@@ -184,7 +235,7 @@ During the evaluation, participants will perform tasks which should mimic actual
 
 For CluWeb, various different timeline configurations are evaluated to find out how they can help users to browse different types of data. The participants are used to the old Cluster Web's schedule display that is divided by spacecraft, but other timeline views could also prove to be useful. The configurations which will be evaluated are detailed in section \ref{configurations_section}. 
 
-The time to complete each task will be noted down from start to finish, and after each task the user will be asked how what kind of experience they had while doing that task. The tasks themselves and the collected metrics will be listed in section \ref{tasks_section}.
+The time to complete each task will be noted down from start to finish, a software will be used to calculate the amount of mouse clicks and mouse movement distance. The tasks themselves and the collected metrics will be listed in section \ref{tasks_section}.
 
 After the evaluation, the participants are asked about how their overall experience with the evaluation was. 
 
@@ -192,12 +243,16 @@ After the evaluation, the participants are asked about how their overall experie
 
 \textbf{Default:} this configuration is the basic view that will be used for direct comparison between Cluster Web and CluWeb. The schedule is split by spacecraft into four timelines, each of them displaying passes, SSR fill level, science modes, visibilities, bookings and apogees/perigees.
 
+\textbf{Estrack:} this configuration turns around the concept of Cluster Web by showing separate timelines for different ground stations instead of spacecrafts. Cluster passes, visibilities and the bookings of other missions can be displayed for each ground station. This allows looking at the data from a different perspective and could be used for example by ground station staff.
+
+\textbf{Uberlog entries by author:} In this configuration, each author's Uberlog entries are displayed on separate timelines. This could for example quickly provide information on who has been at shift at a given time.
+
 \subsection{Tasks} \label{tasks_section}
 The tasks for the participants will be defined in this section. Firstly, the tasks which will compare the user experience between Cluster Web and CluWeb's default configuration, both of which have the schedule divided by the spacecrafts into four timelines. Some tasks will be focused on just navigating to a specific date on the timeline, while others will require the participants to read information from the visualized data.
 
 Participants will perform the same type of tasks with both Cluster Web and CluWeb to gain comparable data, but the same exact task should not be given to the same participant twice if the task requires the user to find some information from the timeline, because they could remember the answer. Instead there should be different variations of the same type of task.
 
-The Cluster Web - CluWeb comparison tasks are as follows:
+The Cluster Web - CluWeb comparison tasks:
 \begin{enumerate}
 \item Navigate the timeline to show 2nd of September 2017.
 \item Navigate the timeline back to today.
@@ -216,9 +271,42 @@ The Cluster Web - CluWeb comparison tasks are as follows:
 \item Cluster 2 pass begin?
 \item Cluster 3 pass begin?
 \end{enumerate}
+\item On 23rd of February 2017, when does the...
+\begin{enumerate}
+\item Cluster 2 eclipse end?
+\item Cluster 4 eclipse end?
+\end{enumerate}
+\item On 1st of September 2017, when does the...
+\begin{enumerate}
+\item first pass begin?
+\item last pass end?
+\end{enumerate}
+\item On 1st of September 2017, when does the...
+\begin{enumerate}
+\item first pass begin?
+\item last pass end?
+\end{enumerate}
+\end{enumerate}
+
+CluWeb new features tasks:
+\begin{enumerate}
+\item ...
+\end{enumerate}
+
+CluWeb configurations tasks:
+\begin{enumerate}
+\item ...
 \end{enumerate}
 
 \subsection{Pre-evaluation questionnaire} \label{pre-evaluation}
+Participants will answer these questions on a paper form.
+\begin{enumerate}
+\item How long have you been working with Cluster?
+\item How experienced you are with Cluster Web? (Very inexperienced - very experienced)
+\item How often do you use Cluster Web? (Very seldom - very often)
+\item Do you think Cluster Web makes your job easier? (Strongly disagree - strongly agree)
+\item How satisfied are you with Cluster Web? (Very dissatisfied - very satisfied)
+\end{enumerate}
 
 \subsection{Post-evaluation questionnaire} \label{post-evaluation}
 
