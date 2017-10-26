@@ -1,6 +1,6 @@
 % Re-engineered ClusterWeb Chapter
 
-The re-engineering project of Cluster Web has the aim to make the tool more user-friendly and also expandable to other purposes than Cluster II monitoring and pass scheduling. In this section the user requirements, development process and the technological architecture of the new Cluster Web (named "CluWeb") is overviewed.
+The re-engineering project of Cluster Web has the aim to make the tool more user-friendly and also expandable to other purposes than Cluster II monitoring and pass scheduling. In this section the user requirements, development process, new features and the technological architecture of the new Cluster Web (named "CluWeb") is overviewed.
 
 %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
 \begin{figure}[ht]
@@ -13,8 +13,6 @@ The re-engineering project of Cluster Web has the aim to make the tool more user
 
 \section{Requirements}
     The main requirements for the re-engineered Cluster Web are related about making it easier and faster to use and also more configurable. There is also interest from other missions such as ExoMars and Swarm to use a similar tool for planning and overviewing operations. This means that the technical implementation has to be made modular so that it can be expanded with different kinds of visualizations and functionality in the future.
-
-One of the problems with the old Cluster Web is the slowness of navigating the timeline. It can only be moved and zoomed in steps by clicking the buttons in the navigation bar or by selecting a date in the calendar. Each time the timeline moves it is re-drawn and that can take a few seconds. It also takes too many clicks to create passes.
 
 Because the aim is to create a modular and generic tool, it also makes sense to involve people outside the Cluster II flight control team in the development, and to eventually open-source the tool once the core functionality has been implemented on top of which new features can be built. Initially this could happen within ESA but there is also potential for applications outside the field of spacecraft operations for this type of timeline-based data visualization.
 

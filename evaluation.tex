@@ -11,9 +11,9 @@ The results will hopefully shed some light on how much CluWeb improves the user 
 \section{Research questions} \label{research_questions}
 The following main research question is the one that this evaluation aims to answer:
 
-\textbf{"How usable is a modern and configurable timeline visualization of spacecraft operations schedule compared to its predecessor?"}
+\textit{"How does the usability and user experience change between Cluster Web and CluWeb?"}
 
-This research question aims to cover all aspects of the evaluation, however there are a few more specific questions which can be made:
+This research question aims to cover all aspects of the evaluation, however there are a some more specific questions which can be made:
 
 The configurability aspect of CluWeb is an important part of the evaluation. In particular what could be interesting is how quickly people find data using different arrangements of timelines. This leads to the research question:
 
@@ -22,10 +22,6 @@ The configurability aspect of CluWeb is an important part of the evaluation. In 
 Another aspect that can reasonably be expected to have a noticeable effect on usability is the ability to pan and zoom the timeline using the mouse. It should make user interaction more direct than clicking on buttons and waiting for the system to respond. This can be formulated into the following research question:
 
 \textit{"How does direct mouse navigation affect the usability of a timeline interface compared to UI button-based navigation?"}
-
-Displaying the Uberlog entries on the timeline could have a positive effect on usability, as there is a visual link between the log entries and time. A research question about this could therefore be formulated as follows:
-
-\textit{"What kind of an effect does the visualization of log entries on a timeline have on usability as opposed to a more traditional list interface?"}
 
 \section{Definitions}
 There are different interpretations on what usability and user experience mean. It is important to understand these words so that a clearer idea can be formed on what needs to be evaluated. In this section, an overview is done on what these terms generally refer to.
@@ -121,12 +117,12 @@ CTA was found to find more task-oriented errors while RTA was good for gaining b
 
 In this evaluation, participants will be encouraged think aloud about their observations during the evaluation, and those observations will be noted down, and afterwards there will be a retrospective questionnaire.
 
-As the participant count is rather small, the user evaluations can be performed in-person. To minimize the effect of external factors on the results, the evaluation should be performed with all participants in the same setting with the same equipment.
+As the participant count is rather small, the user evaluations can be performed in-person. To minimize the effect of external factors on the results, the evaluation should be performed with all participants in similar setting with the same equipment.
 
 \subsection{Participant selection}
 Selecting the right participants for the study is a very important aspect of user experience evaluation. The participants should be a representative sample of the target userbase of the system. If the test users are selected incorrectly the test results would not be a useful metric of the user experience in real use.
 
-In Cluster Web's case, it is reasonably easy to  define and test the entire userbase as it is the Cluster II flight control team which is around 10 people. These will likely be the  first people to use the new CluWeb. Testing people from outside of the team could be considered as well as it might give more results on learnability.
+In Cluster Web's case, it is reasonably easy to  define and test the entire userbase as it is the Cluster II flight control team which is around 10 people. These will be the  first people to use the new CluWeb. Testing people from outside of the team could be considered as well as it might give more results on learnability.
 
 CluWeb has the potential of attaining a larger userbase, as it could be used for visualizing any type of data which fit the descriptions defined in section \ref{vis_types}. 
 
@@ -145,7 +141,7 @@ Possible timeline configurations in the new Cluster Web should be compared as we
 
 The amount of participants is rather small so every user will perform the same set of tasks, as it is not viable to have a different set of users for each task, and the tasks aren't going to be rather quick to complete anyways. This means that the evaluation will use a within-subjects design rather than a between-subjects design. 
 
-One thing that is worth noticing is that when users perform tasks, they gradually learn to use the system. This is why users should perform these tasks in different orders to mitigate the learning effect. This distribution of task order is called counter-balancing. The order in which the new and old Cluster Web are evaluated can also have a biasing effect on the results, this is why their order will also be distributed equally. Same applies to the order the participants are shown different data visualization configurations in the new Cluster Web.
+One thing that is worth noticing is that when users perform tasks, they gradually learn to use the system. This is why users should perform these tasks in different orders to mitigate the learning effect. This distribution of task order is called counter-balancing. The order in which different systems are shown to the participant can also be alternated.
 \cite{rubin2008handbook}
 
 \subsection{Metrics}
@@ -155,9 +151,7 @@ For measuring pragmatic usability, as mentioned in section \ref{usability_attrib
 
 It is also possible to measure the input rate e.g. the amount of mouse clicks the user makes while performing a task.
 
-Users may do things in different ways if the system gives them a choice. In this case what can also be measured is the frequency in which different functionalities are used. 
-
-Some tasks can have a pre-defined optimal solution that is as efficient as possible; users may not take this optimal path, so the amount of extra steps taken can be measured. \cite{hornbaek2006current}
+Some tasks can have a pre-defined optimal solution that is as efficient as possible; users may not take this optimal path, so the possible extra steps and mistakes can be observed. \cite{hornbaek2006current}
 
 Measuring hedonic user experience is commonly done by asking the participant a set of questions about their experience. Getting spontaneous and immediate reactions from the user at the end of the evaluation is an important part of gaining understanding about the user experience. The participants shouldn't be forced to analyze small details which they may not properly remember anymore at the end of the evaluation. \cite{laugwitz2008construction}
 
@@ -206,9 +200,9 @@ AttrakDiff is older than UEQ, and also meant for measuring perceived user experi
 
 UEQ's item pool seemingly overlaps a lot with what is covered in SUS (complexity, consistency, confidence...), while presenting the questions in a simpler format, and also going into more detail than SUS. UEQ is easily available offline and has a convenient benchmark for analyzing the data. For these reasons, UEQ will be used in this evaluation. It will be filled by each participant twice; after using Cluster Web, and after using CluWeb.
 
-Some preliminary information should be collected from each user that is relevant to the evaluation. In Cluster Web's case, the level of expertise could be one metric. This information could be collected by asking for how long the participant has been using Cluster Web, how often they use it and what is their self-reported level of expertise. Also what could be considered is how much they use Cluster Web's different functionalities, as people may have different needs depending on their job.
+Some preliminary information should be collected from each user that is relevant to the evaluation. In Cluster Web's case, the level of expertise could be one metric. This information could be collected by asking the participants their self-reported level of expertise.
 
-Independent variables of the evaluation will be the version of Cluster Web (old/new), different timeline configurations and the participants' self-reported level of prior experience. The dependent variables of the evaluation could be considered to be as follows, gathered from what was discussed earlier in this section:
+Independent variables of the evaluation will be the version of Cluster Web (old/new), different timeline configurations and the participants' self-reported level of prior experience. The dependent variables of the evaluation could be as follows, gathered from what was discussed earlier in this section:
 
 \begin{itemize}
 \item Objective measures:
@@ -220,6 +214,7 @@ Independent variables of the evaluation will be the version of Cluster Web (old/
 \end{itemize}
 \item Subjective measures:
 \begin{itemize}
+\item Attractiveness
 \item Perspiquity
 \item Efficiency
 \item Novelty
@@ -231,42 +226,19 @@ Independent variables of the evaluation will be the version of Cluster Web (old/
 In this section the finalized evaluation plan will be overviewed, including the task definitions and the questions which will be asked from the participants.
 
 \subsection{Course of the evaluation}
-The evaluation is done one participant at a time, in a closed space like a meeting room. All participants perform the evaluation on the same computer.
+The evaluation is done one participant at a time in person, in their offices. All participants perform the evaluation on the same computer.
 
 At the beginning of the evaluation, the participant is asked a set of background questions about their prior experience level with Cluster Web and CluWeb. This is defined in section \ref{pre-evaluation}
 
-The evaluation is split into two parts; Cluster Web and CluWeb. The order in which they are evaluated is variated to prevent the order from having an effect on the results. This will also have to be done when evaluation CluWeb's different timeline configurations. After evaluating a system the participants will fill out the UEQ based on their impressions of that system. \cite{laugwitz2008construction}
+The evaluation is split into two parts; Cluster Web and CluWeb. The order in which these two systems are evaluated is alternated between participants to prevent the order from having an effect on the results. This will also have to be done when evaluation CluWeb's different timeline configurations.
 
-During the evaluation, participants will perform tasks which should mimic actual use scenarios as closely as possible. Because CluWeb only has the ability to visualize data and doesn't allow the user to edit the data at this point of the development, the focus will be on the data visualization aspect. 
+During the evaluation, participants will perform tasks which will require them to navigate the timeline and read information that is displayed on it. The tasks are defined in the section \ref{tasks_section}. The first task will be done with the first system and the other with the second system. The correct answers to the tasks were checked multiple times to ensure that the data had not changed.
 
-For CluWeb, two different timeline configurations are compared to find out how they can help users to browse different types of data. The participants are used to the old Cluster Web's schedule display that is divided by spacecraft, but other timeline views could also prove to be useful. The configurations which will be evaluated are detailed in section \ref{configurations_section}. In addition, a few other configurations will be shown and feedback will be gathered on them.
+The time to complete each task will be noted down from start to finish, and an application (Mousotron) \cite{mousotron} will be used to calculate the amount of mouse clicks and mouse movement distance. The given answer to the task will be noted down.
 
-The time to complete each task will be noted down from start to finish, and an application (Mousotron) \cite{mousotron} will be used to calculate the amount of mouse clicks and mouse movement distance. Whether or not the task was successfully completed will be noted down. The tasks themselves will be listed in section \ref{tasks_section}.
+Default and Estrack configurations of CluWeb will be comparatively evaluated to see how they affect the speed of finding information. The comparison tasks defined in the section \ref{tasks_section} will be done once the participants have seen all of the configurations. In addition, some configurations will not be comparatively evaluated, but they will be shown to the participant and explained, and after seeing all of the configurations the participants will rate their initial impression of each configurations' usefulness. The configurations are defined in the section \ref{configurations_section}.
 
-After the evaluation, the participants are asked for further feedback with the questionnaire defined in section \ref{post-evaluation}.
-
-\subsection{Configurations} \label{configurations_section}
-Default and Estrack configurations will be comparatively evaluated to see how they affect the speed of finding information. In addition, some configurations will not be comparatively evaluated, but they will be shown to the participant and explained, and the participants will rate their initial impression of each configurations' usefulness. Configurations will be shown in a random order. The comparison task of Default and Estrack configurations will be done once the participants have seen all of the configurations.
-
-\textbf{Default:} this is the basic view that will be used for direct comparison between Cluster Web and CluWeb. The schedule is split by spacecraft into four timelines, each of them displaying passes, SSR fill level, science modes, visibilities, bookings, eclipses and apogees/perigees. In CluWeb, Uberlog entries are also displayed on the timeline.
-
-\textbf{Estrack:} shows separate timelines for different ground stations instead of spacecrafts. Cluster passes, visibilities and the bookings of other missions can be displayed for each ground station. This allows looking at the data from a different perspective.
-
-\textbf{Uberlog entries by spacecraft and severity level:} each spacecraft has its own timeline on which Uberlog entries are displayed. In addition, the spacecraft timelines are split into subtimelines by the Uberlog entries' severity level (confirmation - fatal) so that it can be seen quickly how many entries there are for each severity level. Passes can be displayed under the Uberlog entries to give them context.
-
-\textbf{Uberlog entries by author:} each author of Uberlog entries is displayed on their own timelines, for example which spacecraft controller has been on shift can be seen in this configuration.
-
-\textbf{LEOP:} In this "launch and early orbit phase" configuration, only information about a single spacecraft is displayed. Different types of data can have their own, dedicated timelines, such as scheduled passes, visibilities, SSR fill level, bookings by other missions.
-
-The question asked regarding each configuration will be as follows:
-\begin{enumerate}
-\item How useful you find this configuration for Cluster mission? not useful - very useful (1-7)
-\end{enumerate}
-
-\subsection{Tasks} \label{tasks_section}
-The tasks for the participants will be defined in this section. Firstly, the tasks which will compare the user experience between Cluster Web and CluWeb's default configuration, both of which have the schedule divided by the spacecrafts into four timelines. Some tasks will be focused on just navigating to a specific date on the timeline, while others will require the participants to read information from the visualized data.
-
-Participants will perform the same type of tasks with both Cluster Web and CluWeb to gain comparable data, but the same exact task should not be given to the same participant twice if the task requires the user to find some information from the timeline, because they could remember the answer. Instead there should be different variations of the same type of task.
+ After evaluating a system the participants will fill out the UEQ based on their impressions of that system, and in the end of the evaluation they are asked for further feedback with the questionnaire defined in section \ref{post-evaluation}.
 
 \subsection{Pre-evaluation questionnaire} \label{pre-evaluation}
 Participants will answer these questions on a paper form before doing any of the tasks.
@@ -274,71 +246,73 @@ Participants will answer these questions on a paper form before doing any of the
 \item How experienced you are with the old Cluster Web? very inexperienced - very experienced (1-7)
 \item How experienced you are with the new Cluster Web? very inexperienced - very experienced (1-7)
 \item Do you agree with the following statement: "Cluster Web makes my job easier"? strongly disagree - strongly agree (1-7)
-\item Place the following features of Cluster Web in order by how essential they are to your work (1 being most important):
-\begin{enumerate}
-\item View visibilities
-\item View eclipses
-\item Edit passes
-\item View apogees/perigees
-\item View Uberlog entries
-\item View passes
-\item Bitrate forecast
-\item View science payload status
-\item View bookings
-\item View TDA modes
-\item View SSR fill level
-\item Write other options here if something is missing:
-\end{enumerate}
 \item What are the main problems do you think the old Cluster Web has which could be improved with the new version?
 \end{enumerate}
 
-\textbf{CluWeb introduction tasks.} If the participant hasn't used the new Cluster Web before, they should be introduced to the new features. Metrics won't be collected during this phase. The participants should be familiarized with the following features:
+\subsection{Tasks} \label{tasks_section}
+The tasks for the participants will be defined in this section.
+
+\textbf{CluWeb introduction}
+
+If the participant hasn't used CluWeb before, they should be introduced to the new features. Metrics won't be collected during this phase. The participants should be familiarized with the following features:
 \begin{enumerate}
 \item Timeline controls (pan, zoom, now button, calendar)
 \item Live mode
 \item Uberlog entries (meaning of icons, tooltips)
+\item Countdown visualization on the timeline
 \item Applying different configurations
+\item Applying different style configurations (dark theme)
+\item Sharing of the schedule timeframe with URL
 \end{enumerate}
 
-\textbf{The Cluster Web - CluWeb comparison tasks.} There are two variations of each task, one will be done with Cluster Web and one with CluWeb in a varying order.
+\textbf{Cluster Web - CluWeb comparison tasks}
+
+In the last 7 days of September this year, how many Maspalomas passes did...
 \begin{enumerate}
-\item In the last 7 days of September this year, how many Maspalomas passes did...
-\begin{enumerate}
-\item Cluster 1 have?
-\item Cluster 2 have?
-\end{enumerate}
-\item In February 2017, at what time did the...
-\begin{enumerate}
-\item first Cluster 2 eclipse start?
-\item last Cluster 4 eclipse end?
-\end{enumerate}
-\item When was the latest Uberlog entry on...
-\begin{enumerate}
-\item Cluster 2?
-\item Cluster 3?
-\end{enumerate}
+\item Cluster 1 have? (Correct: 4)
+\item Cluster 2 have? (Correct: 3)
 \end{enumerate}
 
-CluWeb configurations tasks:
+\textbf{CluWeb configurations tasks}
+
+
+In the last 7 days of September this year...
 \begin{enumerate}
-\item Comparing Default configuration and Estrack configuration:
-\begin{enumerate}
-\item In the last 7 days of September this year, how many Yatharagga passes there were?
-\item In the last 7 days of September this year, how many New Norcia passes there were?
+\item how many Yatharagga passes there were? (Correct: 3)
+\item how many New Norcia passes there were? (Correct: 2)
 \end{enumerate}
+
+\subsection{Configurations} \label{configurations_section}
+These configurations will be shown to the participants:
+
+\textbf{Default:} this is the basic view that will be used for direct comparison between Cluster Web and CluWeb. The schedule is split by spacecraft into four timelines, each of them displaying passes, SSR fill level, science modes, eclipses and apogees/perigees. In CluWeb, Uberlog entries are also displayed on the timeline.
+
+\textbf{Default, dark theme:} same as default configuration but in a dark color scheme.
+
+\textbf{Estrack:} shows separate timelines for different ground stations instead of spacecrafts. Cluster passes can be displayed for each ground station. This allows looking at the data from a different perspective.
+
+\textbf{Uberlog entries by severity level:} each spacecraft has its own timeline on which Uberlog entries are displayed. In addition, the spacecraft timelines are split into subtimelines by the Uberlog entries' severity level (confirmation - fatal) so that it can be seen quickly how many entries there are for each severity level. Passes can be displayed under the Uberlog entries to give them context.
+
+\textbf{Uberlog entries by author:} each author of Uberlog entries is displayed on their own timelines, for example which spacecraft controller has been on shift can be seen in this configuration.
+
+\textbf{LEOP:} In this "launch and early orbit phase" configuration, only information about a single spacecraft is displayed. Different types of data can have their own, dedicated timelines, such as scheduled passes, visibilities, SSR fill level, bookings by other missions. A countdown to the next pass can be displayed.
+
+The question asked regarding each configuration will be as follows:
+\begin{enumerate}
+\item How useful do you find this configuration? not useful at all - very useful (1-7)
 \end{enumerate}
 
 \subsection{Post-evaluation questionnaire} \label{post-evaluation}
-The full UEQ questionnaire with 26 items \cite{laugwitz2008construction} will be asked both at the end of Cluster Web's evaluation and CluWeb's evaluation.
-
-In addition, the following questions will be asked regarding CluWeb's new features at the end of the evaluation:
+The following questions will be asked regarding CluWeb's new features at the end of the evaluation:
 \begin{enumerate}
 \item How useful you find being able to pan and zoom the timeline using a mouse? not useful at all - very useful (1-7)
 \item How useful you find being able to configure the timeline? not useful at all - very useful (1-7)
 \item How useful you find displaying the Uberlog entries on the timeline? not useful at all - very useful (1-7)
-\item How useful you find the live mode? not useful - very useful (1-7)
-\item Do you have ideas how the new Cluster Web could be improved, what should be the main areas to focus on?
-\item Do you have any further comments regarding Cluster Web or this evaluation?
+\item How useful you find the live mode? not useful at all - very useful (1-7)
+\item How useful you find the countdown on the timeline?
+\item How useful you find being able to have different color themes?
+\item How useful you find being able to share the schedule URL?
+\item Do you have ideas how the new Cluster Web could be improved, or other comments?
 \end{enumerate}
 
 \section{Results}

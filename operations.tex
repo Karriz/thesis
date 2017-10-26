@@ -5,7 +5,7 @@ This section gives an overview of the day-to-day spacecraft operations, specific
 \section{Cluster II}
 Cluster II is a mission studying Earth's magnetosphere and its interaction with solar wind. It consists of four spacecraft which orbit the Earth together in a tetrahedral formation. Their orbits have apogees (highest point) at about 120 000 km above the Earth and perigees (lowest point) at about 20 000 km. The eccentric orbits take the spacecraft through some key areas of scientific interest in the magnetosphere, such as the magnetopause and the bow shock. The formation between the four spacecraft is important for determining how the properties of the magnetosphere change over time and location.
 
-Launched in 2000, the mission was originally planned to run until the end of 2003 but it has been extended several times, as of 2017 the mission will run until the end of 2018. While the spacecraft are aging and some systems are no longer operational, they're still producing useful science data. The flight control team's job is to make sure that this data is received and that the four spacecraft stay healthy.
+Launched in 2000, the mission was originally planned to run until the end of 2003 but it has been extended several times, and as of 2017 the mission is scheduled to run until the end of 2018. While the spacecraft are aging and some systems are no longer working, they're still producing useful science data. The flight control team's job is to make sure that this data is received and that the four spacecraft stay healthy.
 
 For communications with Earth, the Cluster II mission utilizes several ground station antennas situated around the world in Australia, French Guiana, Gran Canaria, Spain and Sweden.
 
@@ -15,7 +15,7 @@ For communications with Earth, the Cluster II mission utilizes several ground st
 
 The four Cluster II spacecraft are operated from the European Space Operations Centre (ESOC) in Darmstadt, Germany. The scientific operations are planned by Joint Science Operations Team (JSOC) in Chilton, UK.
 
-JSOC sends an OBRQ (Observation Request) file to the flight control team at ESOC for each weekly planning period (PP). The file includes information about which science instruments should be running on the spacecraft at a given time, and what telemetry and data acquisition (TDA) mode should be used. TDA mode affects what telemetry the spacecraft is transmitting and at what rate it saves data to the on-board solid state recorder (SSR).
+JSOC sends an OBRQ (Observation Request) file to the flight control team at ESOC for each weekly planning period (PP). The file includes information about which science instruments should be running on the spacecraft at a given time, and what telemetry and data acquisition (TDA) mode should be used. TDA mode affects what types of telemetry the spacecraft is transmitting and at what rate it saves data to the on-board solid state recorder (SSR).
 
 Mission planner at ESOC uses Cluster Web to create a pass plan for the planning period. Passes are the times when the spacecraft is in contact with a ground station during which the ground station can uplink commands to the spacecraft and listen to the downlink signal from the spacecraft that includes telemetry and usually science data that is being dumped from the solid state recorder.
 
@@ -30,11 +30,11 @@ The data collected during the passes is tranferred to various different data cen
 \cite{esasci, esacluster}
 
 \section{Cluster Web}\label{clusterweb_section}
-Cluster Web is a web portal that the mission planner uses for planning passes as mentioned in the last section. In this section the features of the software will be detailed more.
-
-In addition to pass planning, Cluster Web is also used for overviewing the operations schedule by displayign the timeline on a big screen on the flight control room, and in their daily work and during meetings engineers use it to find and present relevant information that's being discussed in a visual form.
+Cluster Web is a PHP-based web application that is used for planning passes as mentioned in the last section. In this section the features of the software will be detailed more.
 
 The main interface of Cluster Web is a timeline that offers an overview of the mission plan. The timeline is split vertically into four sections, one for each spacecraft in the mission. Different types of data are visualized on the timeline, some of which events or states with a start and end time, some are events at a specific point in time and some are time-value sets shown as graphs on the timeline.
+
+Besides pass planning, Cluster Web is also used for overviewing the operations schedule by displayign the timeline on a big screen on the flight control room, and in their daily work and during meetings engineers use it to find and present relevant information that's being discussed in a visual form.
 
 Table~\ref{tab:clusterweb_data_table} lists the types of visualized data:
 
@@ -48,13 +48,13 @@ Table~\ref{tab:clusterweb_data_table} lists the types of visualized data:
     \hline
     Name & Visualization & Editable & Type & Source \\
     \hline
-    Passes & Rectangles & Yes & Operational & Flight control \\
+    Passes & Rectangles & Yes & Operations & Ground stations \\
     Visibilities & Rectangles & No & Environment & Flight dynamics \\
-    Bookings & Rectangles & No & Operational & Ground stations \\
-    TDA modes & Background & No & Operational & Science operations \\
+    Bookings & Rectangles & No & Operations & Ground stations \\
+    TDA modes & Background & No & Operations & Science operations \\
     SSR fill level & Line graph & Indirectly & Resource & Telemetry/prediction \\
-    Payload sequences & Rectangles & No & Operational & Science operations \\
-    Maneuver times & Diamonds & No & Operational & Flight dynamics \\
+    Payload sequences & Rectangles & No & Operations & Science operations \\
+    Maneuver times & Diamonds & No & Operations & Flight dynamics \\
     Apogees/perigees & Small points & No & Environment & Flight dynamics \\
     Eclipses & Rectangles & No & Environment & Flight dynamics \\
     \hline
@@ -79,7 +79,7 @@ On the user interface, there are buttons for enabling and disabling certain visu
 \subsection{Ground station passes}
 Figure~\ref{fig:clusterweb_visibilities} shows the main interface of Cluster Web with ground station visibilities on. The ground station visibilities are displayed as colored bars, each ground station being in its own "lane". Bookings of other missions are shown on top of the visibilities as smaller bars in slightly darker color. From this visualization, the mission planner can determine the times when a ground station is available so that a pass can be scheduled. 
 
-After a pass is created it shows up on the timeline as a rectangle. Different types of passes are displayed in different colors. Light blue rectangle is a normal pass that has both uplink and downlink capacity (commands can be sent to the spacecraft), while a gray pass is downlink-only. If there is a conflict with visibility or another booking, the pass is shown in red color. If the conflict is with another Cluster spacecraft the pass is shown in yellow color.
+After a pass is created it shows up on the timeline as a rectangle. Different types of passes are displayed in different colors. Light blue rectangle is a normal pass that has both uplink and downlink capability (commands can be sent to the spacecraft), while a gray pass is downlink-only. If there is a conflict with visibility or another booking, the pass is shown in red color. If the conflict is with another Cluster spacecraft the pass is shown in yellow color.
 
 By clicking a pass, another view opens up in which the user can edit the pass properties, and access different kinds of information about the pass such as a bitrate forecast and log entries. There is also a checklist of things which should be checked every time a pass is edited.
 
@@ -94,10 +94,8 @@ By clicking a pass, another view opens up in which the user can edit the pass pr
 
 As mentioned earlier in section \ref{clusterweb_section}, ClusterWeb is also used for monitoring and data visualization purposes other than pass scheduling. Having a visual representation passes, bookings and visibilities because it is a convenient way of finding information, and it works as a general overview of the operations schedule in the control room.
 
-To give a specific example, for some troubleshooting purposes it may be necessary to find out the next pass for Cluster 3 spacecraft that is at least two hours long and uses the Kourou ground station. Using Cluster Web, this can be found by just glancing at the timeline.
-
 \subsection{SSR fill level graph}
-Another important visualization that can be seen in Figure~\ref{fig:clusterweb_visibilities} is the SSR fill level graph. It is shown for each spacecraft as a red and green line, in which the red part is drawn based on telemetry data about the fill level (that is available until the end of latest pass), and the green part is based on prediction. 
+Another important visualization that can be seen in Figure~\ref{fig:clusterweb_visibilities} is the SSR fill level graph. It is shown for each spacecraft as a red and green line, in which the red part is drawn based on telemetry data about the fill level (that is available until the end of latest pass), and the green part is based on prediction. On the vertical axis of a single spacecraft's timeline, the fill level goes from 0\% to 100\%.
 
 The prediction model takes into account the data recording bitrates based on TDA modes and downlink bitrates during passes. When pass times and modes are edited this also changes the SSR fill level prediction. Visualizing this prediction makes it convenient for the mission planner to see what are good times for dumping the data.
 
