@@ -4,15 +4,34 @@ Even though Cluster Web has proven its usefulness, it has certain usability issu
 
 Other mission teams at ESA such as ExoMars and Swarm have interest in a tool like Cluster Web for their plannign and monitoring purposes. While making a custom solution based on Cluster Web would be possible in theory, it would require a major rewrite for each mission as the codebase is specific to Cluster and is not built with expandability in mind.
 
-Because of the technical limitations and usability issues, it was decided that a new tool would be built based on modern web technologies and structured in such a way that it would be easy to adapt for other missions in the future. This re-engineered version is called "CluWeb". It is developed by a team consisting of Cluster team members and also members from other teams within ESOC.
+Because of the technical limitations and usability issues, it was decided that a new tool would be built based on modern web technologies and structured in such a way that it would be easy to adapt for other missions in the future. This re-engineered version is called "OpsWeb". It is developed by a team consisting of Cluster team members and also members from other teams within ESOC.
 
 The author of this thesis worked on this project for six months during an internship. Upon arrival in May 2017, the development had been going on for a couple of months and the main technologies had been chosen. The author contributed on the development of many different features, mainly focusing on the front-end. 
 
-By the end of the six months in October 2017, CluWeb had most of the functionality needed for schedule monitoring purposes, which is the first release that will be used by the Cluster flight control team.
+By the end of the six months in October 2017, OpsWeb had most of the functionality needed for schedule monitoring purposes, which is the first release that will be used by the Cluster flight control team.
 
-In this section, CluWeb development project, its improved features and the architecture of the system as of October 2017 will be detailed. The plans for the future development of CluWeb will also be overviewed.
+In this section, OpsWeb development project, its improved features and the architecture of the system as of October 2017 will be detailed. The plans for the future development of OpsWeb will also be overviewed.
 
 \section{Requirements}
+As mentioned earlier, the main driving factors for the development of OpsWeb are improving usability and the need for an adaptable tool that could be applied to other missions.
+\subsection{Usability}
+The main user-reported usability issues with Cluster Web are related to the slow responsiveness of the timeline and complicated workflows. 
+
+To navigate the timeline, the user needs to press buttons in the navigation bar to move the timeline left or right or to change the zoom level in intervals. Once the button has been pressed, it can take a few seconds for the data visualization to reload in the new time range. This is very slow, if the user for example wants to move a few days to either direction or to set the zoom to minimum or maximum. There is a calendar menu that allows the user to jump straight to a specific date.
+
+A common solution for navigating 2D visualizations is panning and zooming with the mouse. This method is used for example in map applications such as Google Maps where a 2D plane can be dragged around with the mouse and zoomed in and out with the mouse wheel. In Cluster Web, navigation only happens in x- axis, but otherwise the same idea can be applied. This should also work with touch screen devices responsively.
+
+Another thing that was mentioned is the complexity of adding or editing passes. It is necessary to go through different menus and fill inputs before the pass visually appears on the timeline. An alternative solution suggested by users is having the ability to drop passes directly on the timeline and drag them around to position them.
+
+\subsection{Configurability}
+Other missions interested in Cluster Web have similar requirements with displaying different operations events and telemetry data on a timeline. The data types can be dplit into three categories based on their characteristics: time intervals, time instants and time series.
+
+A time interval is an event with a start and an end. A ground station pass is one example of this. Intervals can be visualized as rectangles which have their left edge at the start time and the right edge at the end time.
+
+Time instants are events which happen at a specific time but have no duration, for example an apogee crossing. They can be visualized with any kind shape or icon at a specific point on the timeline.
+
+Time series data, such as the SSR fill level, is a series of time, value pairs. It can be displayed as a line graph where x-axis is time and y-axis is the range of possible values.
+
 \section{New features}
 \subsection{Timeline navigation}
 \subsection{Configurations}
