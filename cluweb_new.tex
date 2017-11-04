@@ -32,12 +32,29 @@ Time instants are events which happen at a specific time but have no duration, f
 
 Time series data, such as the SSR fill level, is a series of time, value pairs. It can be displayed as a line graph where x-axis is time and y-axis is the range of possible values.
 
-Being able to display any data that fits the aforementioned three categories is one of the requirements for OpsWeb. Users should be able to choose what data they want to display from which sources, how the visualizations are arranged on different timelines and how they look like.
+Being able to display any data that fits the aforementioned three categories is one of the requirements for OpsWeb. Users should be able to choose what data they want to display and where the data comes from, how the visualizations are arranged on different timelines and how they look like. Achieving this requires a highly configurable front-end where the individual data visualizations aren't hard-coded, but they are defined by the user in some kind of a configuration file that is then used to build the visualization.
+
+On the back-end side, OpsWeb should also allow users to define their data models and to edit database entries without editing the source code. If some kind of mission-specific data processing is required, it should be plugged in the back-end architecture in a modular way.
+
+\subsection{Openness}
+The eventual goal is to make OpsWeb open-source, at first within ESA and later to outsiders. As a generic timeline visualization tool, it could be applied to any kind time-based data visualizations, such as workplace shift schedules or TV guides. In order to make OpsWeb open-source, it needs to reach a release that is no longer subject to big changes in architecture. As of November 2017, OpsWeb is still being developed within the Cluster II Flight Control Team, with a few members from other teams at ESOC also being involved. 
+
+One example of a successful open-source project for space operations is NASA's OpenMCT (Open Mission Control Technologies). Like OpsWeb, it is a web-based data visualization tool but while OpsWeb is focused on timelines, OpenMCT is a more generic dashboard for overviewing and analyzing any kind of technical or scientific real-time data. Users link data to different widgets and place them on layouts. 
+
+OpenMCT is planned to be used for future Lunar rover operations and it is already in use for Jason-3 Earth observation mission. As an open-source project, OpenMCT is not limited to only spacecraft operations, but can be used for any kind of activity that requires displaying data that is being produced in real-time, such as monitoring Internet Of Things- devices. Anyone can download the source code and add features to it. \cite{trimble2014reconfigurable, trimble2016open}
 
 \section{New features}
 \subsection{Timeline navigation}
 \subsection{Configurations}
 \subsection{Live monitoring}
+Cluster Web is used for monitoring operations in the control room. By default loads a view displaying the schedule for the current day and the days before and after it, however, as time goes by, the page needs to be refreshed to get the current time back to the center of the screen.
+
+In OpsWeb, there is a new feature to help with this, called live mode. When the live mode is enabled by clicking a button in the navigation bar, the schedule moves to the current time so that a configured amount of time is displayed in the past and the future. The schedule timeframe is updated periodically so that the line marking the current time stays fixed on the screen while the schedule moves behind it.
+
+Another feature helping with live monitoring is the countdown clock. It displays how much time there is until the next data item of a data type, for example the next pass. A line is drawn from now line to the next item, and a countdown timer is displayed with it. The format of the countdown can be configured with string placeholders.
+
+The author implemented the live mmdoe and the countdown.
+
 \subsection{Sharing schedules}
 \subsection{Uberlog integration}
 \section{Architecture}
