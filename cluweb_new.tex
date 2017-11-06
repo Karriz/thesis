@@ -14,16 +14,14 @@ In this section, OpsWeb development project, its improved features and the archi
 
 \section{Requirements}
 As mentioned earlier, the main driving factors for the development of OpsWeb are improving usability and the need for an adaptable tool that could be applied to other missions.
-\subsection{Usability}
+\subsection{Usability} \label{usability_req}
 The main user-reported usability issues with Cluster Web are related to the slow responsiveness of the timeline and complicated workflows. 
 
-To navigate the timeline, the user needs to press buttons in the navigation bar to move the timeline left or right or to change the zoom level in intervals. Once the button has been pressed, it can take a few seconds for the data visualization to reload in the new time range. This is very slow, if the user for example wants to move a few days to either direction or to set the zoom to minimum or maximum. There is a calendar menu that allows the user to jump straight to a specific date.
-
-A common solution for navigating 2D visualizations is panning and zooming with the mouse. This method is used for example in map applications such as Google Maps where a 2D plane can be dragged around with the mouse and zoomed in and out with the mouse wheel. In Cluster Web, navigation only happens in x- axis, but otherwise the same idea can be applied. This should also work with touch screen devices responsively.
+To navigate the timeline in Cluster Web, the user needs to press buttons in the navigation bar to move the timeline left or right or to change the zoom level in intervals. Once the button has been pressed, it can take a few seconds for the data visualization to reload in the new time range. There is a calendar menu that allows the user to jump straight to a specific date, but when users want to just move the timeline a few days in either direction or zoom out, they use the navigation buttons which are slow. There should be a faster and more intuitive way of navigating the timeline, preferably compatible with modern touch-screen devices.
 
 Another thing that was mentioned is the complexity of adding or editing passes. It is necessary to go through different menus and fill inputs before the pass visually appears on the timeline. An alternative solution suggested by users is having the ability to drop passes directly on the timeline and drag them around to position them.
 
-\subsection{Configurability}
+\subsection{Configurability} \label{configurability_req}
 Other missions interested in Cluster Web have similar requirements with displaying different operations events and telemetry data on a timeline. The data types can be split into three categories based on their characteristics: time intervals, time instants and time series.
 
 A time interval is an event with a start and an end. A ground station pass is one example of this. Intervals can be visualized as rectangles which have their left edge at the start time and the right edge at the end time.
@@ -44,18 +42,32 @@ One example of a successful open-source project for space operations is NASA's O
 OpenMCT is planned to be used for future Lunar rover operations and it is already in use for Jason-3 Earth observation mission. As an open-source project, OpenMCT is not limited to only spacecraft operations, but can be used for any kind of activity that requires displaying data that is being produced in real-time, such as monitoring Internet Of Things- devices. Anyone can download the source code and add features to it. \cite{trimble2014reconfigurable, trimble2016open}
 
 \section{New features}
+OpsWeb has a number of new features intended to improve its usability over CluWeb and to allow new possibilities. The new features present in the first release of OpsWeb will be detailed in this section.
+
 \subsection{Timeline navigation}
+As mentioned earlier in the section \ref{usability_req}, the navigation of the timeline in Cluster Web is slow. To fix this problem, users can pan and zoom the timeline with mouse in OpsWeb. This method is used for example in map applications such as Google Maps where a 2D plane can be dragged around with the mouse by holding the left button and zoomed in and out with the mouse wheel. In OpsWeb, navigation only happens in x- axis, but otherwise the same idea applies. It also works with touch screen devices.
+
+The schedule timeframe selection calendar is slightly different in OpsWeb; instead of just selecting one day and centering the visible timeframe on that at the current zoom level, the user can choose the first and last days of the preferred timeframe.
+
 \subsection{Configurations}
+
 \subsection{Live monitoring}
-Cluster Web is used for monitoring operations in the control room. By default loads a view displaying the schedule for the current day and the days before and after it, however, as time goes by, the page needs to be refreshed to get the current time back to the center of the screen.
+Cluster Web is used for monitoring operations in the control room. When opening the page, it loads a view displaying the schedule for the current day and the days before and after it, however, as time goes by, the page needs to be refreshed to get the current time back to the center of the screen.
 
 In OpsWeb, there is a new feature to help with this, called live mode. When the live mode is enabled by clicking a button in the navigation bar, the schedule moves to the current time so that a configured amount of time is displayed in the past and the future. The schedule timeframe is updated periodically so that the line marking the current time stays fixed on the screen while the schedule moves behind it.
 
 Another feature helping with live monitoring is the countdown clock. It displays how much time there is until the next data item of a data type, for example the next pass. A line is drawn from now line to the next item, and a countdown timer is displayed with it. The format of the countdown can be configured with string placeholders.
 
-The author implemented the live mmdoe and the countdown.
+Live mode and the countdown visualization of OpsWeb were implemented by the author.
 
 \subsection{Sharing schedules}
+The schedule timeframe is deep-linked in the URL visible in the browser's address bar. For example, the URL can look like this:
+
+http://cluweb.go.esa.int/schedule?from=2017-10-20T22:00:00\&to=2017-10-21T12:30:00
+
+The "from" and "to" parameters define the beginning and the end time of the visible timeframe of the schedule. They are ISO 8601- formatted date strings.
+
+
 \subsection{Uberlog integration}
 \section{Architecture}
 \subsection{Front-end}
