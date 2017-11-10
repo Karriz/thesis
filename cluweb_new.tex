@@ -6,10 +6,6 @@ Other mission teams at ESA such as ExoMars and Swarm have interest in a tool lik
 
 Because of the technical limitations and usability issues, it was decided that a new tool would be built based on modern web technologies and structured in such a way that it would be easy to adapt for other missions in the future. This re-engineered version is called "OpsWeb". It is developed by a team consisting of Cluster team members and also members from other teams within ESOC.
 
-The author of this thesis worked on this project for six months during an internship. Upon arrival in May 2017, the development had been going on for a couple of months and the main technologies had been chosen. The author contributed on the development of many different features, mainly focusing on the front-end. 
-
-By the end of the six months in October 2017, OpsWeb had most of the functionality needed for schedule monitoring purposes, which is the first release that will be used by the Cluster flight control team.
-
 In this section, OpsWeb development project, its improved features and the architecture of the system as of October 2017 will be detailed. The plans for the future development of OpsWeb will also be overviewed.
 
 \section{Requirements}
@@ -58,8 +54,6 @@ In OpsWeb, there is a new feature to help with this, called live mode. When the 
 
 Another feature helping with live monitoring is the countdown clock. It displays how much time there is until the next data item of a data type, for example the next pass. A line is drawn from now line to the next item, and a countdown timer is displayed with it. The format of the countdown can be configured with string placeholders.
 
-Live mode and the countdown visualization of OpsWeb were implemented by the author.
-
 \subsection{Sharing schedules}
 The schedule timeframe is deep-linked in the URL visible in the browser's address bar. For example, the URL can look like this:
 
@@ -69,10 +63,36 @@ The "from" and "to" parameters define the beginning and the end time of the visi
 
 
 \subsection{Uberlog integration}
+Like Cluster Web, OpsWeb integrates the viewing of Überlog entries, however in a different way. In OpsWeb, the log entries are visible as icons on the timeline, their positions corresponding the log event time. 
+
+Because there are so many entries close to each other, it would not be viable to display them all as the icons would overlap each other when zoomed out. To improve the readability of the timeline, log entries which are close are grouped together and shown as a single icon with a number next to it. The icon being displayed depends on the highest severity level log entry in that group. The groups change dynamically when zoom level changes. This solution was inspired by PowerHA timeline groups log entries at different severity levels in a similar way. \cite{ibm_timeline}
+
+When the user hovers the cursor over an icon, the times of the first and last entry in the group are displayed in a tooltip as well as the amount of entries for each severity level. If there is only one entry for the icon, the actual text of the log entry is displayed.
+
+The icon grouping was implemented as a generic class that could be used to group any kind of instant events on the timeline.
 \section{Architecture}
 \subsection{Front-end}
 \subsection{Back-end}
 \section{Development}
+OpsWeb is developed by a team of seven people, including the author of this thesis. The project is led by Cluster II spacecraft operations manager. The author of this thesis worked on this project for six months during an internship. Upon arrival in May 2017, the development had been going on for a couple of months and the main technologies had been chosen. Other than the author during his internship, no one works on the project full-time; instead, people contribute whenever they have time.
+
+Development roles are varied between people depending on their interests and experience, some focusing more on front-end and others on the back-end. The author implemented many features mainly on the front-end, namely the live mode, activity countdown, deep linking of the schedule timeframe, visualization of the Uberlog entries, login and authentication, navigation menu and an improved importer view. In addition, miscelllaneous improvements and bug fixes were done and the continuous integration was set up.
+
+By the end of the internship in October 2017, OpsWeb had most of the functionality needed for schedule monitoring purposes, which is the first release that will be used by the Cluster flight control team.
 \subsection{Scrum}
+OpsWeb development team uses Scrum for organizing the project. It is an Agile framework within which teams can address the development of complex products. Scrum is intended to be easy to understand and implement in practice. It sets certain events, rules and roles within which the development of a product can happen in a clearly defined way while leaving room for changes. \cite{beck2001manifesto} \cite{scrum}
 \subsection{Continuous integration}
+OpsWeb's code is managed in two GitLab repositories, one for front-end and another for back-end. Initially both used to be in one repository but they were separated for easier and cleaner management.
+
+Both repositories have a master branch that is supposed to contain stable release code, and a development branch that contains new features which have been added after every sprint. User stories are developed separately in their own branches which are based on development branch, and merged back into development branch when ready.
+
+GitLab has built-in continuous integration features which are utilized in OpsWeb's repositories. It's possible to define scripts defining different jobs which are run automatically after a push on a GitLab runner that is a Docker container running on the GitLab server. The idea is to run test first and then deploy the new version on a server.
+
+GitLab's continuous integration jobs are separated into stages which are run in a sequence. In OpsWeb's case what needs to be achieved is to run tests first to validate the commits which were pushed, and if the tests were successful, deploy the new version to a server. Specific jobs can be set to run only for specific branches, which would for example allow deployment to branch-specific servers.
+
+Front-end tests are written using Jasmine framework, and run using Karma test runner on PhantomJS headless browser. The tests define the expected output from functions when given certain parameters as input. Karma runs the tests and then lists which tests succeeded and which failed.
+
+Deployment is done after the test stage has passed. For the front-end this is done by connecting to the server using SSH, pulling the commit there, and then compiling the Typescript. Then the compiled Javascript is copied into a static file folders served by Nginx.
+
+Back-end deployment similarly connects to the server with SSH, pulls the commit and then runs a script to migrate any model changes to the database. Django automatically restarts the server when changes are detected.
 \section{Future development}
