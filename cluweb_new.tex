@@ -8,6 +8,15 @@ Because of the technical limitations and usability issues, it was decided that a
 
 In this section, OpsWeb development project, its improved features and the architecture of the system as of October 2017 will be detailed. The plans for the future development of OpsWeb will also be overviewed.
 
+ %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{new_cw}
+  \end{center}
+  \caption{Cluster Web's default view recreated in OpsWeb}
+  \label{fig:new_cw}
+\end{figure}
+
 \section{Requirements}
 As mentioned earlier, the main driving factors for the development of OpsWeb are improving usability and the need for an adaptable tool that could be applied to other missions.
 \subsection{Usability} \label{usability_req}
@@ -46,6 +55,31 @@ As mentioned earlier in the section \ref{usability_req}, the navigation of the t
 The schedule timeframe selection calendar is slightly different in OpsWeb; instead of just selecting one day and centering the visible timeframe on that at the current zoom level, the user can choose the first and last days of the preferred timeframe.
 
 \subsection{Configurations}
+One of the main driving factors for the development of OpsWeb is configurability, as mentioned in the section \ref{configurability_req}. The definitions of the different elements which are displayed on the schedule should not be hard-coded; users should be able to choose in a flexible manner where they get data from and how it should be displayed on the schedule.
+
+OpsWeb constructs its schedule visualizations using a JSON file that defines the data sources, visualizations and the timeline hierarchy. This file can be edited by clicking a button in the top right corner of the page, which opens a dialog in which the user can edit, save and delete configurations and apply a configuration, which then closes the window and redraws the schedule view to represent that configuration.
+
+A configuration file consists of two different sections: first, the data types are defined. These can be things like "pass" or a "eclipse", which the user wants to see on the schedule. API endpoints from which the data comes from are defined.
+
+ %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{new_cw_estrack}
+  \end{center}
+  \caption{"Estrack" timeline configuration, in which each ground station has its own timeline}
+  \label{fig:new_cw_estrack}
+\end{figure}
+
+The visual style of OpsWeb can also be configured with style configurations. It is a CSS file that can be edited in another tab in the configuration dialog. This allows changing things like colors of the UI elements, visualization elements and different fonts.
+
+ %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{new_cw_dark}
+  \end{center}
+  \caption{A dark style configuration for OpsWeb}
+  \label{fig:new_cw_dark}
+\end{figure}
 
 \subsection{Live monitoring}
 Cluster Web is used for monitoring operations in the control room. When opening the page, it loads a view displaying the schedule for the current day and the days before and after it, however, as time goes by, the page needs to be refreshed to get the current time back to the center of the screen.
@@ -53,6 +87,15 @@ Cluster Web is used for monitoring operations in the control room. When opening 
 In OpsWeb, there is a new feature to help with this, called live mode. When the live mode is enabled by clicking a button in the navigation bar, the schedule moves to the current time so that a configured amount of time is displayed in the past and the future. The schedule timeframe is updated periodically so that the line marking the current time stays fixed on the screen while the schedule moves behind it.
 
 Another feature helping with live monitoring is the countdown clock. It displays how much time there is until the next data item of a data type, for example the next pass. A line is drawn from now line to the next item, and a countdown timer is displayed with it. The format of the countdown can be configured with string placeholders.
+
+ %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{new_cw_live}
+  \end{center}
+  \caption{A live monitoring view demonstrating the live mode and the countdown visualization.}
+  \label{fig:new_cw_live}
+\end{figure}
 
 \subsection{Sharing schedules}
 The schedule timeframe is deep-linked in the URL visible in the browser's address bar. For example, the URL can look like this:
