@@ -98,12 +98,11 @@ Another feature helping with live monitoring is the countdown clock. It displays
 \end{figure}
 
 \subsection{Sharing schedules}
-The schedule timeframe is deep-linked in the URL visible in the browser's address bar. For example, the URL can look like this:
+Users can share the exact view they are viewing in OpsWeb with other people by just copying and sending the URL from the browser's address bar, because all the necessary information that defines the view is deep-linked in the URL. For example, the URL can look like this:
 
-http://cluweb.go.esa.int/schedule?from=2017-10-20T22:00:00\&to=2017-10-21T12:30:00
+http://cluweb.go.esa.int/schedule?configuration=2\&from=2017-10-20T22:00:00\&to=2017-10-21T12:30:00
 
-The "from" and "to" parameters define the beginning and the end time of the visible timeframe of the schedule. They are ISO 8601- formatted date strings.
-
+"From" and "to" parameters define the beginning and the end time of the visible timeframe of the schedule. They are ISO 8601- formatted date strings. "Configuration" parameter is the id of the configuration that is being used.
 
 \subsection{Uberlog integration}
 Like Cluster Web, OpsWeb integrates the viewing of Überlog entries, however in a different way. In OpsWeb, the log entries are visible as icons on the timeline, their positions corresponding the log event time. 
