@@ -59,7 +59,62 @@ One of the main driving factors for the development of OpsWeb is configurability
 
 OpsWeb constructs its schedule visualizations using a JSON file that defines the data sources, visualizations and the timeline hierarchy. This file can be edited by clicking a button in the top right corner of the page, which opens a dialog in which the user can edit, save and delete configurations and apply a configuration, which then closes the window and redraws the schedule view to represent that configuration.
 
-A configuration file consists of two different sections: first, the data types are defined. These can be things like "pass" or a "eclipse", which the user wants to see on the schedule. API endpoints from which the data comes from are defined.
+The three different categories of data mentioned in the section \ref{configurability_req} are supported in OpsWeb. All data should come in the form of a JSON object array. A data object with the type "interval" is expected to have parameters "time_start" and "time_end". An "instant" data object is expected to have a parameter "time". "Series" data should consist of an array of objects with both "time" and some numerical value.
+
+An example timeline configuration with just a single timeline showing Cluster 1 passes would look as follows:
+
+\begin{verbatim}
+{
+  "name": "CLU1 Pass Schedule",
+  "height": "auto",
+  "width": "auto",
+  "showLabels": true,
+  "liveMode": {
+    "pastMargin": "1d",
+    "futureMargin": "2d"
+  },
+  "zoom": {
+    "min": "2h",
+    "max": "12d"
+  },
+  "data": [
+    {
+      "type": "interval",
+      "name": "pass",
+      "provider": "cluweb",
+      "source": "passes",
+      "domainIdentifier": "$spacecraft",
+      "zIndex": 4,
+      "showStart": true,
+      "showEnd": true,
+      "label": "$groundstation",
+      "height": 0.5
+    }
+  ],
+  "timelines": [
+    {
+      "domain": [
+        "CLU1"
+      ],
+      "label": "Cluster 1 Passes",
+      "weight": 100,
+      "dataRef": [
+        {
+          "name": "pass"
+        }
+      ]
+    }
+  ]
+}
+\end{verbatim}
+
+What can be seen in this example configuration is that there are two main sections defining the timeline visualization: "data" array that contains the definitions of different data types, and the "timelines" array that contains the timeline hierarcy.
+
+In this case, there is only a single data type, "pass", from a "passes" endpoint of the "cluweb" API, and it is of the type "interval", meaning that each data item should have parameters time\_start and time\_end. Label for each visualized item should come from the parameter "groundstation", and the elements should be placed on the timeline that matches the parameter "spacecraft".
+
+In the timelines array, it can be seen that there is a single timeline with the domain "CLU1", and it references to the data type "pass". This means that all passes of spacecraft "CLU1" will be placed in this timeline.
+
+This structuring allows a lot of flexibility for the users to change their timeline arrangements. For example, it is not necessary to place passes on the timeline by the "spacecraft" domain; instead, "groundstation" could be used as a domain so that each ground station could have its own timeline, displaying passes from all spacecraft on that ground station, as can be seen in the figure \ref{fig:new_cw_estrack}.
 
  %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
 \begin{figure}[ht]
@@ -70,7 +125,7 @@ A configuration file consists of two different sections: first, the data types a
   \label{fig:new_cw_estrack}
 \end{figure}
 
-The visual style of OpsWeb can also be configured with style configurations. It is a CSS file that can be edited in another tab in the configuration dialog. This allows changing things like colors of the UI elements, visualization elements and different fonts.
+The visual style of OpsWeb can also be configured with style configurations. It is a CSS file that can be edited in another tab in the configuration dialog. This allows changing things like colors of the UI elements, visualization elements and different fonts. For example a dark theme can be created with colors easier for the eyes during night time, an example of this is shown in the figure \ref{fig:new_cw_dark}.
 
  %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
 \begin{figure}[ht]
