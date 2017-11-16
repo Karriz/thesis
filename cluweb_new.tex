@@ -59,7 +59,7 @@ One of the main driving factors for the development of OpsWeb is configurability
 
 OpsWeb constructs its schedule visualizations using a JSON file that defines the data sources, visualizations and the timeline hierarchy. This file can be edited by clicking a button in the top right corner of the page, which opens a dialog in which the user can edit, save and delete configurations and apply a configuration, which then closes the window and redraws the schedule view to represent that configuration.
 
-The three different categories of data mentioned in the section \ref{configurability_req} are supported in OpsWeb. All data should come in the form of a JSON object array. A data object with the type "interval" is expected to have parameters "time_start" and "time_end". An "instant" data object is expected to have a parameter "time". "Series" data should consist of an array of objects with both "time" and some numerical value.
+The three different categories of data mentioned in the section \ref{configurability_req} are supported in OpsWeb. All data should come in the form of a JSON object array. A data object with the type "interval" is expected to have parameters "time\_start" and "time\_end". An "instant" data object is expected to have a parameter "time". "Series" data should consist of an array of objects with both "time" and some numerical value.
 
 An example timeline configuration with just a single timeline showing Cluster 1 passes would look as follows:
 
@@ -168,8 +168,12 @@ When the user hovers the cursor over an icon, the times of the first and last en
 
 The icon grouping was implemented as a generic class that could be used to group any kind of instant events on the timeline.
 \section{Architecture}
+OpsWeb's architecture consists of two main software components: front-end and back-end. Front-end is the user-facing part of the system and contains the application user interface that can be accessed through web browser. Back-end is a server that takes care of user authentication and data storage and processing functionality of the system.
 \subsection{Front-end}
+THe front-end is a web application built using the Angular framework. Angular provides a clear structure for the different views and services of the application.
+\cite{angular, d3js}
 \subsection{Back-end}
+\cite{django}
 \section{Development}
 OpsWeb is developed by a team of seven people, including the author of this thesis. The project is led by Cluster II spacecraft operations manager. The author of this thesis worked on this project for six months during an internship. Upon arrival in May 2017, the development had been going on for a couple of months and the main technologies had been chosen. Other than the author during his internship, no one works on the project full-time; instead, people contribute whenever they have time.
 
@@ -177,7 +181,20 @@ Development roles are varied between people depending on their interests and exp
 
 By the end of the internship in October 2017, OpsWeb had most of the functionality needed for schedule monitoring purposes, which is the first release that will be used by the Cluster flight control team.
 \subsection{Scrum}
-OpsWeb development team uses Scrum for organizing the project. It is an Agile framework within which teams can address the development of complex products. Scrum is intended to be easy to understand and implement in practice. It sets certain events, rules and roles within which the development of a product can happen in a clearly defined way while leaving room for changes. \cite{beck2001manifesto} \cite{scrum}
+OpsWeb development team uses Scrum for organizing the project. It is an Agile framework within which teams can address the development of complex products. Scrum is intended to be easy to understand and implement in practice. It sets certain events, rules and roles within which the development of a product can happen in a clearly defined way while leaving room for changes.
+
+In Scrum, the project requirements are defined as user stories, which describe some functionality that the product should have from a user's point of view instead of giving a specification for the technical implementation. Product owner is the person who is responsible for providing this overall direction for the project, in OpsWeb's case the product owner is the Cluster II spacecraft operations manager.
+
+The development of OpsWeb is done in two-week sprints. At the beginning of each sprint, the development team allocates user stories between themselves and discusses the technical implementation in a sprint planning meeting. The user stories are split into tasks which need to be completed to implement the feature described in the user story. 
+
+Each user story is scored based on three different categories: concept, front-end and back-end, depending on how much effort the development team thinks the user story will require. "Planning poker" is used for scoring the user stories; each member of the development team votes with a number from Fibonacci or a similar sequence. People who vote with numbers either above or below the average can voice their opinion on why they think the user story would be easier or more difficult than others think. \cite{grenning2002planning}
+
+OpsWeb development team has a daily stand-up meeting every morning to discuss what they have been doing and what they will be doing next, to keep everyone on track about the project.
+
+At the end of each sprint, there is a sprint review meeting in which the current state of the project is shown to the product owner, who can then make requests about what could be improved and what should be focused on during the next sprint.
+
+The Scrum process is managed by a Scrum Master, who makes sure that Scrum is being correctly used for the project. Scrum Master is a member of the development team. \cite{beck2001manifesto, scrum} For OpsWeb's development, the team uses Taiga web application that provides an user interface for managing task status and allocation.  \cite{taiga}
+
 \subsection{Continuous integration}
 OpsWeb's code is managed in two GitLab repositories, one for front-end and another for back-end. Initially both used to be in one repository but they were separated for easier and cleaner management.
 
@@ -193,3 +210,4 @@ Deployment is done after the test stage has passed. For the front-end this is do
 
 Back-end deployment similarly connects to the server with SSH, pulls the commit and then runs a script to migrate any model changes to the database. Django automatically restarts the server when changes are detected.
 \section{Future development}
+After OpsWeb's first release that provides schedule visualization and monitoring capabilities for the Cluster II mission...
