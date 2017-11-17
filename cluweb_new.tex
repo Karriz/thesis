@@ -168,12 +168,17 @@ When the user hovers the cursor over an icon, the times of the first and last en
 
 The icon grouping was implemented as a generic class that could be used to group any kind of instant events on the timeline.
 \section{Architecture}
-OpsWeb's architecture consists of two main software components: front-end and back-end. Front-end is the user-facing part of the system and contains the application user interface that can be accessed through web browser. Back-end is a server that takes care of user authentication and data storage and processing functionality of the system.
+OpsWeb uses a client-server architecture consisting of a front-end client and a back-end server. Front-end is the user-facing part of the system and contains the application user interface that can be accessed through web browser. Back-end is a server that takes care of user authentication and data storage and processing functionality of the system.
 \subsection{Front-end}
-THe front-end is a web application built using the Angular framework. Angular provides a clear structure for the different views and services of the application.
-\cite{angular, d3js}
+The front-end is a web application built using the Angular framework. \cite{angular} Angular provides a clear structure for the different views and services of the application.
+\cite{d3js}
 \subsection{Back-end}
-\cite{django}
+OpsWeb's backend provides an interface through which the front-end client can receive and send data. It is built using Django REST Framework, which is a Python toolkit for programming web APIs. \cite{django} 
+
+OpsWeb's REST API has endpoints for different types of data that the system can visualize, such as passes, bookings and eclipses. The client makes HTTP requests to these endpoints with parameters specifying data filters such as the time range for which the data is requested. The data on back-end is stored in a MariaDB database, which is a fork of MySQL. \cite{mariadb} Django takes care of interfacing with the database with its model system; data models are defined, and data is stored and queried entirely with Python code. The data is then serialized into JSON format and returned in a HTTP response to the client.
+
+The data comes from multiple sources; files uploaded through the client, other APIs within ESA, and user-created data.
+
 \section{Development}
 OpsWeb is developed by a team of seven people, including the author of this thesis. The project is led by Cluster II spacecraft operations manager. The author of this thesis worked on this project for six months during an internship. Upon arrival in May 2017, the development had been going on for a couple of months and the main technologies had been chosen. Other than the author during his internship, no one works on the project full-time; instead, people contribute whenever they have time.
 
