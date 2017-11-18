@@ -54,7 +54,7 @@ As mentioned earlier in the section \ref{usability_req}, the navigation of the t
 
 The schedule timeframe selection calendar is slightly different in OpsWeb; instead of just selecting one day and centering the visible timeframe on that at the current zoom level, the user can choose the first and last days of the preferred timeframe.
 
-\subsection{Configurations}
+\subsection{Configurations} \label{opsweb_config}
 One of the main driving factors for the development of OpsWeb is configurability, as mentioned in the section \ref{configurability_req}. The definitions of the different elements which are displayed on the schedule should not be hard-coded; users should be able to choose in a flexible manner where they get data from and how it should be displayed on the schedule.
 
 OpsWeb constructs its schedule visualizations using a JSON file that defines the data sources, visualizations and the timeline hierarchy. This file can be edited by clicking a button in the top right corner of the page, which opens a dialog in which the user can edit, save and delete configurations and apply a configuration, which then closes the window and redraws the schedule view to represent that configuration.
@@ -171,13 +171,51 @@ The icon grouping was implemented as a generic class that could be used to group
 OpsWeb uses a client-server architecture consisting of a front-end client and a back-end server. Front-end is the user-facing part of the system and contains the application user interface that can be accessed through web browser. Back-end is a server that takes care of user authentication and data storage and processing functionality of the system.
 \subsection{Front-end}
 The front-end is a web application built using the Angular framework. \cite{angular} Angular provides a clear structure for the different views and services of the application.
+
+Angular applications consist of modules, which are blocks of functionality. In OpsWeb's case, there are three modules; AppModule, ScheduleModule and ImporterModule. AppModule is the root of the application, while ScheduleModule contains functionality specific to the schedule view, and the ImporterModule contains the file importer functionality.
+
+A module can have one or more components, which control the UI views of the application. Components contain the application logic and define the view with HTML- based templates. The templates can contain bindings to the variables of the component class, which allows the view to change automatically when a variable value changes in the component.
+
+Modules also provide services; these are classes which can be used by components to for example fetch data. This avoids the problem of duplicating code in case many components need to have access to same functionality. In OpsWeb there are services for accessing data from the API and for keeping track of the schedule timeframe.
+
+The schedule visualization itself that is embedded within the schedule component uses D3.js library for drawing the timeline elements. D3.js is a data-driven document library that allows binding data to DOM elements. The schedule is an SVG container in which elements are placed with properties like X and Y coordinates, height and width. With D3.js, elements can be bound to data objects. The objects can have variables such as time\_start and time\_end which then are used to determine both the X position and the width of the element. The Y position of an element depends on which timeline it is placed on; this is determined by the domain variable of the data object, such as "spacecraft".
+
 \cite{d3js}
 \subsection{Back-end}
 OpsWeb's backend provides an interface through which the front-end client can receive and send data. It is built using Django REST Framework, which is a Python toolkit for programming web APIs. \cite{django} 
 
-OpsWeb's REST API has endpoints for different types of data that the system can visualize, such as passes, bookings and eclipses. The client makes HTTP requests to these endpoints with parameters specifying data filters such as the time range for which the data is requested. The data on back-end is stored in a MariaDB database, which is a fork of MySQL. \cite{mariadb} Django takes care of interfacing with the database with its model system; data models are defined, and data is stored and queried entirely with Python code. The data is then serialized into JSON format and returned in a HTTP response to the client.
+OpsWeb's REST API has endpoints for different types of data that the system can visualize, such as passes, bookings and eclipses. The client makes HTTP requests to these endpoints with parameters specifying data filters such as the time range for which data is wanted. The data on back-end is stored in a MariaDB database, which is a fork of MySQL. \cite{mariadb} Django takes care of interfacing with the database with its model system; data models are defined, and data is stored and queried entirely with Python code. The data is then serialized into JSON format and returned in a HTTP response to the client.
 
-The data comes from multiple sources; files uploaded through the client, other APIs within ESA, and user-created data.
+The data comes from multiple sources; these are listed in the table \ref{tab:opsweb_data_sources}. Some require the user to upload a file through the client while others are imported from other databases when the action is triggered by clicking a button in the client.
+
+Notably, SSR fill level works differently from other types of data. It is a synthetic parameter that comes from ESA's MustLink telemetry database. The fill level values are only valid during passes; between passes, there is no telemetry so the value is at zero even though there is data being recorded. The back-end filters the data so that the invalid values are ignored, and additionally predicts the SSR fill level in the future and between passes based on the TDA modes' data acquisition bitrate.
+
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+\begin{center}
+  \caption{OpsWeb data sources}
+  \label{tab:opsweb_data_sources}
+  \begin{tabular}{| l | l | l | }
+    \hline
+    Data type & Import method & Source \\
+    \hline
+    Passes & Triggered from the client & EMS Database  \\
+    Bookings & Triggered from the client & EMS Database  \\
+    Visibilities & Triggered from the client & EMS Database  \\
+    TDA modes & Uploaded from the client & OBRQ files  \\
+    Orbital events & Uploaded from the client & STEF files \\
+    Eclipses & Uploaded from the client & LTP files \\
+    SSR fill level & Not imported; filtered from another API & MustLink Database \\
+    \hline
+  \end{tabular}
+
+  \end{center}
+\end{table}
+
+The back-end uses JSON Web Token authentication. The client sends a request with the username and password, and receives a token as a response. The token is then placed in the Authorization header in subsequent request to authorize the client. The tokens is set to expire in 5 days unless it is refreshed. Token refresh is done automatically each time page is loaded. \cite{jwt}
+
+Timeline and style configurations of the front-end client are saved in the back-end's database. Each configuration is a combination of a timeline and a style configuration; these are in separate database tables, but there is a third table that contains the combinations by referring to the timeline and style configuration tables.
 
 \section{Development}
 OpsWeb is developed by a team of seven people, including the author of this thesis. The project is led by Cluster II spacecraft operations manager. The author of this thesis worked on this project for six months during an internship. Upon arrival in May 2017, the development had been going on for a couple of months and the main technologies had been chosen. Other than the author during his internship, no one works on the project full-time; instead, people contribute whenever they have time.
