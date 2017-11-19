@@ -168,7 +168,17 @@ When the user hovers the cursor over an icon, the times of the first and last en
 
 The icon grouping was implemented as a generic class that could be used to group any kind of instant events on the timeline.
 \section{Architecture}
-OpsWeb uses a client-server architecture consisting of a front-end client and a back-end server. Front-end is the user-facing part of the system and contains the application user interface that can be accessed through web browser. Back-end is a server that takes care of user authentication and data storage and processing functionality of the system.
+OpsWeb uses a client-server architecture consisting of a front-end client and a back-end server. Front-end is the user-facing part of the system and contains the application user interface that can be accessed through web browser. Back-end is a server that takes care of user authentication and data storage and processing functionality of the system. The front-end can also request data from other REST APIs if needed. The overall architecture of the system can be seen in the figure \ref{fig:architecture_diagram}.
+
+ %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{Architecture}
+  \end{center}
+  \caption{Architecture of OpsWeb}
+  \label{fig:architecture_diagram}
+\end{figure}
+
 \subsection{Front-end}
 The front-end is a web application built using the Angular framework. \cite{angular} Angular provides a clear structure for the different views and services of the application.
 
@@ -180,6 +190,12 @@ Modules also provide services; these are classes which can be used by components
 
 The schedule visualization itself that is embedded within the schedule component uses D3.js library for drawing the timeline elements. D3.js is a data-driven document library that allows binding data to DOM elements. The schedule is an SVG container in which elements are placed with properties like X and Y coordinates, height and width. With D3.js, elements can be bound to data objects. The objects can have variables such as time\_start and time\_end which then are used to determine both the X position and the width of the element. The Y position of an element depends on which timeline it is placed on; this is determined by the domain variable of the data object, such as "spacecraft".
 
+The most important class that handles the drawing and updating of the schedule is called Gantt. It draws the axes on the schedule and intializes the timeline domains based on the configuration. It also creates classes for each data type defined in the configuration, called "groups".
+
+There are three main group classes handling the actual drawing process of elements: InstantGroup, IntervalGroup and SeriesGroup, handling their respective categories of data which are mentioned in the section \ref{configurability_req}. Each datatype such as passes or SSR fill level is an instance of these classes. They request data from the back-end and use D3.js functions to draw elements on the SVG. When zooming or panning the schedule, functions in these classes are called to update the positions and sizes of the elements accordingly.
+
+New data is requested from the back-end every time the schedule timeframe is moves beyond a certain treshold. The request always has some padding on both sides of the visible timeframe so that small movements of the timeframe don't have to trigger a new request.
+
 \cite{d3js}
 \subsection{Back-end}
 OpsWeb's backend provides an interface through which the front-end client can receive and send data. It is built using Django REST Framework, which is a Python toolkit for programming web APIs. \cite{django} 
@@ -188,7 +204,7 @@ OpsWeb's REST API has endpoints for different types of data that the system can 
 
 The data comes from multiple sources; these are listed in the table \ref{tab:opsweb_data_sources}. Some require the user to upload a file through the client while others are imported from other databases when the action is triggered by clicking a button in the client.
 
-Notably, SSR fill level works differently from other types of data. It is a synthetic parameter that comes from ESA's MustLink telemetry database. The fill level values are only valid during passes; between passes, there is no telemetry so the value is at zero even though there is data being recorded. The back-end filters the data so that the invalid values are ignored, and additionally predicts the SSR fill level in the future and between passes based on the TDA modes' data acquisition bitrate.
+Notably, SSR fill level works differently from other types of data. It is a synthetic parameter that comes from ESA's MUSTLink telemetry database. The fill level values are only valid during passes; between passes, there is no telemetry so the value is at zero even though there is data being recorded. The back-end filters the data so that the invalid values are ignored, and additionally predicts the SSR fill level in the future and between passes based on the TDA modes' data acquisition bitrate.
 
 \begin{table}[!ht]
 % Add some padding to the table cells:
@@ -206,7 +222,7 @@ Notably, SSR fill level works differently from other types of data. It is a synt
     TDA modes & Uploaded from the client & OBRQ files  \\
     Orbital events & Uploaded from the client & STEF files \\
     Eclipses & Uploaded from the client & LTP files \\
-    SSR fill level & Not imported; filtered from another API & MustLink Database \\
+    SSR fill level & Not imported; filtered from another API & MUSTLink Database \\
     \hline
   \end{tabular}
 
@@ -253,4 +269,12 @@ Deployment is done after the test stage has passed. For the front-end this is do
 
 Back-end deployment similarly connects to the server with SSH, pulls the commit and then runs a script to migrate any model changes to the database. Django automatically restarts the server when changes are detected.
 \section{Future development}
-After OpsWeb's first release that provides schedule visualization and monitoring capabilities for the Cluster II mission...
+OpsWeb's first release in late 2017 provides the Cluster II spacecraft operations engineers and spacecraft controllers the ability to display configurable operations schedules. However, it does not yet contain one of the most important features of Cluster Web: being able to schedule passes and export the schedule for mission planning system. This is a feature that users have said to be very important.
+
+Dynamically dragging and dropping elements on the timeline will be a feature to be developed for the next release. Users should be able to add any kind of data to the system in a flexible and intuitive way, whether it is things like spacecraft controller shifts or planned activities for the spacecraft.
+
+The back-end is also for the time being specific to the Cluster mission's use case. Things like SSR fill level prediction do not apply directly to other mission, although similar concepts may be needed. There is also a need for flexible data models; users should be able to define new data types and what fields they contain, and add data to the system directly. Currently the data models are hard-coded in Django.
+
+A new, modular back-end will be built that has a flexible NoSQL  database and a generic data provider interface in which external databases can be plugged in. Mission- specific things like file importers and data processing will be moved into Python modules which can hook into the core system.
+
+As other missions and other users adopt OpsWeb, the development will also eventually open up and allow third parties to do their own additions to the system as needed. If possible, OpsWeb could also be opened to users outside of ESA and spacecraft operations, to allow its use as a fully generic timeline visualization software.

@@ -6,7 +6,7 @@ Because OpsWeb wasn't functionally yet on par with the old Cluster Web at this p
 
 There are some differences and new features in OpsWeb, and their effect on the user experience should be evaluated. In particular the configurable timelines are a new feature that could have a big effect on how people use Cluster Web, because it allows visualizing data from many different perspectives. This is arguably the largest addition compared to the old Cluster Web. Other features include the mouse-based timeline navigation, Uberlog integration on the timeline, and a moving live mode.
 
-The results will hopefully shed some light on how much CluWeb improves the user experience and opens up new possibilities with its new features. Having information about this could also help with setting goals and priorities for future development, but the study is more summative than formative as doing follow-up evaluations is outside of the scope of this thesis. \cite{albert2013measuring}
+The results will hopefully shed some light on how much OpsWeb improves the user experience and opens up new possibilities with its new features. Having information about this could also help with setting goals and priorities for future development, but the study is more summative than formative as doing follow-up evaluations is outside of the scope of this thesis. \cite{albert2013measuring}
 
 \section{Research questions} \label{research_questions}
 The following main research question is the one that this evaluation aims to answer:
@@ -67,7 +67,7 @@ Both pragmatic and hedonic goals of information system usage should be considere
 \subsection{Attributes of user experience}\label{usability_attributes}
 The concept of usability and user experience should be split into different subcategories to form an understanding of what kind of questions the evaluation results should be able to answer. If we combine what was covered in section \ref{definitions_section}, at least the following categories can be found:
 
-\textbf{Usefulness} is a measure of whether the system is actually needed. The task the system is designed for should be something that people need to or want to do, and the system should be helpful in completing that task. As Cluster Web has been in active use for many years, its usefulness is well established within its userbase, but this should still be evaluated to better find out what it is used for and how useful people find it for different purposes.It is also important to evaluate the usefulness of CluWeb's new features.
+\textbf{Usefulness} is a measure of whether the system is actually needed. The task the system is designed for should be something that people need to or want to do, and the system should be helpful in completing that task. As Cluster Web has been in active use for many years, its usefulness is well established within its userbase, but this should still be evaluated to better find out what it is used for and how useful people find it for different purposes.It is also important to evaluate the usefulness of OpsWeb's new features.
 
 \textbf{Efficiency} is a measure of how good are the results of using the system relative to the resources it needs. This is often measured in the amount of time required to complete a task, which is possible to evaluate as long as the task is well defined and has a starting and an ending time. For Cluster Web, a task could  consist of finding some information about a specific data item at a given time. In terms of user experience, the user can also be asked about their perceived efficiency to see how it compares with actual efficiency.
 
@@ -102,11 +102,11 @@ According to Rubin and Chisnell, an usability evaluation has the following basic
 
 \cite{rubin2008handbook}
 
-The evaluation done on Cluster Web and CluWeb follows this basic structure. While using real users in an empirical evaluation is time-consuming, is often the best way to identify usability problems. During the development cycle, using usability inspection methods like heuristic evaluation is sometimes used, which involves an expert going through the interface and comparing it against a set of criteria such as Nielsens ten heuristics \cite{Solr-oula.410573, nielsen1995usability}. This is faster and easier than doing full usability evaluation with users, but doesn't identify as many problems.
+The evaluation done on Cluster Web and OpsWeb follows this basic structure. While using real users in an empirical evaluation is time-consuming, is often the best way to identify usability problems. During the development cycle, using usability inspection methods like heuristic evaluation is sometimes used, which involves an expert going through the interface and comparing it against a set of criteria such as Nielsens ten heuristics \cite{Solr-oula.410573, nielsen1995usability}. This is faster and easier than doing full usability evaluation with users, but doesn't identify as many problems.
 
 Hollingsed and Novick note that using both empirical evaluation and usability inspection would be the most effective solution that is often overlooked. \cite{hollingsed2007usability}
 
-During the development of CluWeb, formal usability inspections were not done. It was up to the developers to identify potential usability problems. It is helpful that some members of the development team are future users of the software themselves. An usability inspection such as heuristic evaluation could be performed by doing a walkthrough of the system from a developer's perspective, but the main focus of this thesis is on empirical user evaluation which should produce more useful and interesting results.
+During the development of OpsWeb, formal usability inspections were not done. It was up to the developers to identify potential usability problems. It is helpful that some members of the development team are future users of the software themselves. An usability inspection such as heuristic evaluation could be performed by doing a walkthrough of the system from a developer's perspective, but the main focus of this thesis is on empirical user evaluation which should produce more useful and interesting results.
 
 User evaluations can be done by collecting data during day-to-day usage, for example by showing a survey to the user at random times, or by inspecting from logs how the users interact with the system. \cite{bevanevaluation} In this evaluation though, this won't be done as it would require additional development, which could be difficult especially in old Cluster Web's case.
 
@@ -122,20 +122,20 @@ As the participant count is rather small, the user evaluations can be performed 
 \subsection{Participant selection}
 Selecting the right participants for the study is a very important aspect of user experience evaluation. The participants should be a representative sample of the target userbase of the system. If the test users are selected incorrectly the test results would not be a useful metric of the user experience in real use.
 
-In Cluster Web's case, it is reasonably easy to  define and test the entire userbase as it is the Cluster II flight control team which is around 10 people. These will be the  first people to use the new CluWeb. Testing people from outside of the team could be considered as well as it might give more results on learnability.
+In Cluster Web's case, it is reasonably easy to  define and test the entire userbase as it is the Cluster II flight control team which is around 10 people. These will be the  first people to use the new OpsWeb. Testing people from outside of the team could be considered as well as it might give more results on learnability.
 
-CluWeb has the potential of attaining a larger userbase, as it could be used for visualizing any type of data which fit the descriptions defined in section \ref{vis_types}. 
+OpsWeb has the potential of attaining a larger userbase, as it could be used for visualizing any type of data which fit the descriptions defined in section \ref{configurability_req}. 
 
 A clear example of another userbase would be other ESA missions which have similar needs as Cluster II for visualizing operations schedules. Apart from space missions, it could also be used by ground station teams.
 
-There's also potential use cases entirely unrelated to space which could be found. Any kind of data that consists of timed events or values can be visualized using CluWeb. These other use cases are outside of the scope of this evaluation as it would take some time to make tailored solutions for other clients even though CluWeb's modular and configurable design would make it relatively easy compared to its predecessor.
+There's also potential use cases entirely unrelated to space which could be found. Any kind of data that consists of timed events or values can be visualized using OpsWeb. These other use cases are outside of the scope of this evaluation as it would take some time to make tailored solutions for other clients even though OpsWeb's modular and configurable design would make it relatively easy compared to its predecessor.
 
 \cite{rubin2008handbook, albert2013measuring}
 
 \subsection{Tasks}
-The users will perform different tasks during the evaluation. These tasks should represent some real use case of the system that is intended to be evaluated, and they should be able to bring out differences in usability between Cluster Web and CluWeb and hopefully help answer the research questions. \ref{research_questions} The tasks should require the users to make use of different functionalities of the system.
+The users will perform different tasks during the evaluation. These tasks should represent some real use case of the system that is intended to be evaluated, and they should be able to bring out differences in usability between Cluster Web and OpsWeb and hopefully help answer the research questions. \ref{research_questions} The tasks should require the users to make use of different functionalities of the system.
 
-One thing that was noted by users was that Cluster Web's timeline navigation by clicking buttons is very slow, so having the tasks focus on navigating the timeline and finding information by using the timeline data visualization could possibly highlight the effect that CluWeb's mouse pan and zoom navigation has .
+One thing that was noted by users was that Cluster Web's timeline navigation by clicking buttons is very slow, so having the tasks focus on navigating the timeline and finding information by using the timeline data visualization could possibly highlight the effect that OpsWeb's mouse pan and zoom navigation has .
 
 Possible timeline configurations in the new Cluster Web should be compared as well to find out how looking at the data from a different perspective can help when looking for information.
 
@@ -198,7 +198,7 @@ Schrepp et al. have developed a benchmark for analyzing the results of UEQ. The 
 
 AttrakDiff is older than UEQ, and also meant for measuring perceived user experience, consisting of several different scales of user experience with seven-step items. The scales are "Attractiveness", "Pragmatic Quality", "Identity" and "Stimulation". These were found to have significant correlations with the scales of UEQ in a validation study. \cite{laugwitz2008construction} The original AttrakDiff is in German, it appears that the English version is only accessible through an online service. \cite{attrakdiff}
 
-UEQ's item pool seemingly overlaps a lot with what is covered in SUS (complexity, consistency, confidence...), while presenting the questions in a simpler format, and also going into more detail than SUS. UEQ is easily available offline and has a convenient benchmark for analyzing the data. For these reasons, UEQ will be used in this evaluation. It will be filled by each participant twice; after using Cluster Web, and after using CluWeb.
+UEQ's item pool seemingly overlaps a lot with what is covered in SUS (complexity, consistency, confidence...), while presenting the questions in a simpler format, and also going into more detail than SUS. UEQ is easily available offline and has a convenient benchmark for analyzing the data. For these reasons, UEQ will be used in this evaluation. It will be filled by each participant twice; after using Cluster Web, and after using OpsWeb.
 
 Some preliminary information should be collected from each user that is relevant to the evaluation. In Cluster Web's case, the level of expertise could be one metric. This information could be collected by asking the participants their self-reported level of expertise.
 
@@ -222,21 +222,21 @@ Independent variables of the evaluation will be the version of Cluster Web (old/
 \end{itemize}
 \end{itemize}
 
-\section{Evaluation plan}
+\section{Evaluation plan} \label{evaluation_plan}
 In this section the finalized evaluation plan will be overviewed, including the task definitions and the questions which will be asked from the participants.
 
 \subsection{Course of the evaluation}
 The evaluation is done one participant at a time in person, in their offices. All participants perform the evaluation on the same computer.
 
-At the beginning of the evaluation, the participant is asked a set of background questions about their prior experience level with Cluster Web and CluWeb. This is defined in section \ref{pre-evaluation}
+At the beginning of the evaluation, the participant is asked a set of background questions about their prior experience level with Cluster Web and OpsWeb. This is defined in section \ref{pre-evaluation}. Note that OpsWeb is called "New Cluster Web" in the evaluation questions.
 
-The evaluation is split into two parts; Cluster Web and CluWeb. The order in which these two systems are evaluated is alternated between participants to prevent the order from having an effect on the results. This will also have to be done when evaluation CluWeb's different timeline configurations.
+The evaluation is split into two parts; Cluster Web and OpsWeb. The order in which these two systems are evaluated is alternated between participants to prevent the order from having an effect on the results. This will also have to be done when evaluation OpsWeb's different timeline configurations.
 
 During the evaluation, participants will perform tasks which will require them to navigate the timeline and read information that is displayed on it. The tasks are defined in the section \ref{tasks_section}. The first task will be done with the first system and the other with the second system. The correct answers to the tasks were checked multiple times to ensure that the data had not changed.
 
 The time to complete each task will be noted down from start to finish, and an application (Mousotron) \cite{mousotron} will be used to calculate the amount of mouse clicks and mouse movement distance. The given answer to the task will be noted down.
 
-Default and Estrack configurations of CluWeb will be comparatively evaluated to see how they affect the speed of finding information. The comparison tasks defined in the section \ref{tasks_section} will be done once the participants have seen all of the configurations. In addition, some configurations will not be comparatively evaluated, but they will be shown to the participant and explained, and after seeing all of the configurations the participants will rate their initial impression of each configurations' usefulness. The configurations are defined in the section \ref{configurations_section}.
+Default and Estrack configurations of OpsWeb will be comparatively evaluated to see how they affect the speed of finding information. The comparison tasks defined in the section \ref{tasks_section} will be done once the participants have seen all of the configurations. In addition, some configurations will not be comparatively evaluated, but they will be shown to the participant and explained, and after seeing all of the configurations the participants will rate their initial impression of each configurations' usefulness. The configurations are defined in the section \ref{configurations_section}.
 
  After evaluating a system the participants will fill out the UEQ based on their impressions of that system, and in the end of the evaluation they are asked for further feedback with the questionnaire defined in section \ref{post-evaluation}.
 
@@ -252,9 +252,9 @@ Participants will answer these questions on a paper form before doing any of the
 \subsection{Tasks} \label{tasks_section}
 The tasks for the participants will be defined in this section.
 
-\textbf{CluWeb introduction}
+\textbf{OpsWeb introduction}
 
-If the participant hasn't used CluWeb before, they should be introduced to the new features. Metrics won't be collected during this phase. The participants should be familiarized with the following features:
+If the participant hasn't used OpsWeb before, they should be introduced to the new features. Metrics won't be collected during this phase. The participants should be familiarized with the following features:
 \begin{enumerate}
 \item Timeline controls (pan, zoom, now button, calendar)
 \item Live mode
@@ -265,7 +265,7 @@ If the participant hasn't used CluWeb before, they should be introduced to the n
 \item Sharing of the schedule timeframe with URL
 \end{enumerate}
 
-\textbf{Cluster Web - CluWeb comparison tasks}
+\textbf{Cluster Web - OpsWeb comparison tasks}
 
 In the last 7 days of September this year, how many Maspalomas passes did...
 \begin{enumerate}
@@ -273,7 +273,7 @@ In the last 7 days of September this year, how many Maspalomas passes did...
 \item Cluster 2 have? (Correct: 3)
 \end{enumerate}
 
-\textbf{CluWeb configurations tasks}
+\textbf{OpsWeb configurations tasks}
 
 
 In the last 7 days of September this year...
@@ -285,7 +285,7 @@ In the last 7 days of September this year...
 \subsection{Configurations} \label{configurations_section}
 These configurations will be shown to the participants:
 
-\textbf{Default:} this is the basic view that will be used for direct comparison between Cluster Web and CluWeb. The schedule is split by spacecraft into four timelines, each of them displaying passes, SSR fill level, science modes, eclipses and apogees/perigees. In CluWeb, Uberlog entries are also displayed on the timeline.
+\textbf{Default:} this is the basic view that will be used for direct comparison between Cluster Web and OpsWeb. The schedule is split by spacecraft into four timelines, each of them displaying passes, SSR fill level, science modes, eclipses and apogees/perigees. In OpsWeb, Uberlog entries are also displayed on the timeline.
 
 \textbf{Default, dark theme:} same as default configuration but in a dark color scheme.
 
@@ -303,7 +303,7 @@ The question asked regarding each configuration will be as follows:
 \end{enumerate}
 
 \subsection{Post-evaluation questionnaire} \label{post-evaluation}
-The following questions will be asked regarding CluWeb's new features at the end of the evaluation:
+The following questions will be asked regarding OpsWeb's new features at the end of the evaluation:
 \begin{enumerate}
 \item How useful you find being able to pan and zoom the timeline using a mouse? not useful at all - very useful (1-7)
 \item How useful you find being able to configure the timeline? not useful at all - very useful (1-7)
@@ -316,7 +316,8 @@ The following questions will be asked regarding CluWeb's new features at the end
 \end{enumerate}
 
 \section{Results}
-In this section the results of the evaluation will be presented.
+The evaluation, as described in the section \ref{evaluation_plan}, was performed with eight participant. All of the participants were members of the Cluster II flight control team.
 
+The evaluations were done over the course of two weeks, the latest build of OpsWeb from before the evaluations began was used. Evaluations were done in each participants' office or in the control room, using the author's work laptop with mouse and no external screen. Participants wrote down their answers on paper forms, which were then transferred into an Excel sheet along with the author's observations. The evaluation took about half an hour per participant.
 
-\cite{bevanevaluation, rubin2008handbook, albert2013measuring}
+The results of the evaluation will be detailed in this section.
