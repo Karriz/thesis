@@ -318,24 +318,72 @@ The following questions will be asked regarding OpsWeb's new features at the end
 \section{Analysis}
 The evaluation, as described in the section \ref{evaluation_plan}, was performed with eight participant. All of the participants were members of the Cluster II flight control team.
 
-The evaluations were done over the course of two weeks, the latest build of OpsWeb from before the evaluations began was used. Evaluations were done in each participants' office or in the control room, using the author's work laptop with mouse and no external screen. Participants wrote down their answers on paper forms, which were then transferred into an Excel sheet along with the author's observations. The evaluation took about half an hour per participant.
+The evaluations were done over the course of two weeks, the latest build of OpsWeb from before the evaluations began was used. Evaluations were done in each participants' office or in the control room, using the author's work laptop with mouse and no external screen. Participants wrote down their answers on paper forms, which were then transferred into Excel sheets along with the author's observations. The evaluation took about half an hour per participant.
 
 Overall the response towards OpsWeb was positive, although it is still in development and it will take some time for people to learn its features, especially configurations. Some potential usability issues were discovered during the evaluation which should be addressed in the future.
 
 \subsection{Feedback regarding Cluster Web}
 
-\subsection{Pragmatic usability}
+\subsection{OpsWeb and Cluster Web task performance comparison}
+The task measurements show some differences between Cluster Web and OpsWeb. Firstly, the task completion time average seems to be lower with OpsWeb, as seen in the table \ref{cw_ow_times}.
+
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{Durations of tasks 1 and 2 evaluated with Cluster Web and OpsWeb}
+    \label{cw_ow_times}
+    \begin{tabular}{| l | l | l | l | l | l | l | }
+    \hline
+    Task durations (s) & 1     & 2     & 3      & 4      & Average & Standard Deviation \\
+    \hline
+    CW Task 1            & 60,64 & 54,48 & 108,77 & 65,88  & 72,44   & 24,66              \\
+    CW Task 2            & 56,11 & 65,06 & 42,06  & 86,22  & 62,36   & 18,51              \\
+    OW Task 1            & 32,34 & 21,86 & 19,53  & 121,58 & 48,83   & 48,82              \\
+    OW Task 2            & 28,33 & 19,91 & 34,53  & 40,29  & 30,77   & 8,73              \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+Whether or not the difference is significant can be found out with a two-sample T-test between the results of Cluster Web and OpsWeb. In the test, a P-value is calculated, and if it is lower than an significance level of 0.05, it can be said that there is a statistically significant difference at that significance level. The P-value used is for two-tails, meaning that OpsWeb could be either faster or slower than Cluster Web, and both possibilities are taken into account.
+
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{T-test results between Cluster Web and OpsWeb task durations}
+    \label{cw_ow_times_t_test}
+    \begin{tabular}{| l | l | l | l | }
+    \hline
+    Test & Cluster Web sample size & OpsWeb sample size  & P-value   \\
+    \hline
+    Task 1 & 4 & 4 & 0,437 \\
+    Task 2 & 4 & 4 &  0,037\\
+    Tasks 1 and 2 & 8 & 8 & 0,0734\\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+The results of the T-tests in table \ref{cw_ow_times_t_test} show that only task 2 by itself can be said to have produced a result that shows a significant difference between Cluster Web and OpsWeb, because 0.037 < 0.05. It can be said that based on task 2, OpsWeb is faster to use than OpsWeb.
+
+Task 1 result can be considered very unreliable and shows a large P value of 0.437. As a result, the overall comparison of Cluster Web and OpsWeb is also above the 0.05 treshold with a P value of 0.0734. This could be because of the small sample size, and the issues specified in section \ref{evaluation_problems} which caused some outliers in the data which raise the variance a lot. With a larger sample size, it may be possible to get better results. 
 
 \subsection{User experience questionnaire}
+The results of the UEQ revealed that the users had overall a more positive experience with OpsWeb than with Cluster Web. All different factors got higher averages on OpsWeb.
 
-\subsection{Problems with the evaluation}
-Some problems with the evaluation itself were encountered due to possibly unclear presentation of the tasks. The questions were on paper and not always read out loud by the author. The misunderstood questions had a line break so it's possible that the second line was missed. 
+
+\subsection{Problems with the evaluation} \label{evaluation_problems}
+Some problems with the evaluation itself were encountered due to possibly unclear presentation of the tasks. These problems could have effected OpsWeb´s evaluation results negatively.
 
 Task 1 ("In the last 7 days of September this year, how many Maspalomas passes did Cluster 1 have?") was misunderstood on three out of four occasions when it was performed on OpsWeb. On two of those occasions, the participants counted passes for all spacecraft and not only Cluster 1, so they got the wrong answer. On one occasion, the participant started looking for passes during the last seven days and not the last seven days of September at first, which took some extra time.
 
 On one occasion, task 2 ("In the last 7 days of September this year, how many Maspalomas passes did Cluster 1 have?") was misunderstood when evaluating OpsWeb and the participant started looking for passes during October at first. However, the task was restarted.
 
 The Estrack configuration was not properly explained at first by the author on two occasions, so the configuration task for it took some extra time.
+
+The questions were on paper and not always read out loud by the author. The misunderstood questions had a line break so it's possible that the second line was missed. 
 
 The lesson learned from these problems is that every aspect of the evaluation should be pre-planned, like how the questions are presented to the user and how the system usage is explained during evaluation. It would also be good to have a "test" round with the evaluation to find potential issues before finalizing the plan and continuing on with the actual evaluation.
 
