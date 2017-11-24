@@ -346,7 +346,7 @@ The task measurements show some differences between Cluster Web and OpsWeb. Firs
     \end{center}
 \end{table}
 
-Whether or not the difference is significant can be found out with a two-sample T-test between the results of Cluster Web and OpsWeb. In the test, a P-value is calculated, and if it is lower than an significance level of 0.05, it can be said that there is a statistically significant difference at that significance level. The P-value used is for two-tails, meaning that OpsWeb could be either faster or slower than Cluster Web, and both possibilities are taken into account.
+Whether or not the difference is significant can be found out with a two-sample T-test between the results of Cluster Web and OpsWeb. The null hypothesis is that there is no difference between Cluster Web and OpsWeb. In the test, a P-value is calculated, and if it is lower than an significance level of 0.05, it can be said that there is a statistically significant difference at that significance level. The P-value used is for two-tails, meaning that OpsWeb could be either faster or slower than Cluster Web, and both possibilities are taken into account.
 
 \begin{table}[!ht]
 % Add some padding to the table cells:
@@ -360,15 +360,101 @@ Whether or not the difference is significant can be found out with a two-sample 
     \hline
     Task 1 & 4 & 4 & 0,437 \\
     Task 2 & 4 & 4 &  0,037\\
-    Tasks 1 and 2 & 8 & 8 & 0,0734\\
+    Tasks 1 and 2 & 8 & 8 & 0,073\\
     \hline
     \end{tabular}
     \end{center}
 \end{table}
 
-The results of the T-tests in table \ref{cw_ow_times_t_test} show that only task 2 by itself can be said to have produced a result that shows a significant difference between Cluster Web and OpsWeb, because 0.037 < 0.05. It can be said that based on task 2, OpsWeb is faster to use than OpsWeb.
+The results of the T-tests in table \ref{cw_ow_times_t_test} show that only task 2 has a P value that is below the treshold (0.037 < 0.05). It can be said that task 2 was performed significantly faster with OpsWeb than with Cluster Web.
 
-Task 1 result can be considered very unreliable and shows a large P value of 0.437. As a result, the overall comparison of Cluster Web and OpsWeb is also above the 0.05 treshold with a P value of 0.0734. This could be because of the small sample size, and the issues specified in section \ref{evaluation_problems} which caused some outliers in the data which raise the variance a lot. With a larger sample size, it may be possible to get better results. 
+Task 1 result can be considered statistically insignificant because it has a large P value of 0.437. The overall comparison of Cluster Web and OpsWeb with both tasks 1 and 2 is also above the 0.05 treshold with a P value of 0.073. This could be because of the small sample size, and the issues specified in section \ref{evaluation_problems} which caused some outliers in the data which raise the variance a lot. With a larger sample size, it may be possible to get better results.
+
+The amount of mouse clicks appears to also show some difference between Cluster Web and OpsWeb. The averages for OpsWeb are seemingly lower than for Cluster Web \ref{cw_ow_clicks}. The signifigance of these results was again studied using a T-test.
+
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{Amount of mouse clicks of tasks 1 and 2 evaluated with Cluster Web and OpsWeb}
+    \label{cw_ow_clicks}
+    \begin{tabular}{| l | l | l | l | l | l | l | }
+    \hline
+    Mouse clicks & 1  & 2  & 3  & 4  & Average & Standard Deviation \\
+    \hline
+    CW Task 1    & 14 & 9  & 21 & 28 & 18,00   & 8,29               \\
+    CW Task 2    & 6  & 13 & 10 & 13 & 10,50   & 3,32               \\
+    OW Task 1    & 5  & 4  & 4  & 4  & 4,25    & 0,50               \\
+    OW Task 2    & 7  & 5  & 9  & 9  & 7,50    & 1,91            \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{T-test results between Cluster Web and OpsWeb mouse click amounts}
+    \label{cw_ow_clicks_t_test}
+    \begin{tabular}{| l | l | l | l | }
+    \hline
+    Test & Cluster Web sample size & OpsWeb sample size  & P-value   \\
+    \hline
+    Task 1 & 4 & 4 & 0,045 \\
+    Task 2 & 4 & 4 & 0,178 \\
+    Tasks 1 and 2 & 8 & 8 & 0,013 \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+The T-test done on the mouse click amounts shows that task 1 by itself indicates a significant difference between Cluster Web and OpsWeb (0.045 < 0.05) while task 2 does not (0.178 > 0.05). When samples from task 1 and 2 are combined, the resulting P-value is 0.013 which means that overall it required significantly less mouse clicks to perform tasks with OpsWeb than with Cluster Web.
+
+The mouse movement distance results show that with OpsWeb, task 1 was performed on average with shorter mouse movement distance than with Cluster Web, but with task 2 the result is opposite. T-test is done with the aim to find out if there is any significant difference between OpsWeb and Cluster Web in this regard.
+
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{The mouse movement distance of tasks 1 and 2 evaluated with Cluster Web and OpsWeb}
+    \label{cw_ow_distances}
+    \begin{tabular}{| l | l | l | l | l | l | l | }
+    \hline
+    Mouse distance (m) & 1  & 2  & 3  & 4  & Average & Standard Deviation \\
+    \hline
+    CW Task 1          & 1,31 & 1,45 & 6,49 & 4,08 & 3,33    & 2,46               \\
+    CW Task 2          & 1,78 & 2,14 & 0,99 & 2,04 & 1,74    & 0,52               \\
+    OW Task 1          & 1,78 & 1,54 & 2,19 & 2,39 & 1,98    & 0,39               \\
+    OW Task 2          & 2,58 & 1,44 & 6,74 & 4,18 & 3,74    & 2,30              \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{T-test results between Cluster Web and OpsWeb mouse movement distances}
+    \label{cw_ow_distances_t_test}
+    \begin{tabular}{| l | l | l | l | }
+    \hline
+    Test & Cluster Web sample size & OpsWeb sample size  & P-value   \\
+    \hline
+    Task 1 & 4 & 4 & 0,355 \\
+    Task 2 & 4 & 4 & 0,188 \\
+    Tasks 1 and 2 & 8 & 8 & 0,7315 \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+As can be seen in table \ref{cw_ow_distances_t_test}, the P values for the mouse movement distance T-tests are rather large, so there isn't any significant difference between Cluster Web and OpsWeb mouse movement distance based on the data.
+
+To sum up, OpsWeb shows shorter task duration times, but the results aren't statistically convincing enough, possibly due to small sample size and problems encountered during the evaluation. OpsWeb seems to require a lower amount of mouse clicks to perform a task than Cluster Web, and it appears to be a statistically significant difference. Mouse movement distances on the other hand do not show any kind of trend. More evaluation would be required to draw strong conclusions, but OpsWeb shows promise in making the user workflow faster and easier.
+
+\subsection{Configuration task performance comparison}
 
 \subsection{User experience questionnaire}
 The results of the UEQ revealed that the users had overall a more positive experience with OpsWeb than with Cluster Web. All different factors got higher averages on OpsWeb.
