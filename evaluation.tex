@@ -454,6 +454,29 @@ As can be seen in table \ref{cw_ow_distances_t_test}, the P values for the mouse
 
 To sum up, OpsWeb shows shorter task duration times, but the results aren't statistically convincing enough, possibly due to small sample size and problems encountered during the evaluation. OpsWeb seems to require a lower amount of mouse clicks to perform a task than Cluster Web, and it appears to be a statistically significant difference. Mouse movement distances on the other hand do not show any kind of trend. More evaluation would be required to draw strong conclusions, but OpsWeb shows promise in making the user workflow faster and easier.
 
+The error rates of the task answers are shown in table \ref{cw_ow_errors}. All answers were correct with Cluster Web, showing that it is a reliable tool and people know how to use it. With OpsWeb, users got task 1 wrong half of the time, which can be attributed to misunderstanding the task as defined in section \ref{evaluation_problems}. 
+
+No participant got the task 2 answer right with OpsWeb. Author re-checked the correct answer multiple times, and a possible explanation to the high error rate is an usability issue with the calendar input that is explained in section \ref{usability_issues} .
+
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{Error rates of tasks 1 and 2 evaluated with Cluster Web and OpsWeb}
+    \label{cw_ow_errors}
+    \begin{tabular}{| l | l | l | }
+    \hline
+    Task & Sample size & Error rate  \\
+    \hline
+    CW Task 1    &  4 & 0\%       \\
+    CW Task 2    &  4 & 0\%       \\
+    OW Task 1    &  4 & 50\%       \\
+    OW Task 2    &  4 & 100\%       \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
 \subsection{Configuration task performance comparison}
 
 \subsection{User experience questionnaire}
@@ -473,6 +496,6 @@ The questions were on paper and not always read out loud by the author. The misu
 
 The lesson learned from these problems is that every aspect of the evaluation should be pre-planned, like how the questions are presented to the user and how the system usage is explained during evaluation. It would also be good to have a "test" round with the evaluation to find potential issues before finalizing the plan and continuing on with the actual evaluation.
 
-\subsection{Usability issues}
+\subsection{Usability issues} \label{usability_issues}
 
 \subsection{Ideas for future development}
