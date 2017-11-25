@@ -323,8 +323,9 @@ The evaluations were done over the course of two weeks, the latest build of OpsW
 Overall the response towards OpsWeb was positive, although it is still in development and it will take some time for people to learn its features, especially configurations. Some potential usability issues were discovered during the evaluation which should be addressed in the future.
 
 \subsection{Feedback regarding Cluster Web}
+Participants mentioned some problems with Cluster Web they would like to be improved with OpsWeb.
 
-\subsection{OpsWeb and Cluster Web task performance comparison}
+\subsection{OpsWeb and Cluster Web task performance comparison} \label{cw_ow_task_perf}
 The task measurements show some differences between Cluster Web and OpsWeb. Firstly, the task completion time average seems to be lower with OpsWeb, as seen in the table \ref{cw_ow_times}.
 
 \begin{table}[!ht]
@@ -477,10 +478,33 @@ No participant got the task 2 answer right with OpsWeb. Author re-checked the co
     \end{center}
 \end{table}
 
-\subsection{Configuration task performance comparison}
+\subsection{Configuration comparison}
+OpsWeb's default and Estrack configurations were evaluated to find out if using different configurations can make looking for the same information easier.
+
+The configuration tasks didn't provide any conclusive data. In some cases Default configuration has better averages than Estrack configuration, in some cases worse, but there's no clear trend visible and all of the P-values are well above 0.05.
 
 \subsection{User experience questionnaire}
 The results of the UEQ revealed that the users had overall a more positive experience with OpsWeb than with Cluster Web. All different factors got higher averages on OpsWeb.
+
+UEQ benchmark was used for analyzing the results. \cite{schrepp2017construction} The benchmark provides an Excel sheet where the results are inserted, and statistical calculations are done based on the data. The five factors: attractiveness, perspiquity, efficiency, dependability, stimulation and novelty are given a rating by the benchmark. Results for Cluster Web can be seen in figure \ref{fig:cw_ueq} and for OpsWeb in figure \ref{fig:ow_ueq}.
+
+ %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{cw_ueq}
+  \end{center}
+  \caption{UEQ benchmark results for Cluster Web}
+  \label{fig:cw_ueq}
+\end{figure}
+
+ %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{ow_ueq}
+  \end{center}
+  \caption{UEQ benchmark results for OpsWeb}
+  \label{fig:ow_ueq}
+\end{figure}
 
 
 \subsection{Problems with the evaluation} \label{evaluation_problems}
@@ -497,5 +521,13 @@ The questions were on paper and not always read out loud by the author. The misu
 The lesson learned from these problems is that every aspect of the evaluation should be pre-planned, like how the questions are presented to the user and how the system usage is explained during evaluation. It would also be good to have a "test" round with the evaluation to find potential issues before finalizing the plan and continuing on with the actual evaluation.
 
 \subsection{Usability issues} \label{usability_issues}
+One of the things discovered from the Cluster Web vs OpsWeb comparison tasks was that all of the task 2 answers were wrong for OpsWeb, as mentioned in section \ref{cw_ow_task_perf}. There is a potential usability issue that may have caused the participants to get the wrong answer.
+
+When selecting the time range using the calendar input that is described in section \ref{opsweb_nav}, the user selects two dates which mark the beginning and end of the desired timeframe, and the schedule moves to show that timeframe. The problem is that the end date isn't actually shown; the selection is up to the beginning of the day. i.e. 0:00 UTC. This caused the participants to either miss the passes during the last day, or zoom out and look at a timeframe that is too long. The dates are still shown at the bottom axis of the schedule but it is possible that participants were not looking at it.
+
+This would be easy to fix by changing the end date selection so that it selects from the beginning of the first day of the timeframe to the end of the last day, which could be more intuitive to the users.
+
+Another thing that was discovered on one occasion is that the timeline labels aren't necessarily clear enough and easy to miss, so the user doesn't understand what data is shown on each timeline. Tweaking font size and colors could be considered.
 
 \subsection{Ideas for future development}
+Participants had many ideas for how OpsWeb could be improved in the future.
