@@ -322,8 +322,12 @@ The evaluations were done over the course of two weeks, the latest build of OpsW
 
 Overall the response towards OpsWeb was positive, although it is still in development and it will take some time for people to learn its features, especially configurations. Some potential usability issues were discovered during the evaluation which should be addressed in the future.
 
-\subsection{Feedback regarding Cluster Web}
-Participants mentioned some problems with Cluster Web they would like to be improved with OpsWeb.
+\subsection{Feedback about Cluster Web}
+Participants mentioned some problems with Cluster Web they would like to be improved with OpsWeb. Slowness of navigating the timeline was by most participants. One participant mentioned that the menu system is very confusing to navigate for new users. The overall look and feel was said to be outdated by one user. For pass planning, some users would like to adjust pass times by dragging them with the mouse.
+
+Another important thing that some participants noted is the data processing workflow, which requires the mission planner to manually import files to the system every week. This is something that could be automated in the future. 
+
+Lack of configurability and being mission specific considered to be problems. Some users who were familiar with Cluster Web's code base mentioned that it is a very large, fragmented and consists of multiple different coding styles, needs better version control and is based on outdated technology (PHP). Applying it to other missions would be cumbersome.
 
 \subsection{OpsWeb and Cluster Web task performance comparison} \label{cw_ow_task_perf}
 The task measurements show some differences between Cluster Web and OpsWeb. Firstly, the task completion time average seems to be lower with OpsWeb, as seen in the table \ref{cw_ow_times}.
@@ -541,4 +545,7 @@ This would be easy to fix by changing the end date selection so that it selects 
 Another thing that was discovered on one occasion is that the timeline labels aren't necessarily clear enough and easy to miss, so the user doesn't understand what data is shown on each timeline. Tweaking font size and colors could be considered.
 
 \subsection{Ideas for future development}
-Participants had many ideas for how OpsWeb could be improved in the future.
+Participants had many ideas for how OpsWeb could be improved in the future. The ability to plan passes and dynamically add other data on the timeline was mentioned, and this is indeed something that is planned for a future release.
+
+An idea for increasing the clarity of the timeline was mentioned by a user: having some kind of a legend which would show the user what the different data types look like on the timeline. This could be dynamically generated based on the timeline configuration.
+
