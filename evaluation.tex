@@ -175,7 +175,7 @@ The questions in SUS are as follows, all of them rated on a five-choice scale fr
 \end{enumerate}
 
 \cite{brooke1996sus}
-
+o
 UEQ is split five different scales altogether containing 26 items which apply particularly for hedonic user experience. The items are opposite adjectives on a scale from 1 to 7, and the order of the polarities is randomized. The scales are as follows:
 
 \textbf{Attractiveness:} the user's overall impression of the system, for example "annoying - enjoyable".
@@ -501,7 +501,9 @@ The rating system of the UEQ benchmark created by Schrepp et al. is based on a d
     \item excellent (best 10\% of the results)
 \end{itemize}\cite{schrepp2017construction}
 
-On a numerical scale, the UEQ answers can be from 1 to 7, and in the benchmark they're shifted to be from -3 to 3. What is notable that on the benchmark ratings, for the most part anything below 1 is already in the "below average" category. On the answer scale that means below 5. This indicates that people usually give products quite high ratings with UEQ.
+On a numerical scale, the UEQ answers can be from 1 to 7, and in the benchmark they're shifted to be from -3 to 3 and the polarities are flipped when necessary so that -3 is in the negative end of the item pool and 3 in the positive end. What is notable is that on the benchmark ratings, for the most part anything below 1 is already in the "below average" category. On the answer scale that means below 5. This indicates that people usually give products quite high ratings with UEQ.
+
+OpsWeb's results are in the "excellent" range of the benchmark for all factors, and for Cluster Web they are in the "bad" range. If we look at the averages, OpsWeb's are around 2 and Cluster Web's are around 0, on a scale from -3 to 3.
 
  %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
 \begin{figure}[ht]
@@ -521,6 +523,23 @@ On a numerical scale, the UEQ answers can be from 1 to 7, and in the benchmark t
   \label{fig:ow_ueq}
 \end{figure}
 
+ %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{cw_ueq_error_bars}
+  \end{center}
+  \caption{UEQ results for Cluster Web with error bars}
+  \label{fig:cw_ueq_error_bars}
+\end{figure}
+
+ %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{ow_ueq_error_bars}
+  \end{center}
+  \caption{UEQ results for OpsWeb with error bars}
+  \label{fig:ow_ueq_error_bars}
+\end{figure}
 
 \subsection{Problems with the evaluation} \label{evaluation_problems}
 Some problems with the evaluation itself were encountered due to possibly unclear presentation of the tasks. These problems could have effected OpsWeb´s evaluation results negatively.
@@ -549,3 +568,10 @@ Participants had many ideas for how OpsWeb could be improved in the future. The 
 
 An idea for increasing the clarity of the timeline was mentioned by a user: having some kind of a legend which would show the user what the different data types look like on the timeline. This could be dynamically generated based on the timeline configuration.
 
+One participant wanted to have the ground station bookings from other missions filtered out when there is no visibility for Cluster. Cluster Web has this feature and it makes the view less cluttered, and it would be good to have it for OpsWeb as well.
+
+Plotting telemetry data is a feature that one participant mentioned. OpsWeb can plot time series data on the timelines, and this could perhaps be further extended with axis labelling and perhaps a plot cursor that would allow the user to inspect the exact value at a given time.
+
+Seeing loaded procedures and activities on the timeline would be useful according to one participant. As long as the data can be imported into the back-end this is something that could be implemented in the future.
+
+One idea from a participant was that gaps in telemetry data could be displayed on a pass with different color so that the spacecraft controllers and engineers could see with a quick glance if there is a problem. Part of a pass could for example be colored in red rather than the usual blue color. Doing this in real time would require the back-end to keep track of the telemetry status.
