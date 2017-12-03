@@ -322,6 +322,8 @@ The evaluations were done over the course of two weeks, the latest build of OpsW
 
 Overall the response towards OpsWeb was positive, although it is still in development and it will take some time for people to learn its features, especially configurations. Some potential usability issues were discovered during the evaluation which should be addressed in the future.
 
+\subsection{Experience level of participants}
+
 \subsection{Feedback about Cluster Web}
 Participants mentioned some problems with Cluster Web they would like to be improved with OpsWeb. Slowness of navigating the timeline was by most participants. One participant mentioned that the menu system is very confusing to navigate for new users. The overall look and feel was said to be outdated by one user. For pass planning, some users would like to adjust pass times by dragging them with the mouse.
 
@@ -523,6 +525,18 @@ OpsWeb's results are in the "excellent" range of the benchmark for all factors, 
   \label{fig:ow_ueq}
 \end{figure}
 
+The results in the regular scale without the benchmark intervals can be seen in figure \ref{fig:cw_ueq_error_bars} for Cluster Web and in figure \ref{fig:cw_ueq_error_bars} for OpsWeb. These figures also show error bars representing a confidence interval at 95\% confidence level, which indicates how far away the true value could be from the reported value if a 5\% chance of error is considered to be significant. Because the error bars for Cluster Web and OpsWeb do not overlap, this would indicate that the difference between the two is significant.
+
+It can also be seen that Cluster Web's evaluation is not in the red zone that is below -0.8. This means that while it is not in the green "positive evaluation" range it is not in the "negative evaluation" range either, but sits in the middle.
+
+There do not seem to be huge differences between different factors, they all got fairly similar results. Dependability scores highest for Cluster Web, and for OpsWeb the highest value is for efficiency.
+
+UEQ benchmark also calculates values which can be used to analyze the trustworthiness of the evaluation. Participants might answer different items in an inconsistent way. For example, if a participant answers the item "clear - confusing" to be closer to "clear", and the item "not understandable - understandable" to be closer to "not understandable", it is possible that either the answers are not serious or the options were interpreted in a different way than intended. In the benchmark, having a difference of more than 3 points between two items which should match is considered to be an inconsistency.
+
+According to the benchmark, having one inconsistent scale for a participant is not necessarily an issue, but if the same participant has two or more problematic scales this could be an indication of a problem. 
+
+In OpsWeb's evaluation, one participant had more than one inconsistent scales: perspiquity and novelty in this case. For Cluster Web there were two participants who had more than one inconsistent scales. One of them had inconsistent answers for efficiency and dependability and the other for attractiveness, perspiquity, efficiency and dependability.
+
  %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
 \begin{figure}[ht]
   \begin{center}
@@ -540,6 +554,10 @@ OpsWeb's results are in the "excellent" range of the benchmark for all factors, 
   \caption{UEQ results for OpsWeb with error bars}
   \label{fig:ow_ueq_error_bars}
 \end{figure}
+
+The benchmark calculates Cronbach's Alpha-coefficient values for the scales to help determine how consistent the answers are. Items in the same scale should have a high correlation. 0.7 is commonly used as a treshold value, above which the answers can be considered to be consistent.
+
+
 
 \subsection{Problems with the evaluation} \label{evaluation_problems}
 Some problems with the evaluation itself were encountered due to possibly unclear presentation of the tasks. These problems could have effected OpsWeb´s evaluation results negatively.
@@ -562,6 +580,10 @@ When selecting the time range using the calendar input that is described in sect
 This would be easy to fix by changing the end date selection so that it selects from the beginning of the first day of the timeframe to the end of the last day, which could be more intuitive to the users.
 
 Another thing that was discovered on one occasion is that the timeline labels aren't necessarily clear enough and easy to miss, so the user doesn't understand what data is shown on each timeline. Tweaking font size and colors could be considered.
+
+\subsection{Usefulness of different configurations}
+
+\subsection{Usefulness of new features}
 
 \subsection{Ideas for future development}
 Participants had many ideas for how OpsWeb could be improved in the future. The ability to plan passes and dynamically add other data on the timeline was mentioned, and this is indeed something that is planned for a future release.
