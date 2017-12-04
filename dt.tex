@@ -73,9 +73,9 @@
 \begin{abstract}
 Various different software tools are used when planning and executing spacecraft operations. European Space Agency's Cluster II mission utilizes a web portal called "Cluster Web" for scheduling and overviewing mission events. A new version of this tool called "OpsWeb" is being developed using modern web techologies to improve usability and to make the tool adaptable to other missions in the future. 
 
-A comparative user experience evaluation was done between Cluster Web and OpsWeb to find out how usability was improved. It was found that...
+A comparative user experience evaluation was done between Cluster Web and OpsWeb to find out how usability was improved. The results indicate that OpsWeb allows users to complete tasks faster and with less effort than Cluster Web, although some issues were discovered. Users also reported that they had a more positive experience using OpsWeb than Cluster Web. Feedback gathered from the evaluation includes some ideas for future development of OpsWeb.
 
-\keywords spacecraft operation, software, usability, user interface, visualization, web
+\keywords spacecraft operation, software, usability, user experience, user interface, evaluation, visualization, web
 
 \end{abstract}
 
@@ -83,9 +83,9 @@ A comparative user experience evaluation was done between Cluster Web and OpsWeb
 \begin{tiivistelma}
 Avaruusoperaatioiden suunnittelussa ja toteutuksessa hyödynnetään paljon erilaisia ohjelmistoja. Euroopan Avaruusjärjestön Cluster II- lennossa käytetään "Cluster Web"- nimistä web-portaalia tapahtumien ajoittamiseen ja antamaan yleiskatsaus lennon tapahtumista. Tästä työkalusta kehitetään uutta "OpsWeb"- nimistä versiota moderneja web-teknologioita hyödyntäen. Tarkoituksena on parantaa työkalun käytettävyyttä ja mahdollistaa sen hyödyntäminen myös muiden lentojen yhteydessä.
 
-Cluster Webin ja OpsWebin välillä tehtiin vertaileva käyttökokemuksen evaluointi jolla pyritttiin selvittämään millä tavoin käytettävyys parantui. Tuloksista nähdään että...
+Cluster Webin ja OpsWebin välillä tehtiin vertaileva käyttökokemuksen evaluointi jolla pyritttiin selvittämään millä tavoin käytettävyys parantui. Tuloksista nähdään että käyttäjät pystyvät suorittamaan tiettyjä tehtäviä OpsWebillä nopeammin ja helpommin kuin Cluster Webillä, joskin joitain ongelmia havaittiin. Käyttäjät myös ilmaisivat että heidän käyttökokemuksensa oli positiivisempi OpsWebillä kuin Cluster Webillä. Evaluoinnin yhteydessä kerätty palaute antaa joitain ideoita OpsWebin jatkokehitykseen.
 
-\avainsanat avaruusoperaatio, ohjelmisto, käytettävyys, käyttöliittymä, visualisaatio, web
+\avainsanat avaruusoperaatio, ohjelmisto, käytettävyys, käyttökokemus, käyttöliittymä, evaluointi, visualisaatio, web
 \end{tiivistelma}
 
 \selectlanguage{english}
@@ -95,9 +95,11 @@ Cluster Webin ja OpsWebin välillä tehtiin vertaileva käyttökokemuksen evaluo
 %\tableofcontents
 
 \otsake{FOREWORD}
-This thesis was started during an internship at the European Space Operations Centre in Darmstadt, Germany. I worked in the OpsWeb development team for six months from May to October 2017.
+I started writing this thesis during an internship at the European Space Operations Centre in Darmstadt, Germany. I worked in OpsWeb development team for six months from May 2017 to October 2017. It was very rewarding to work on something that will hopefully help spacecraft operators in their jobs in the future. Getting a look inside the world of spacecraft operations was also a very unique and interesting experience.
 
-Karri Ojala, 2017
+I would like to thank the people at ESOC for this opportunity to work with them and write this thesis, especially everyone in the Cluster II Flight Control Team. I would like to thank my thesis supervisors at University of Oulu, Mourad Oussalah and Matti Pouke, for their feedback and guidance. I would also like to thank my parents for their support.
+
+Karri Ojala, December 2017
 %\allekirjoitus{Oulu, Finland \today}
 
 \otsake{ABBREVIATIONS}
@@ -127,9 +129,6 @@ Karri Ojala, 2017
 
 \chapter{Discussion}
 \input{discussion}  % ./discussion.tex
-
-\chapter{Summary}
-\input{summary}  % ./summary.tex
 
 \bibliographystyle{di}
 \bibliography{di}

@@ -323,6 +323,25 @@ The evaluations were done over the course of two weeks, the latest build of OpsW
 Overall the response towards OpsWeb was positive, although it is still in development and it will take some time for people to learn its features, especially configurations. Some potential usability issues were discovered during the evaluation which should be addressed in the future.
 
 \subsection{Experience level of participants}
+Participants reported their own prior experience level with both Cluster Web and OpsWeb, and if they found that Cluster Web makes their job easier. The answers on scale 1-7 are seen in table \ref{experience_levels}. It can be noted that everyone fully agreed that Cluster Web made their job easier, expect one participant who hadn't yet used Cluster Web enough to answer. Three participants were involved in OpsWeb development.
+
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{Participants' answers to questions about their experience.}
+    \label{experience_levels}
+    \begin{tabular}{| l | l | l | l | l | l | l | l | l | }
+    \hline
+    Participant & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8   \\
+    \hline
+    CW experience    & 7  & 5 & 5 & 7 & 2 & 6 & 7 & 7     \\
+    OW experience    & 1 & 5 & 6 & 7 & 1 & 2 & 2 & 1  \\
+    CW makes job easier & 7 & 7 & 7 & 7 & - & 7 & 7 & 7    \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
 
 \subsection{Feedback about Cluster Web}
 Participants mentioned some problems with Cluster Web they would like to be improved with OpsWeb. Slowness of navigating the timeline was by most participants. One participant mentioned that the menu system is very confusing to navigate for new users. The overall look and feel was said to be outdated by one user. For pass planning, some users would like to adjust pass times by dragging them with the mouse.
@@ -505,7 +524,11 @@ The rating system of the UEQ benchmark created by Schrepp et al. is based on a d
 
 On a numerical scale, the UEQ answers can be from 1 to 7, and in the benchmark they're shifted to be from -3 to 3 and the polarities are flipped when necessary so that -3 is in the negative end of the item pool and 3 in the positive end. What is notable is that on the benchmark ratings, for the most part anything below 1 is already in the "below average" category. On the answer scale that means below 5. This indicates that people usually give products quite high ratings with UEQ.
 
-OpsWeb's results are in the "excellent" range of the benchmark for all factors, and for Cluster Web they are in the "bad" range. If we look at the averages, OpsWeb's are around 2 and Cluster Web's are around 0, on a scale from -3 to 3.
+OpsWeb's results are in the "excellent" range of the benchmark for all factors, and for Cluster Web they are in the "bad" range. If we look at the averages, OpsWeb's are around 2 and Cluster Web's are around 0, on a scale from -3 to 3. 
+
+"Efficiency" was the scale with largest difference between Cluster Web and OpsWeb. For Cluster Web this was the lowest scoring scale with a rating of -0.406, while for OpsWeb it was the highest scoring scale with a rating of 2.344. Efficiency covers how fast, organized and practical the system is considered to be.
+
+Smallest difference between Cluster Web and OpsWeb was on the scale "Dependability", where the ratings for Cluster Web and OpsWeb were 0.563 and 1.844 respectively. For Cluster Web this was the highest scoring scale, while for OpsWeb it was the second lowest scoring. Dependability covers things like predictability, supportiveness, security and meeting expectations.
 
  %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
 \begin{figure}[ht]
@@ -557,7 +580,35 @@ In OpsWeb's evaluation, one participant had more than one inconsistent scales: p
 
 The benchmark calculates Cronbach's Alpha-coefficient values for the scales to help determine how consistent the answers are. Items in the same scale should have a high correlation. 0.7 is commonly used as a treshold value, above which the answers can be considered to be consistent.
 
+The alpha-coefficients can be seen in table \ref{alpha_coeff}. There are two scales which have a coefficient that is below 0.7: Cluster Web's novelty scale and OpsWeb's stimulation scale. They're not badly below 0.7 so this is not necessarily an indication of a big problem, but somewhat weakens the validity of those scales.
 
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{Cronbach's Alpha-coefficients for Cluster Web's and OpsWeb's UEQ scales}
+    \label{alpha_coeff}
+    \begin{tabular}{| l | l | }
+    \hline
+    Scale & Alpha  \\
+    \hline
+    CW Attractiveness    & 0.81       \\
+    CW Perspiquity    & 0.83        \\
+    CW Efficiency    & 0.73        \\
+    CW Dependability    & 0.73        \\
+    CW Stimulation    & 0.87        \\
+    CW Novelty    & 0.68        \\
+    \hline
+    OW Attractiveness    & 0.96        \\
+    OW Perspiquity    & 0.74        \\
+    OW Efficiency    & 0.72        \\
+    OW Dependability    & 0.81        \\
+    OW Stimulation    & 0.64        \\
+    OW Novelty    & 0.76        \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
 
 \subsection{Problems with the evaluation} \label{evaluation_problems}
 Some problems with the evaluation itself were encountered due to possibly unclear presentation of the tasks. These problems could have effected OpsWeb´s evaluation results negatively.
@@ -582,8 +633,51 @@ This would be easy to fix by changing the end date selection so that it selects 
 Another thing that was discovered on one occasion is that the timeline labels aren't necessarily clear enough and easy to miss, so the user doesn't understand what data is shown on each timeline. Tweaking font size and colors could be considered.
 
 \subsection{Usefulness of different configurations}
+Participants answered to questions on how useful they found different configurations on a scale from 1 to 7. The answers can be seen in table \ref{config_usefulness}. Default configuration was found to be the most useful configuration by the users, unsurprisingly as it is the same as in Cluster Web. Estrack configuration was the second most useful configuration. Uberlog-specific configurations were found to be interesting but less useful. LEOP configuration was thought to be useful in certain scenarios, especially if other detailed information such as procedures and telemetry could be displayed for a single spacecraft.
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{Participants' answers to questions about the usefulness of different configurations}
+    \label{config_usefulness}
+    \begin{tabular}{| l | l | l | l | l | l | l | l | l | l | }
+    \hline
+    Participant & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & Average  \\
+    \hline
+    Default    & 7  & 7 & 6 & 7 & 6 & 7 & 7 & 7 & 6.75   \\
+    Estrack    & 7  & 7 & 6 & 7 & 5 & 5 & 7 & 7 & 6.375   \\
+    Uberlog by severity    & 6  & 6 & 4 & 5 & 6 & 5 & 5 & 7 & 5.5   \\
+    Uberlog by author    & 3  & 3 & 2 & 2 & 4 & 3 & 4 & 7 & 3.5   \\
+    LEOP    & 6  & 6 & 7 & 6 & 5 & 6 & 4 & 7 & 5.875   \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
 
 \subsection{Usefulness of new features}
+Participants rated how useful they found different new features of OpsWeb. Timeline navigation by mouse panning and zooming was rated highest along with the configurability of the timelines, evidently those two features are two of the biggest differences compared to Cluster Web and will hopefully make OpsWeb more usable. Features like Uberlog entries and activity countdown were found to be useful in certain scenarios; for example in a meeting it could be useful to visually view when Uberlog entries were made. Being able to change the color style of the schedule could be useful for example by using a dark theme during a night shift.
+
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{Participants' answers to questions about the usefulness of new features}
+    \label{features_usefulness}
+    \begin{tabular}{| l | l | l | l | l | l | l | l | l | l | }
+    \hline
+    Participant & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & Average  \\
+    \hline
+    Mouse pan and zooming    & 7  & 7 & 7 & 7 & 6 & 7 & 7 & 7 & 6.875   \\
+    Timeline configuration    & 7  & 7 & 7 & 7 & 6 & 7 & 7 & 7 & 6.875    \\
+    Uberlog entries    &  6 & 7 & 5 & 6 & 5 & 6 & 5 & 7 & 5.875   \\
+    Live mode    & 4  & 7 & 7 & 5 & 5 & 7 & 6 & 7 & 6   \\
+    Activity countdown    & 6  & 6 & 6 & 5 & 5 & 6 & 6 & 7 & 5.875   \\
+    Style configuration    & 4  & 6 & 7 & 7 & 5 & 7 & 6 & 7 & 6.125   \\
+    Schedule URL sharing    & 6  & 7 & 7 & 7 & 6 & 6 & 6 & 7 & 6.5   \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
 
 \subsection{Ideas for future development}
 Participants had many ideas for how OpsWeb could be improved in the future. The ability to plan passes and dynamically add other data on the timeline was mentioned, and this is indeed something that is planned for a future release.
