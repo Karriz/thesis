@@ -1,6 +1,6 @@
 % Evaluation Chapter
 
-This section covers the evaluation done on Cluster Web and OpsWeb. The aim of the evaluation is to gain knowledge about how the old and new version compare in terms of user experience and usability and to find possible usability problems. Research questions will be defined, methods will be overviewed and the evaluation plan will be constructed in this section.
+This section covers the evaluation done on Cluster Web and OpsWeb. The aim of the evaluation is to gain knowledge about how the old and new version compare in terms of user experience and usability and to find possible usability problems. Research questions will be defined and the evaluation plan will be described in this chapter.
 
 Because OpsWeb wasn't functionally yet on par with the old Cluster Web at this point of development as it was missing the pass planning functionality entirely, the evaluation focused on the data visualization functionality entirely; how well users can find information using the timeline interface.
 
@@ -23,207 +23,10 @@ Another aspect that can reasonably be expected to have a noticeable effect on us
 
 \textit{"How does direct mouse navigation affect the usability of a timeline interface compared to UI button-based navigation?"}
 
-\section{Definitions}
-There are different interpretations on what usability and user experience mean. It is important to understand these words so that a clearer idea can be formed on what needs to be evaluated. In this section, an overview is done on what these terms generally refer to.
-
-\subsection{Usability and user experience} \label{definitions_section}
-The definitions of usability and user experience in the context of software evaluation aren't self-evident, and they can be interpreted in many different ways. However, these terms do have official ISO standards defining them. Bevan et al.talk about the importance of using these standards so that the criteria against which software is evaluated stays consistent. \cite{bevanstandard}
-
-In  ISO FDIS 9241-210, usability is defined as "Extent to which  a system, product or service can be used by specified users to achieve specified goals with effectiveness, efficiency and satisfaction in a specified context of use." Therefore, usability seems to have its main focus on the pragmatic goal of achieving some task in a efficient way while using the system, however it also includes the concept of satisfaction.
-
-User experience on the other hand is defined as "A person's perceptions and responses that result from the use and/or anticipated use of a product, system or service." It would appear that user experience is more about deriving pleasure from using a system even if it is not for entertainment purposes. Also worth noting is that this also covers anticipated use, before the user has even seen the system, and how their expectations may compare to reality.
-
-There are many ways to interpret how these terms relate to each other. If the concept of "satisfaction" in the definition of usability is considered to cover "a person's perceptions and responses" in the definition of user experience, then usability can be seen as a umbrella term that covers both the actual measurable work efficiency and personal feelings that stem from using the system.
-
-Väänänen-Vainio-Mattila et al. and Bevan note that in industry it is often user experience that is used as an umbrella term that includes the work efficiency component of usability, while in research community user experience is seen as the subjective perception that user gets from using a system. Because of its subjective nature, evaluation methods for this this academic definition of user experience aren't well-established yet. \cite{bevan2009difference, vaananen2008towards}
-
-In the end there are three different interpretations of user experience according to Bevan: \begin{itemize}
-\item An  elaboration  of  the  satisfaction  component  of usability
-\item Distinct  from  usability,  which  has  a  historical emphasis on user performance
-\item An  umbrella  term  for  all  the  user’s  perceptions  and responses,  whether  measured  subjectively  or objectively
-\end{itemize}
-\cite{bevan2009difference}
-
-Petrie and Bevan further open up the meanings of these terms and their components and how they're used in research community. Usability can be contain concepts like learnability, flexibility, memorability, safety and accessibility in addition to efficiency, because all these contribute to achieving some end goal through the use of the system. What exactly is considered usability is dependent to the system in question. 
-
-According to Petrie and Bevan, users may want more from their interaction with the system than just to complete a task efficiently, and this is where user experience is an important thing to consider. Information technology has become an ubiquitous part of everyday life and is no longer just a means to an end to people.
-\cite{bevanevaluation}
-
-\cite{bevan2009difference, bevaniso, bevanevaluation, bevanstandard}
-
-Tullis and Albert consider user experience to be a broad term that covers the user's entire interaction with the system, including their thoughts, feelings and perceptions. Their view of user experience metrics is that they reveal information about the effectiveness, efficiency and satisfaction that's a result of the interaction between the user and the system. \cite{albert2013measuring}
-
-Hassenzahl et al. look at usability and user experience from different points of view and argue that while these terms practically cover the same things, they have slightly different focuses. Usability is more concerned with practical task completion and objectively measurable metrics, while user experience tries to balance the practical and hedonic sides of information system usage and also considers how the user feels after using the system.
-\cite{hassenzahl2006user}
-
-In Rubin's and Chisnell's definition, with an usable system "the user can do what he or she wants to do the way he or she expects to be able to do it, without hindrance, hesitation, or questions". An usable system should be "useful, efficient, effective, satisfying, learnable, and accessible". \cite{rubin2008handbook} This way of defining usability is similar to others and also covers the concept of user satisfaction. An user is more likely to use a system that generates positive feelings.
-
-In all different definitions, usability seems to cover the basic idea that an user should be able to complete a task using the system efficiently. What is less clear is whether user experience is a part of usability or vice versa, or whether they are two separate concepts. There is support for many different interpretations.
-
-For consistency's sake and  to not use words interchargeably in this thesis, "user experience" is going to be used as an all-encompassing term that covers every aspect of the user's interaction with the system, from their ability to learn how to use the system and complete tasks with it to what kind of feelings stem from the usage of the system. Usability is going to be used to define the more pragmatic task-oriented part of user experience.
-
-Both pragmatic and hedonic goals of information system usage should be considered, and user experience seems to be a better word for this than just usability.
-
-\subsection{Attributes of user experience}\label{usability_attributes}
-The concept of usability and user experience should be split into different subcategories to form an understanding of what kind of questions the evaluation results should be able to answer. If we combine what was covered in section \ref{definitions_section}, at least the following categories can be found:
-
-\textbf{Usefulness} is a measure of whether the system is actually needed. The task the system is designed for should be something that people need to or want to do, and the system should be helpful in completing that task. As Cluster Web has been in active use for many years, its usefulness is well established within its userbase, but this should still be evaluated to better find out what it is used for and how useful people find it for different purposes.It is also important to evaluate the usefulness of OpsWeb's new features.
-
-\textbf{Efficiency} is a measure of how good are the results of using the system relative to the resources it needs. This is often measured in the amount of time required to complete a task, which is possible to evaluate as long as the task is well defined and has a starting and an ending time. For Cluster Web, a task could  consist of finding some information about a specific data item at a given time. In terms of user experience, the user can also be asked about their perceived efficiency to see how it compares with actual efficiency.
-
-\textbf{Effectiveness} is defined as how well the users can complete tasks using the system. The system should act reliably in a way that the user expects it to in order to be properly usable. Otherwise, the tasks may end up with erroneous results or not completed at all. Error rate is an usual way of measuring this. For Cluster Web's evaluation, a set of test tasks could be defined with their intended outcomes, and whether or not the users could reach the right outcome would be tested.
-
-\textbf{Learnability} means how quickly and how well the users are able to learn the system so that they can use it effectively. If the system is hard to learn, this will lead to problems in effectiveness. Too long learning period is not efficient either. Because the old Cluster Web's current users have been using it for many years, this cannot be evaluated very well with them, but the new CLuster Web can be. Prior experience of participants should be asked at the beginning of the evaluation.
-
-\textbf{Satisfaction} is a hedonic measure that covers the user's feelings about using the system. It is useful to directly ask the users about their opinions and preferences as these can have an effect on perceived usability. At very least, the user shouldn't feel negative emotions like frustration or confusion while and after using the system. Optimally the system would evoke some positive reaction that could encourage the user to interact with the system more. Things like the visual look of a system can have an effect. A questionnaire at the end of evaluation and also asking questions and observing the participant during the evaluation are some ways of collecting data about user satisfaction.
-
-\textbf{Accessibility} often deals with how well the system can be used by people with disabilities, for example poor eyesight or coordination. To some extent this could be taken into account when testing Cluster Web like the visibility of small icons, but finding test subjects could be relatively hard. This is left outside of the scope of this thesis.
-
-\textbf{Memorability} is  a subset of learnability; how well and how quickly the user can continue using the system after being away from it for some time. Because of the limited timeframe that is available for evaluation, it may not be possible to evaluate this, and it is left outside of the scope of this thesis.
-
-\textbf{Safety} covers the aspects of the system protecting the user from dangerous situations and undesirable conditions. It's not clear if this applies to Cluster Web, as even though it is used extensively, it doesn't play a critical part in spacecraft operations and doesn't interface with any physical actuators. Information security could perhaps be considered a part of safety, but that is outside of the scope of this thesis.
-
-\cite{bevanevaluation, rubin2008handbook, albert2013measuring, laugwitz2008construction, hornbaek2006current}
-
-\section{Formulating an evaluation plan}
-In this section the available methods of evaluation will be overviewed to get a better understanding on what data should be collected and how, and what are particularly important things to take into account to ensure the validity of the data.
-
-\subsection{Evaluation methods}
-According to Rubin and Chisnell, an usability evaluation has the following basic elements:
-\begin{itemize}
-\item Develop research questions
-\item Use a representative sample of end users
-\item Represent the actual work environment
-\item Observe the end users using the product
-\item Interview the participants
-\item Collect quantitative and qualitative performance and preference measures
-\item Recommend improvements to design
-\end{itemize}
-
-\cite{rubin2008handbook}
-
-The evaluation done on Cluster Web and OpsWeb follows this basic structure. While using real users in an empirical evaluation is time-consuming, is often the best way to identify usability problems. During the development cycle, using usability inspection methods like heuristic evaluation is sometimes used, which involves an expert going through the interface and comparing it against a set of criteria such as Nielsens ten heuristics \cite{Solr-oula.410573, nielsen1995usability}. This is faster and easier than doing full usability evaluation with users, but doesn't identify as many problems.
-
-Hollingsed and Novick note that using both empirical evaluation and usability inspection would be the most effective solution that is often overlooked. \cite{hollingsed2007usability}
-
-During the development of OpsWeb, formal usability inspections were not done. It was up to the developers to identify potential usability problems. It is helpful that some members of the development team are future users of the software themselves. An usability inspection such as heuristic evaluation could be performed by doing a walkthrough of the system from a developer's perspective, but the main focus of this thesis is on empirical user evaluation which should produce more useful and interesting results.
-
-User evaluations can be done by collecting data during day-to-day usage, for example by showing a survey to the user at random times, or by inspecting from logs how the users interact with the system. \cite{bevanevaluation} In this evaluation though, this won't be done as it would require additional development, which could be difficult especially in old Cluster Web's case.
-
-Data can be collected concurrently during the test or after it retrospectively. Van den Haak et al. performed a comparative test between concurrent think-aloud (CTA) and retrospective think-aloud (RTA).
-
-CTA was found to find more task-oriented errors while RTA was good for gaining broader user reactions. There is some debate on whether or not CTA has a negative effect on task performance because talking aloud would distract the user, but some have found it to have a positive effect. When performing a complex task the user may verbalize less. RTA is less susceptible this problem. Task complexity for evaluation should be designed so that the users are required to think, but aren't over-burdened so much that they cannot make verbal observations.
-\cite{van2003retrospective}
-
-In this evaluation, participants will be encouraged think aloud about their observations during the evaluation, and those observations will be noted down, and afterwards there will be a retrospective questionnaire.
-
-As the participant count is rather small, the user evaluations can be performed in-person. To minimize the effect of external factors on the results, the evaluation should be performed with all participants in similar setting with the same equipment.
-
-\subsection{Participant selection}
-Selecting the right participants for the study is a very important aspect of user experience evaluation. The participants should be a representative sample of the target userbase of the system. If the test users are selected incorrectly the test results would not be a useful metric of the user experience in real use.
-
-In Cluster Web's case, it is reasonably easy to  define and test the entire userbase as it is the Cluster II flight control team which is around 10 people. These will be the  first people to use the new OpsWeb. Testing people from outside of the team could be considered as well as it might give more results on learnability.
-
-OpsWeb has the potential of attaining a larger userbase, as it could be used for visualizing any type of data which fit the descriptions defined in section \ref{configurability_req}. 
-
-A clear example of another userbase would be other ESA missions which have similar needs as Cluster II for visualizing operations schedules. Apart from space missions, it could also be used by ground station teams.
-
-There's also potential use cases entirely unrelated to space which could be found. Any kind of data that consists of timed events or values can be visualized using OpsWeb. These other use cases are outside of the scope of this evaluation as it would take some time to make tailored solutions for other clients even though OpsWeb's modular and configurable design would make it relatively easy compared to its predecessor.
-
-\cite{rubin2008handbook, albert2013measuring}
-
-\subsection{Tasks}
-The users will perform different tasks during the evaluation. These tasks should represent some real use case of the system that is intended to be evaluated, and they should be able to bring out differences in usability between Cluster Web and OpsWeb and hopefully help answer the research questions. \ref{research_questions} The tasks should require the users to make use of different functionalities of the system.
-
-One thing that was noted by users was that Cluster Web's timeline navigation by clicking buttons is very slow, so having the tasks focus on navigating the timeline and finding information by using the timeline data visualization could possibly highlight the effect that OpsWeb's mouse pan and zoom navigation has .
-
-Possible timeline configurations in the new Cluster Web should be compared as well to find out how looking at the data from a different perspective can help when looking for information.
-
-The amount of participants is rather small so every user will perform the same set of tasks, as it is not viable to have a different set of users for each task, and the tasks aren't going to be rather quick to complete anyways. This means that the evaluation will use a within-subjects design rather than a between-subjects design. 
-
-One thing that is worth noticing is that when users perform tasks, they gradually learn to use the system. This is why users should perform these tasks in different orders to mitigate the learning effect. This distribution of task order is called counter-balancing. The order in which different systems are shown to the participant can also be alternated.
-\cite{rubin2008handbook}
-
-\subsection{Metrics}
-The evaluation should try to answer the questions defined in section \ref{research_questions}. To do this, data metrics needs to be collected on different aspects of usability, which were defined in the section \ref{usability_attributes}.
-
-For measuring pragmatic usability, as mentioned in section \ref{usability_attributes}, common measures are task completion time and error rate. Sometimes a task may require multiple steps during which the user can make multiple errors. 
-
-It is also possible to measure the input rate e.g. the amount of mouse clicks the user makes while performing a task.
-
-Some tasks can have a pre-defined optimal solution that is as efficient as possible; users may not take this optimal path, so the possible extra steps and mistakes can be observed. \cite{hornbaek2006current}
-
-Measuring hedonic user experience is commonly done by asking the participant a set of questions about their experience. Getting spontaneous and immediate reactions from the user at the end of the evaluation is an important part of gaining understanding about the user experience. The participants shouldn't be forced to analyze small details which they may not properly remember anymore at the end of the evaluation. \cite{laugwitz2008construction}
-
-Hornbaek notes that there are many already validated questionnaires for measuring usability and user experience, but despite this, studies often create their own questionnaires in ad hoc basis. \cite{hornbaek2006current} Some common examples of questionnaires are AttrakDiff \cite{hassenzahl2003attrakdiff}, Questionnaire for User Interaction Satisfaction (QUIS) \cite{chin1988questionnaire}, System Usability Scale (SUS) \cite{brooke1996sus} and User Experience Questionnaire (UEQ) \cite{laugwitz2008construction}.
-
-In a study by Tullis et al. that compares SUS, QUIS and a few other questionnaires, SUS was found to be the simplest and often most reliable one. UEQ was not in this comparison. \cite{tullis2004comparison}
-
-The questions in SUS are as follows, all of them rated on a five-choice scale from strongly disagree to strongly agree:
-
-\begin{enumerate}
-\item I think that I would like to use this system frequently
-\item I found the system unnecessarily complex
-\item I thought the system was easy to use                      
-\item I think that I would need the support of a technical person to be able to use this system
-\item I found the various functions in this system were well integrated
-\item I thought there was too much inconsistency in this system
-\item I would imagine that most people would learn to use this system very quickly
-\item I found the system very cumbersome to use
-\item I felt very confident using the system
-\item I needed to learn a lot of things before I could get going with this system 
-\end{enumerate}
-
-\cite{brooke1996sus}
-o
-UEQ is split five different scales altogether containing 26 items which apply particularly for hedonic user experience. The items are opposite adjectives on a scale from 1 to 7, and the order of the polarities is randomized. The scales are as follows:
-
-\textbf{Attractiveness:} the user's overall impression of the system, for example "annoying - enjoyable".
-
-\textbf{Perspiquity:} how easy to understand and clear the participants find the system to use, for example on a range "not understandable - understandable". This overlaps with learnability that was covered in section \ref{usability_attributes}
-
-\textbf{Dependability:} how well the user can trust the system and predict what it does, for example on a scale "unpredictable - predictable". This is linked to how effectively the users can use the system.
-
-\textbf{Efficiency:} this is the perceived efficiency of the system. Also considers how organized the interface is. Scale "impractical - practical" is one item of this.
-
-\textbf{Novelty:} the novelty factor of the system has an effect on how eager people are to use it, and how much they will explore different options. This includes items like "creative - dull" and "conservative - innovative".
-
-\textbf{Stimulation:} how engaged users feel when using the system. "Boring - exciting" is an example of this, as well as "motivating - demotivating".
-
-Perspiquity, dependability and efficiency are task-oriented factors and should show a negative correlation with task completion time and error rate. Novelty and stimulation factors only show a weak correlation according to Laugwitz et al. \cite{laugwitz2008construction}
-
-UEQ is particularly meant for measuring user experience, not only usability. It has been found to be fast and efficient to implement, the drawback being that the information is rather high level and doesn't go into specific details. However, by combining the questionnaire with a concrete usability evaluation it is possible to get more comprehensive results. \cite{schrepp2014applying, rauschenberger2013efficient}
-
-Schrepp et al. have developed a benchmark for analyzing the results of UEQ. The benchmark was constructed based on 246 product evaluations to find baseline mean values and standard deviations for the different scales. This allowed the creation of different intervals on a scale from "bad" to "excellent". This could also be used for the purposes of this thesis. \cite{schrepp2017construction}
-
-AttrakDiff is older than UEQ, and also meant for measuring perceived user experience, consisting of several different scales of user experience with seven-step items. The scales are "Attractiveness", "Pragmatic Quality", "Identity" and "Stimulation". These were found to have significant correlations with the scales of UEQ in a validation study. \cite{laugwitz2008construction} The original AttrakDiff is in German, it appears that the English version is only accessible through an online service. \cite{attrakdiff}
-
-UEQ's item pool seemingly overlaps a lot with what is covered in SUS (complexity, consistency, confidence...), while presenting the questions in a simpler format, and also going into more detail than SUS. UEQ is easily available offline and has a convenient benchmark for analyzing the data. For these reasons, UEQ will be used in this evaluation. It will be filled by each participant twice; after using Cluster Web, and after using OpsWeb.
-
-Some preliminary information should be collected from each user that is relevant to the evaluation. In Cluster Web's case, the level of expertise could be one metric. This information could be collected by asking the participants their self-reported level of expertise.
-
-Independent variables of the evaluation will be the version of Cluster Web (old/new), different timeline configurations and the participants' self-reported level of prior experience. The dependent variables of the evaluation could be as follows, gathered from what was discussed earlier in this section:
-
-\begin{itemize}
-\item Objective measures:
-\begin{itemize}
-\item Time to complete a task in seconds
-\item Binary success/failure of task completion
-\item Amount of clicks a task took to complete
-\item Distance of mouse movements a task took to complete
-\end{itemize}
-\item Subjective measures:
-\begin{itemize}
-\item Attractiveness
-\item Perspiquity
-\item Efficiency
-\item Novelty
-\item Stimulation
-\end{itemize}
-\end{itemize}
-
 \section{Evaluation plan} \label{evaluation_plan}
-In this section the finalized evaluation plan will be overviewed, including the task definitions and the questions which will be asked from the participants.
+The evaluation plan will be described in this section, including the task definitions and the questions which will be asked from the participants.
+
+Background research regarding usability and user experience evaluation methods is covered in chapter \ref{evaluation_chapter}. User Experience Questionnaire (UEQ) \cite{laugwitz2008construction} was chosen as the method of gathering data on user experience, as it is openly available and has a statistical benchmark included. For measuring pragmatic usability, some metrics will be collected when users perform tasks. These include the task completion time, answer correctness and information about mouse usage, which should help in measuring the efficiency and effectiveness of the systems. If participants make interesting observations they will be noted down.
 
 \subsection{Course of the evaluation}
 The evaluation is done one participant at a time in person, in their offices. All participants perform the evaluation on the same computer.
@@ -315,7 +118,7 @@ The following questions will be asked regarding OpsWeb's new features at the end
 \item Do you have ideas how the new Cluster Web could be improved, or other comments?
 \end{enumerate}
 
-\section{Analysis}
+\section{Results}
 The evaluation, as described in the section \ref{evaluation_plan}, was performed with eight participant. All of the participants were members of the Cluster II flight control team.
 
 The evaluations were done over the course of two weeks, the latest build of OpsWeb from before the evaluations began was used. Evaluations were done in each participants' office or in the control room, using the author's work laptop with mouse and no external screen. Participants wrote down their answers on paper forms, which were then transferred into Excel sheets along with the author's observations. The evaluation took about half an hour per participant.
@@ -621,7 +424,7 @@ The Estrack configuration was not properly explained at first by the author on t
 
 The questions were on paper and not always read out loud by the author. The misunderstood questions had a line break so it's possible that the second line was missed. 
 
-The lesson learned from these problems is that every aspect of the evaluation should be pre-planned, like how the questions are presented to the user and how the system usage is explained during evaluation. It would also be good to have a "test" round with the evaluation to find potential issues before finalizing the plan and continuing on with the actual evaluation.
+The lesson learned from these problems is that every aspect of the evaluation should be pre-planned, like how the questions are presented to the user and how the system usage is explained during evaluation. It would also be good to have a pilot test of the evaluation to find potential issues before finalizing the plan and continuing on with the actual evaluation.
 
 \subsection{Usability issues} \label{usability_issues}
 One of the things discovered from the Cluster Web vs OpsWeb comparison tasks was that all of the task 2 answers were wrong for OpsWeb, as mentioned in section \ref{cw_ow_task_perf}. There is a potential usability issue that may have caused the participants to get the wrong answer.

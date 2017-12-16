@@ -137,3 +137,17 @@ Before an eclipse some preparation needs to be done, like dumping the SSR data a
   \caption{Cluster Web's Überlog sidebar}
   \label{fig:clusterweb_uberlog}
 \end{figure}
+
+\subsection{Architecture}
+Cluster Web is a PHP-based web application. It makes use of server-generated HTML to display a data visualization to the user. A diagram of the overall architecture can be seen in the figure \ref{fig:architecture_cw}. The back-end is served by an Apache server and it uses a MySQL database for storing data from different sources.
+
+When a user accesses Cluster Web, the PHP back-end request data from the database and based on that generates DIV elements with different positions and styles. SSR fill level graph is an image that is generated and placed in the background of the schedule. The resulting HTML data is then returned to the browser to be displayed. When the user triggers different actions like zooming, the schedule visualization is again regenerated in the back-end.
+
+ %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{Architecture_CW}
+  \end{center}
+  \caption{Cluster Web's system architecture}
+  \label{fig:architecture_cw}
+\end{figure}

@@ -4,6 +4,17 @@
 % If you make any improvements to this template, please contact ouspg@ee.oulu.fi
 %
 
+% TODO:
+% Cluster Web architecture diagram
+% Cluster Web issues in a table
+% Research questions in Introduction
+% Evaluation background in its own section
+% Show standard deviations of UEQ
+% More discussion
+% Contribution in context
+% OpenMCT comparison
+
+
 \documentclass[a4paper, 12pt,titlepage]{dithesis}
 \usepackage[english,finnish]{babel}
 \usepackage[utf8]{inputenc}
@@ -118,16 +129,19 @@ Karri Ojala, December 2017
 \sivunumerot
 \input{introduction} % ./introduction.tex
 
-\chapter{Spacecraft operations}
+\chapter{Usability and user experience}\label{usability_chapter}
+\input{usability}  % ./usability.tex
+
+\chapter{Spacecraft operations}\label{operations_chapter}
 \input{operations}  % ./operations.tex
 
 \chapter{Re-engineering Cluster Web}\label{cluweb_chapter}
 \input{cluweb_new}  % ./cluweb_new.tex
 
-\chapter{Evaluation}
+\chapter{Evaluation}\label{evaluation_chapter}
 \input{evaluation}  % ./evaluation.tex
 
-\chapter{Discussion}
+\chapter{Discussion}\label{discussion_chapter}
 \input{discussion}  % ./discussion.tex
 
 \bibliographystyle{di}

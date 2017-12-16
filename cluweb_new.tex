@@ -1,6 +1,6 @@
 Cluster Web, detailed in the section \ref{clusterweb_section}, is a very powerful tool for planning and monitoring the operations of Cluster mission. Spacecraft operations engineers and spacecraft controllers use it in daily basis for different tasks.
 
-Even though Cluster Web has proven its usefulness, it has certain usability issues, mainly the slow navigation of the timeline using buttons. It is also based on aging technologies and has the front-end and back-end tightly coupled together. Ever since Cluster Web was developed in 2009, web applications have become much more interactive, and the use of touch screen devices has increased.
+Even though Cluster Web has proven its usefulness, it has certain usability issues, mainly the slow navigation of the timeline using buttons. It is also based on aging technologies and has the front-end and back-end tightly coupled together because data visualizations are generated on the back-end as seen in the figure \ref{fig:architecture_cw}. Ever since Cluster Web was developed in 2009, web applications have become much more interactive, and the use of touch screen devices has increased. In a modern web application stack, application logic is executed directly in the browser with Javascript and the back-end provides access to data through a generic REST interface.
 
 Other mission teams at ESA such as ExoMars and Swarm have interest in a tool like Cluster Web for their plannign and monitoring purposes. While making a custom solution based on Cluster Web would be possible in theory, it would require a major rewrite for each mission as the codebase is specific to Cluster and is not built with expandability in mind.
 
@@ -22,7 +22,9 @@ As mentioned earlier, the main driving factors for the development of OpsWeb are
 \subsection{Usability} \label{usability_req}
 The main user-reported usability issues with Cluster Web are related to the slow responsiveness of the timeline and complicated workflows. 
 
-To navigate the timeline in Cluster Web, the user needs to press buttons in the navigation bar to move the timeline left or right or to change the zoom level in intervals. Once the button has been pressed, it can take a few seconds for the data visualization to reload in the new time range. There is a calendar menu that allows the user to jump straight to a specific date, but when users want to just move the timeline a few days in either direction or zoom out, they use the navigation buttons which are slow. There should be a faster and more intuitive way of navigating the timeline, preferably compatible with modern touch-screen devices.
+To navigate the timeline in Cluster Web, the user needs to press buttons in the navigation bar to move the timeline left or right or to change the zoom level in intervals. Once the button has been pressed, it can take a few seconds for the data visualization to reload in the new time range This is because the entire visualization is being regenerated in the PHP back-end and the browser just shows the resulting HTML.
+
+There is a calendar menu that allows the user to jump straight to a specific date, but when users want to just move the timeline a few days in either direction or zoom out, they use the navigation buttons which are slow. There should be a faster and more intuitive way of navigating the timeline, preferably compatible with modern touch-screen devices.
 
 Another thing that was mentioned is the complexity of adding or editing passes. It is necessary to go through different menus and fill inputs before the pass visually appears on the timeline. An alternative solution suggested by users is having the ability to drop passes directly on the timeline and drag them around to position them.
 
@@ -35,7 +37,9 @@ Time instants are events which happen at a specific time but have no duration, f
 
 Time series data, such as the SSR fill level, is a series of time, value pairs. It can be displayed as a line graph where x-axis is time and y-axis is the range of possible values.
 
-Being able to display any data that fits the aforementioned three categories is one of the requirements for OpsWeb. Users should be able to choose what data they want to display and where the data comes from, how the visualizations are arranged on different timelines and how they look like. Achieving this requires a highly configurable front-end where the individual data visualizations aren't hard-coded, but they are defined by the user in some kind of a configuration file that is then used to build the visualization.
+Being able to display any data that fits the aforementioned three categories is one of the requirements for OpsWeb. Users should be able to choose what data they want to display and where the data comes from, how the visualizations are arranged on different timelines and how they look like. Achieving this requires a highly configurable front-end where the individual data visualizations aren't hard-coded, but they are defined by the user in some kind of a configuration file that is then used to build the visualization. 
+
+OpsWeb should make use of a separated client-server architecture. The back-end should provide a REST interface for requesting JSON-formatted data, from which the front-end running in the browser could generate a visualization. This would allow much more flexibility for changing the visualization parameters and different components of the system.
 
 On the back-end side, OpsWeb should also allow users to define their data models and to edit database entries without editing the source code. If some kind of mission-specific data processing is required, it should be plugged in the back-end architecture in a modular way.
 
