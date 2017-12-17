@@ -4,7 +4,28 @@ Even though Cluster Web has proven its usefulness, it has certain usability issu
 
 Other mission teams at ESA such as ExoMars and Swarm have interest in a tool like Cluster Web for their plannign and monitoring purposes. While making a custom solution based on Cluster Web would be possible in theory, it would require a major rewrite for each mission as the codebase is specific to Cluster and is not built with expandability in mind.
 
-Because of the technical limitations and usability issues, it was decided that a new tool would be built based on modern web technologies and structured in such a way that it would be easy to adapt for other missions in the future. This re-engineered version is called "OpsWeb". It is developed by a team consisting of Cluster team members and also members from other teams within ESOC. The author of this thesis contributed in the development of OpsWeb primarily on the front-end during a six-month internship at ESOC.
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{Usability issues and technical limitations of Cluster Web}
+    \label{clusterweb_problems}
+    \begin{tabular}{| l | l | }
+    \hline
+    Problem & Type  \\
+    \hline
+    No separation between front-end and back-end    &  Technical       \\
+    Cluster- specific features hard-coded    &  Technical       \\
+    Code is fragmented in many places    &  Technical       \\
+    Zooming and moving the timeline is slow    &  Usability       \\
+    Menu structure is confusing    &  Usability       \\
+    Users cannot configure the visualization    &  Usability       \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+Because of the technical limitations and usability issues listed in table \ref{clusterweb_problems}, it was decided that a new tool would be built based on modern web technologies and structured in such a way that it would be easy to adapt for other missions in the future. This re-engineered version is called "OpsWeb". It is developed by a team consisting of Cluster team members and also members from other teams within ESOC. The author of this thesis contributed in the development of OpsWeb primarily on the front-end during a six-month internship at ESOC.
 
 In this section, OpsWeb development project, its improved features and the architecture of the system as of October 2017 will be detailed. The plans for the future development of OpsWeb will also be overviewed.
 
@@ -46,9 +67,18 @@ On the back-end side, OpsWeb should also allow users to define their data models
 \subsection{Openness}
 The eventual goal is to make OpsWeb open-source, at first within ESA and later to outsiders. As a generic timeline visualization tool, it could be applied to any kind time-based data visualizations, such as workplace shift schedules or TV guides. In order to make OpsWeb open-source, it needs to reach a release that is no longer subject to big changes in architecture. As of November 2017, OpsWeb is still being developed within the Cluster II Flight Control Team, with a few members from other teams at ESOC also being involved. 
 
-One example of a successful open-source project for space operations is NASA's OpenMCT (Open Mission Control Technologies). Like OpsWeb, it is a web-based data visualization tool but while OpsWeb is focused on timelines, OpenMCT is a more generic dashboard for overviewing and analyzing any kind of technical or scientific real-time data. Users link data to different widgets and place them on layouts. 
+One example of a successful open-source project for space operations is NASA's OpenMCT (Open Mission Control Technologies). Like OpsWeb, it is a web-based data visualization tool but while OpsWeb is focused on timelines, OpenMCT is a more generic dashboard for overviewing and analyzing any kind of technical or scientific real-time data. Users link data to different widgets and place them on layouts. While OpenMCT also has a timeline widget, it is much more limited than Cluster Web and would not allow overlaying different types of elements and graphs without modifications. An example screenshot of OpenMCT can be seen in figure \ref{fig:openmct}.
 
 OpenMCT is planned to be used for future Lunar rover operations and it is already in use for Jason-3 Earth observation mission. As an open-source project, OpenMCT is not limited to only spacecraft operations, but can be used for any kind of activity that requires displaying data that is being produced in real-time, such as monitoring Internet Of Things- devices. Anyone can download the source code and add features to it. \cite{trimble2014reconfigurable, trimble2016open}
+
+ %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{openmct}
+  \end{center}
+  \caption{A screenshot of NASA's OpenMCT example dashboard}
+  \label{fig:openmct}
+\end{figure}
 
 \section{New features}
 OpsWeb has a number of new features intended to improve its usability over Cluster Web and to allow new possibilities. The new features present in the first release of OpsWeb will be detailed in this section.
@@ -240,7 +270,13 @@ Timeline and style configurations of the front-end client are saved in the back-
 \section{Development}
 OpsWeb is developed by a team of seven people, including the author of this thesis. The project is led by Cluster II spacecraft operations manager. The author of this thesis worked on this project for six months during an internship. Upon arrival in May 2017, the development had been going on for a couple of months and the main technologies had been chosen. Other than the author during his internship, no one works on the project full-time; instead, people contribute whenever they have time.
 
-Development roles are varied between people depending on their interests and experience, some focusing more on front-end and others on the back-end. The author implemented many features mainly on the front-end, namely the live mode, activity countdown, deep linking of the schedule timeframe, visualization of the Uberlog entries, login and authentication, navigation menu and an improved importer view. In addition, miscelllaneous improvements and bug fixes were done and the continuous integration was set up.
+Development roles are varied between people depending on their interests and experience, some focusing more on front-end and others on the back-end. 
+
+The author implemented many features mainly on the front-end, namely the live mode, activity countdown, deep linking of the schedule timeframe, visualization of the Uberlog entries, login and authentication, navigation menu and an improved importer view. In addition, miscelllaneous improvements and bug fixes were done and the continuous integration was set up. 
+
+Large features implemented by other developers during this time include configurability of the timeline visualization, refreshing of data when scrolling the timeline, automated testing of the front-end code and major refactoring and improvement work done on the back-end.
+
+In order to keep the front-end code written by several people consistent, linting in the editor is applied, highlighting parts which deviate from the TypeScript guidelines. Similarly, linting could also be applied for the Python code of the back-end.
 
 By the end of the internship in October 2017, OpsWeb had most of the functionality needed for schedule monitoring purposes, which is the first release that will be used by the Cluster flight control team.
 \subsection{Scrum}
@@ -282,3 +318,5 @@ The back-end is also for the time being specific to the Cluster mission's use ca
 A new, modular back-end will be built that has a flexible NoSQL  database and a generic data provider interface in which external databases can be plugged in. Mission- specific things like file importers and data processing will be moved into Python modules which can hook into the core system.
 
 As other missions and other users adopt OpsWeb, the development will also eventually open up and allow third parties to do their own additions to the system as needed. If possible, OpsWeb could also be opened to users outside of ESA and spacecraft operations, to allow its use as a fully generic timeline visualization software.
+
+Other tools are also being integrated to the mission control systems, such as BOSS Dashboard. It provides a modern web-based interface for browsing and visualizing telemetry data. \cite{boss} Together with OpsWeb, BOSS Dashboard could be displayed on a big screen in mission control room to allow spacecraft controllers to overview the mission status easily.
