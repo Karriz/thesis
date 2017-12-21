@@ -34,12 +34,16 @@ In Rubin's and Chisnell's definition, with an usable system "the user can do wha
 
 In all different definitions, usability seems to cover the basic idea that an user should be able to complete a task using the system efficiently. What is less clear is whether user experience is a part of usability or vice versa, or whether they are two separate concepts. There is support for many different interpretations.
 
-In this thesis, user experience will be used to describe the user's perceived feelings regarding the system. Usability is going to be used to define the more pragmatic task-oriented part of user experience.
+In this thesis, user experience will be used to describe the user's perceived feelings regarding the system. Usability is going to be used to define the more pragmatic task-oriented part of using the system.
 
-Both pragmatic and hedonic goals of information system usage should be considered, and user experience seems to be a better word for this than just usability.
+% Usability Models
 
-\section{Attributes of user experience}\label{usability_attributes}
-The concept of usability and user experience should be split into different subcategories to form an understanding of what kind of questions the evaluation results should be able to answer. If we combine what was covered in section \ref{definitions_section}, at least the following categories can be found:
+\section{Usability models}\label{usability_attributes}
+Usability models split the concept of usability into different components which can be linked to some measurable values. Many different concepts like efficiency and learnability were already mentioned in the section \ref{definitions_section}.
+
+Abran et al. propose an usability model that enhances upon earlier models and is based on ISO standards. This model includes effectiveness, efficiency, satisfaction, security and learnability. \cite{abran2003usability} Security is the one term that they added on top of the ISO definition of usability.
+
+There isn't one standard usability model, but many of them build on the ISO definition of usability and cover the same basic ideas. At least the following components can be found across different models and definitions of usability:
 
 \textbf{Usefulness} is a measure of whether the system is actually needed. The task the system is designed for should be something that people need to or want to do, and the system should be helpful in completing that task.
 
@@ -49,15 +53,19 @@ The concept of usability and user experience should be split into different subc
 
 \textbf{Learnability} means how quickly and how well the users are able to learn the system so that they can use it effectively. If the system is hard to learn, this will lead to problems in effectiveness.
 
-\textbf{Satisfaction} is a hedonic measure that covers the user's feelings about using the system. It is useful to directly ask the users about their opinions and preferences as these can have an effect on perceived usability. At very least, the user shouldn't feel negative emotions like frustration or confusion while and after using the system. Optimally the system would evoke some positive reaction that could encourage the user to interact with the system more. Things like the visual look of a system can have an effect. A questionnaire at the end of evaluation and also asking questions and observing the participant during the evaluation are some ways of collecting data about user satisfaction.
+\textbf{Satisfaction} is a hedonic measure that covers the user's feelings about using the system. It is useful to directly ask the users about their opinions and preferences as these can have an effect on perceived usability. At very least, the user shouldn't feel negative emotions like frustration or confusion while and after using the system. Optimally the system would evoke some positive reaction that could encourage the user to interact with the system more. Things like the visual look of a system can have an effect. A questionnaire at the end of evaluation and also asking questions and observing the participant during the evaluation are some ways of collecting data about user satisfaction. \cite{abran2003usability, winter2008comprehensive}
 
-\textbf{Accessibility} often deals with how well the system can be used by people with disabilities, for example poor eyesight or coordination
+\textbf{Accessibility} often deals with how well the system can be used by people with disabilities, for example poor eyesight or coordination.
 
 \textbf{Memorability} is  a subset of learnability; how well and how quickly the user can continue using the system after being away from it for some time.
 
-\textbf{Safety} covers the aspects of the system protecting the user from dangerous situations and undesirable conditions.
+\textbf{Flexibility} means the capability of the system to accommodate to changes desired by the user.
 
-\cite{bevanevaluation, rubin2008handbook, albert2013measuring, laugwitz2008construction, hornbaek2006current}
+\textbf{Safety} covers the aspects of the system protecting the user from dangerous situations and undesirable conditions. \cite{bevanevaluation, winter2008comprehensive}
+
+\textbf{Security} could be considered to overlap with safety; the system should be able to prevent unauthorized access to its functionality and data. \cite{abran2003usability}
+
+\cite{albert2013measuring, rubin2008handbook}
 
 \section{Evaluating usability and user experience}
 In this section the available methods of evaluation will be overviewed to get a better understanding on what data should be collected in an evaluation, and what are particularly important things to take into account to ensure the validity of the data.
@@ -103,7 +111,7 @@ One thing that is worth noticing is that when users perform tasks, they graduall
 \cite{rubin2008handbook}
 
 \subsection{Metrics}
-An evaluation should try to answer the questions defined in section \ref{research_questions}. To do this, data metrics need to be collected on different aspects of usability, which were defined in the section \ref{usability_attributes}.
+An evaluation should try to answer the questions defined in section \ref{research_questions}. To do this, data metrics need to be collected on different components of usability, which were defined in the section \ref{usability_attributes}.
 
 For measuring pragmatic usability, as mentioned in section \ref{usability_attributes}, common measures are task completion time and error rate. Sometimes a task may require multiple steps during which the user can make multiple errors. 
 
