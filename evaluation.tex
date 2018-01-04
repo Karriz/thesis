@@ -126,7 +126,7 @@ The evaluations were done over the course of two weeks, the latest build of OpsW
 Overall the response towards OpsWeb was positive, although it is still in development and it will take some time for people to learn its features, especially configurations. Some potential usability issues were discovered during the evaluation which should be addressed in the future.
 
 \subsection{Experience level of participants}
-Participants reported their own prior experience level with both Cluster Web and OpsWeb, and if they found that Cluster Web makes their job easier. The answers on scale 1-7 are seen in table \ref{experience_levels}. It can be noted that everyone fully agreed that Cluster Web made their job easier, expect one participant who hadn't yet used Cluster Web enough to answer. Three participants were involved in OpsWeb development.
+Participants reported their own prior experience level with both Cluster Web and OpsWeb, and if they found that Cluster Web makes their job easier. The answers on scale 1-7 are seen in table \ref{experience_levels}. It can be noted that everyone fully agreed that Cluster Web made their job easier, except for one participant who hadn't yet used Cluster Web enough to answer. Three of the participants were involved in OpsWeb development.
 
 \begin{table}[!ht]
 % Add some padding to the table cells:
@@ -351,35 +351,46 @@ Smallest difference between Cluster Web and OpsWeb was on the scale "Dependabili
   \label{fig:ow_ueq}
 \end{figure}
 
-The results in the regular scale without the benchmark intervals can be seen in figure \ref{fig:cw_ueq_error_bars} for Cluster Web and in figure \ref{fig:cw_ueq_error_bars} for OpsWeb. These figures also show error bars representing a confidence interval at 95\% confidence level, which indicates how far away the true value could be from the reported value if a 5\% chance of error is considered to be significant. Because the error bars for Cluster Web and OpsWeb do not overlap, this would indicate that the difference between the two is significant.
+Comparison between UEQ results of Cluster Web and OpsWeb can be seen in figure \ref{fig:ueq_error_bars}. These figure also shows error bars representing a confidence interval at 95\% confidence level, which indicates how far away the true value could be from the reported value if a 5\% chance of error is considered to be significant. Because the error bars for Cluster Web and OpsWeb do not overlap, this would indicate that the difference between the two is significant. T-test with a signifigance level of 0.05 also shows a significant difference between Cluster Web and OpsWeb, as can be seen in table \ref{table:ueq_t_test}.
 
-It can also be seen that Cluster Web's evaluation is not in the red zone that is below -0.8. This means that while it is not in the green "positive evaluation" range it is not in the "negative evaluation" range either, but sits in the middle.
+ %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{ueq_error_bars}
+  \end{center}
+  \caption{UEQ results for Cluster Web and OpsWeb with error bars. Cluster Web is in blue and OpsWeb is in red.}
+  \label{fig:ueq_error_bars}
+\end{figure}
 
-There do not seem to be huge differences between different factors, they all got fairly similar results. Dependability scores highest for Cluster Web, and for OpsWeb the highest value is for efficiency.
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{T-test results for UEQ scales between Cluster Web and OpsWeb}
+    \label{table:ueq_t_test}
+    \begin{tabular}{| l | l | }
+    \hline
+    Scale & P-value  \\
+    \hline
+Attractiveness & 0,0009  \\
+Perspicuity    & 0,0141 \\
+Efficiency     & 0,0001 \\
+Dependability  & 0,0149 \\
+Stimulation    & 0,0024 \\
+Novelty        & 0,0004 \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+
+There do not seem to be huge differences between different factors within Cluster Web and OpsWeb. Dependability scores highest for Cluster Web, and for OpsWeb the highest value is for efficiency.
 
 UEQ benchmark also calculates values which can be used to analyze the trustworthiness of the evaluation. Participants might answer different items in an inconsistent way. For example, if a participant answers the item "clear - confusing" to be closer to "clear", and the item "not understandable - understandable" to be closer to "not understandable", it is possible that either the answers are not serious or the options were interpreted in a different way than intended. In the benchmark, having a difference of more than 3 points between two items which should match is considered to be an inconsistency.
 
 According to the benchmark, having one inconsistent scale for a participant is not necessarily an issue, but if the same participant has two or more problematic scales this could be an indication of a problem. 
 
 In OpsWeb's evaluation, one participant had more than one inconsistent scales: perspiquity and novelty in this case. For Cluster Web there were two participants who had more than one inconsistent scales. One of them had inconsistent answers for efficiency and dependability and the other for attractiveness, perspiquity, efficiency and dependability.
-
- %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
-\begin{figure}[ht]
-  \begin{center}
-    \includegraphics*[width=1\textwidth]{cw_ueq_error_bars}
-  \end{center}
-  \caption{UEQ results for Cluster Web with error bars}
-  \label{fig:cw_ueq_error_bars}
-\end{figure}
-
- %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
-\begin{figure}[ht]
-  \begin{center}
-    \includegraphics*[width=1\textwidth]{ow_ueq_error_bars}
-  \end{center}
-  \caption{UEQ results for OpsWeb with error bars}
-  \label{fig:ow_ueq_error_bars}
-\end{figure}
 
 The benchmark calculates Cronbach's Alpha-coefficient values for the scales to help determine how consistent the answers are. Items in the same scale should have a high correlation. 0.7 is commonly used as a treshold value, above which the answers can be considered to be consistent.
 
@@ -412,6 +423,10 @@ The alpha-coefficients can be seen in table \ref{alpha_coeff}. There are two sca
     \end{tabular}
     \end{center}
 \end{table}
+
+The effect of participants' self-reported experience level (table \ref{experience_levels}) on the UEQ results was also evaluated. Participants who answered 4 or more were considered to be experienced, while 4 or less were considered inexperienced. Because only one participant reported to be inexperienced with Cluster Web, the results could not be statistically compared. That participant responded to Cluster Web more positively than the average, in particular on the scales "perspiquity" and "efficiency", which were above the error bars.
+
+With OpsWeb, the comparison of UEQ results between inexperienced and experienced users did not show any kind of a trend or statistically significant difference.
 
 \subsection{Problems with the evaluation} \label{evaluation_problems}
 Some problems with the evaluation itself were encountered due to possibly unclear presentation of the tasks. These problems could have effected OpsWeb´s evaluation results negatively.
