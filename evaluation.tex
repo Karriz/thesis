@@ -151,7 +151,7 @@ Participants mentioned some problems with Cluster Web they would like to be impr
 
 Another important thing that some participants noted is the data processing workflow, which requires the mission planner to manually import files to the system every week. This is something that could be automated in the future. 
 
-Lack of configurability and being mission specific considered to be problems. Some users who were familiar with Cluster Web's code base mentioned that it is a very large, fragmented and consists of multiple different coding styles, needs better version control and is based on outdated technology (PHP). Applying it to other missions would be cumbersome.
+Lack of configurability and being mission specific were considered to be problems. Some users who were familiar with Cluster Web's code base mentioned that it is a very large, fragmented and consists of multiple different coding styles, needs better version control and is based on outdated technology (PHP). Applying it to other missions would be cumbersome.
 
 \subsection{OpsWeb and Cluster Web task performance comparison} \label{cw_ow_task_perf}
 The task measurements show some differences between Cluster Web and OpsWeb. Firstly, the task completion time average seems to be lower with OpsWeb, as seen in the table \ref{cw_ow_times}.
@@ -175,7 +175,7 @@ The task measurements show some differences between Cluster Web and OpsWeb. Firs
     \end{center}
 \end{table}
 
-Whether or not the difference is significant can be found out with a two-sample T-test between the results of Cluster Web and OpsWeb. The null hypothesis is that there is no difference between Cluster Web and OpsWeb. In the test, a P-value is calculated. This value is the likelihood that the difference between two sample groups would be as large as it is if the null hypothesis were true. If the P-value is lower than the significance level 0.05, it can be said that there is a statistically significant difference at that significance level. The P-value used is for two-tails, meaning that OpsWeb could be either faster or slower than Cluster Web, and both possibilities are taken into account.
+Whether or not the difference is significant can be found out with a two-sample T-test \cite{student1908probable, t_test} between the results of Cluster Web and OpsWeb. The null hypothesis is that there is no difference between Cluster Web and OpsWeb. In the test, a P-value is calculated. This value is the likelihood that the difference between two sample groups would be as large as it is if the null hypothesis were true. If the P-value is lower than the significance level 0.05, it can be said that there is a statistically significant difference at that significance level. The P-value used is for two-tails, meaning that OpsWeb could be either faster or slower than Cluster Web, and both possibilities are taken into account.
 
 \begin{table}[!ht]
 % Add some padding to the table cells:
@@ -392,7 +392,7 @@ According to the benchmark, having one inconsistent scale for a participant is n
 
 In OpsWeb's evaluation, one participant had more than one inconsistent scales: perspiquity and novelty in this case. For Cluster Web there were two participants who had more than one inconsistent scales. One of them had inconsistent answers for efficiency and dependability and the other for attractiveness, perspiquity, efficiency and dependability.
 
-The benchmark calculates Cronbach's Alpha-coefficient values for the scales to help determine how consistent the answers are. Items in the same scale should have a high correlation. 0.7 is commonly used as a treshold value, above which the answers can be considered to be consistent.
+The benchmark calculates Cronbach's Alpha-coefficient \cite{cronbach1951coefficient} values for the scales to help determine how consistent the answers are. Items in the same scale should have a high correlation. 0.7 is commonly used as a treshold value, above which the answers can be considered to be consistent.
 
 The alpha-coefficients can be seen in table \ref{alpha_coeff}. There are two scales which have a coefficient that is below 0.7: Cluster Web's novelty scale and OpsWeb's stimulation scale. They're not badly below 0.7 so this is not necessarily an indication of a big problem, but somewhat weakens the validity of those scales.
 
@@ -424,9 +424,13 @@ The alpha-coefficients can be seen in table \ref{alpha_coeff}. There are two sca
     \end{center}
 \end{table}
 
-The effect of participants' self-reported experience level (table \ref{experience_levels}) on the UEQ results was also evaluated. Participants who answered 4 or more were considered to be experienced, while 4 or less were considered inexperienced. Because only one participant reported to be inexperienced with Cluster Web, the results could not be statistically compared. That participant responded to Cluster Web more positively than the average, in particular on the scales "perspiquity" and "efficiency", which were above the error bars.
+\subsection{Effects of experience level on user experience and task performance}
 
-With OpsWeb, the comparison of UEQ results between inexperienced and experienced users did not show any kind of a trend or statistically significant difference.
+The effect of participants' self-reported experience level (table \ref{experience_levels}) on the UEQ results were evaluated. Participants who answered 4 or more were considered to be experienced, while 4 or less were considered inexperienced.
+
+Because only one participant reported to be inexperienced with Cluster Web, the results could not be statistically compared. That participant responded to Cluster Web more positively than the average, in particular on the scales "perspiquity" and "efficiency", which were above the error bars. The participant also took longer than average to complete a task with Cluster Web, but as this is a single data point, it cannot be said whether or not inexperienced users would generally perform tasks slower or not, even if it appears intuitive.
+
+With OpsWeb, the comparison of UEQ results and task completion times between inexperienced and experienced users did not show any kind of a trend or statistically significant difference based on T-tests.
 
 \subsection{Problems with the evaluation} \label{evaluation_problems}
 Some problems with the evaluation itself were encountered due to possibly unclear presentation of the tasks. These problems could have effected OpsWeb´s evaluation results negatively.
@@ -442,16 +446,17 @@ The questions were on paper and not always read out loud by the author. The misu
 The lesson learned from these problems is that every aspect of the evaluation should be pre-planned, like how the questions are presented to the user and how the system usage is explained during evaluation. It would also be good to have a pilot test of the evaluation to find potential issues before finalizing the plan and continuing on with the actual evaluation.
 
 \subsection{Usability issues} \label{usability_issues}
-One of the things discovered from the Cluster Web vs OpsWeb comparison tasks was that all of the task 2 answers were wrong for OpsWeb, as mentioned in section \ref{cw_ow_task_perf}. There is a potential usability issue that may have caused the participants to get the wrong answer.
+One of the things discovered from the Cluster Web vs OpsWeb comparison tasks was that all of the task 2 answers were wrong for OpsWeb, as mentioned in section \ref{cw_ow_task_perf}. There is a potential usability issue that may have caused the participants to get the wrong answer. If the results are frequently wrong it lowers the effectiveness of the system.
 
 When selecting the time range using the calendar input that is described in section \ref{opsweb_nav}, the user selects two dates which mark the beginning and end of the desired timeframe, and the schedule moves to show that timeframe. The problem is that the end date isn't actually shown; the selection is up to the beginning of the day. i.e. 0:00 UTC. This caused the participants to either miss the passes during the last day, or zoom out and look at a timeframe that is too long. The dates are still shown at the bottom axis of the schedule but it is possible that participants were not looking at it.
 
 This would be easy to fix by changing the end date selection so that it selects from the beginning of the first day of the timeframe to the end of the last day, which could be more intuitive to the users.
 
-Another thing that was discovered on one occasion is that the timeline labels aren't necessarily clear enough and easy to miss, so the user doesn't understand what data is shown on each timeline. Tweaking font size and colors could be considered.
+Another thing that was discovered on one occasion is that the timeline labels aren't necessarily clear enough and easy to miss, so the user doesn't understand what data is shown on each timeline which is bad for learnability. Tweaking font size and colors could be considered.
 
 \subsection{Usefulness of different configurations}
 Participants answered to questions on how useful they found different configurations on a scale from 1 to 7. The answers can be seen in table \ref{config_usefulness}. Default configuration was found to be the most useful configuration by the users, unsurprisingly as it is the same as in Cluster Web. Estrack configuration was the second most useful configuration. Uberlog-specific configurations were found to be interesting but less useful. LEOP configuration was thought to be useful in certain scenarios, especially if other detailed information such as procedures and telemetry could be displayed for a single spacecraft.
+
 \begin{table}[!ht]
 % Add some padding to the table cells:
 \def\arraystretch{1.1}%
@@ -508,4 +513,13 @@ Plotting telemetry data is a feature that one participant mentioned. OpsWeb can 
 
 Seeing loaded procedures and activities on the timeline would be useful according to one participant. As long as the data can be imported into the back-end this is something that could be implemented in the future.
 
-One idea from a participant was that gaps in telemetry data could be displayed on a pass with different color so that the spacecraft controllers and engineers could see with a quick glance if there is a problem. Part of a pass could for example be colored in red rather than the usual blue color. Doing this in real time would require the back-end to keep track of the telemetry status.
+One idea from a participant was that gaps in telemetry data could be displayed on a pass with different color so that the spacecraft controllers and engineers could see with a quick glance if there is a problem. Part of a pass could for example be colored in red rather than the usual blue color. Doing this in real time would require the back-end to keep track of the telemetry status. A concept of this idea can be seen in figure \ref{fig:concept}.
+
+ %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics*[width=1\textwidth]{concept}
+  \end{center}
+  \caption{Displaying telemetry gaps on a pass}
+  \label{fig:concept}
+\end{figure}

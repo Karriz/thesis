@@ -27,7 +27,7 @@ The forementioned files are then transferred to servers from which they will be 
 
 The data collected during the passes is tranferred to various different data centres around the world in the distributed Cluster Science Data System (CSDS).
 
-Efforts towards automating the pass scheduling process have been made by modeling Cluster II's pass constraints using ESA's Advanced Planning and Scheduling Initiative (APSI) framework and integrating it in Cluster Web. This has the potential of streamlining mission plannign work in the future. \cite{farber2016automation}
+Efforts towards automating the pass scheduling process have been made by modeling Cluster II's pass constraints using ESA's Advanced Planning and Scheduling Initiative (APSI) framework and integrating it in Cluster Web. This has the potential of streamlining mission planning work in the future. \cite{farber2016automation}
 
 \cite{esasci, esacluster}
 
@@ -36,7 +36,7 @@ Cluster Web is a PHP-based web application that is used for planning passes as m
 
 The main interface of Cluster Web is a timeline that offers an overview of the mission plan. The timeline is split vertically into four sections, one for each spacecraft in the mission. Different types of data are visualized on the timeline, some of which events or states with a start and end time, some are events at a specific point in time and some are time-value sets shown as graphs on the timeline.
 
-Besides pass planning, Cluster Web is also used for overviewing the operations schedule by displayign the timeline on a big screen on the flight control room, and in their daily work and during meetings engineers use it to find and present relevant information that's being discussed in a visual form.
+Besides pass planning, Cluster Web is also used for overviewing the operations schedule by displaying the timeline on a big screen on the flight control room, and in their daily work and during meetings engineers use it to find and present relevant information that's being discussed in a visual form.
 
 Table~\ref{tab:clusterweb_data_table} lists the types of visualized data:
 
@@ -67,7 +67,7 @@ Table~\ref{tab:clusterweb_data_table} lists the types of visualized data:
 
 The data is aggregated from multiple different sources which are imported into Cluster Web's database periodically to keep it up to date. Ground station passes are the only thing that can be edited by the flight control team, rest of the data is either operational events dictated by other teams, naturally occuring events which depend on the orbit of the spacecraft, or resources on board the spacecraft which are influenced by the operational events.
 
-On the user interface, there are buttons for enabling and disabling certain visualizations like SSR fill leve, ground station visibilities (GS), payload sequences (PL) and multiple spacecraft per aperture markings for passes (MSPA). Ground station visibilities and payload sequences cannot be viewed at the same time as they would be on top of each other.
+On the user interface, there are buttons for enabling and disabling certain visualizations like SSR fill level, ground station visibilities (GS), payload sequences (PL) and multiple spacecraft per aperture markings for passes (MSPA). Ground station visibilities and payload sequences cannot be viewed at the same time as they would be on top of each other.
 
 %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
 \begin{figure}[ht]
@@ -94,7 +94,7 @@ By clicking a pass, another view opens up in which the user can edit the pass pr
   \label{fig:clusterweb_pass_edit}
 \end{figure}
 
-As mentioned earlier in section \ref{clusterweb_section}, ClusterWeb is also used for monitoring and data visualization purposes other than pass scheduling. Having a visual representation passes, bookings and visibilities because it is a convenient way of finding information, and it works as a general overview of the operations schedule in the control room.
+As mentioned earlier in section \ref{clusterweb_section}, ClusterWeb is also used for monitoring and data visualization purposes other than pass scheduling. Having a visual representation of passes, bookings and visibilities because it is a convenient way of finding information, and it works as a general overview of the operations schedule in the control room.
 
 \subsection{SSR fill level graph}
 Another important visualization that can be seen in Figure~\ref{fig:clusterweb_visibilities} is the SSR fill level graph. It is shown for each spacecraft as a red and green line, in which the red part is drawn based on telemetry data about the fill level (that is available until the end of latest pass), and the green part is based on prediction. On the vertical axis of a single spacecraft's timeline, the fill level goes from 0\% to 100\%.
@@ -114,7 +114,7 @@ The prediction model takes into account the data recording bitrates based on TDA
 
 Cluster Web displays the times each spacecraft is in the shadow of Earth or the Moon, i.e. in an eclipse. During full eclipses which can last a few of hours the spacecraft doesn't receive any power from solar cells so it shuts down.
 
-Most of the time there are no Earth eclipses, they only happen in two eclipse seasons during a year which can last a week or two. During these seasons the spacecraft go through an eclipse once per orbit which has a period of about 54 hours.
+Most of the time there are no Earth eclipses, they only happen in two eclipse seasons during a year. The first season in February/March lasts 3-4 weeks and the second season in August/September lasts around one week. During these seasons the spacecraft go through an eclipse once per orbit which has a period of about 54 hours.
 
 Before an eclipse some preparation needs to be done, like dumping the SSR data and shutting down the science instruments. After an eclipse the spacecraft starts receiving power and wakes up in a fail-safe mode. In this mode the spacecraft doesn't transmit telemetry or collect data so a pass is required to set the spacecraft back to operational configuration.
 

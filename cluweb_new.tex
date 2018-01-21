@@ -54,9 +54,9 @@ Other missions interested in Cluster Web have similar requirements with displayi
 
 A time interval is an event with a start and an end. A ground station pass is one example of this. Intervals can be visualized as rectangles which have their left edge at the start time and the right edge at the end time.
 
-Time instants are events which happen at a specific time but have no duration, for example an apogee crossing. They can be visualized with any kind shape or icon at a specific point on the timeline.
+Time instants are events which happen at a specific time but have no duration, for example an apogee crossing. They can be visualized with any kind of shape or icon at a specific point on the timeline.
 
-Time series data, such as the SSR fill level, is a series of time, value pairs. It can be displayed as a line graph where x-axis is time and y-axis is the range of possible values.
+Time series data, such as the SSR fill level, is a series of time/value pairs. It can be displayed as a line graph where x-axis is time and y-axis is the range of possible values.
 
 Being able to display any data that fits the aforementioned three categories is one of the requirements for OpsWeb. Users should be able to choose what data they want to display and where the data comes from, how the visualizations are arranged on different timelines and how they look like. Achieving this requires a highly configurable front-end where the individual data visualizations aren't hard-coded, but they are defined by the user in some kind of a configuration file that is then used to build the visualization. 
 
@@ -220,7 +220,7 @@ Angular applications consist of modules, which are blocks of functionality. In O
 
 A module can have one or more components, which control the UI views of the application. Components contain the application logic and define the view with HTML- based templates. The templates can contain bindings to the variables of the component class, which allows the view to change automatically when a variable value changes in the component.
 
-Modules also provide services; these are classes which can be used by components to for example fetch data. This avoids the problem of duplicating code in case many components need to have access to same functionality. In OpsWeb there are services for accessing data from the API and for keeping track of the schedule timeframe.
+Modules also provide services; these are classes which can be used by components to fetch data or run actions in the background. This avoids the problem of duplicating code in case many components need to have access to same functionality, and keeps the application state consistent across different components. In OpsWeb there are services for accessing data from the API and for keeping track of the schedule timeframe.
 
 The schedule visualization itself that is embedded within the schedule component uses D3.js library for drawing the timeline elements. D3.js is a data-driven document library that allows binding data to DOM elements. The schedule is an SVG container in which elements are placed with properties like X and Y coordinates, height and width. With D3.js, elements can be bound to data objects. The objects can have variables such as time\_start and time\_end which then are used to determine both the X position and the width of the element. The Y position of an element depends on which timeline it is placed on; this is determined by the domain variable of the data object, such as "spacecraft".
 
@@ -228,7 +228,7 @@ The most important class that handles the drawing and updating of the schedule i
 
 There are three main group classes handling the actual drawing process of elements: InstantGroup, IntervalGroup and SeriesGroup, handling their respective categories of data which are mentioned in the section \ref{configurability_req}. Each datatype such as passes or SSR fill level is an instance of these classes. They request data from the back-end and use D3.js functions to draw elements on the SVG. When zooming or panning the schedule, functions in these classes are called to update the positions and sizes of the elements accordingly.
 
-New data is requested from the back-end every time the schedule timeframe is moves beyond a certain treshold. The request always has some padding on both sides of the visible timeframe so that small movements of the timeframe don't have to trigger a new request.
+New data is requested from the back-end every time the schedule timeframe is moved beyond a certain treshold. The request always has some padding on both sides of the visible timeframe so that small movements of the timeframe don't have to trigger a new request.
 
 \cite{d3js}
 \subsection{Back-end}
@@ -236,9 +236,13 @@ OpsWeb's backend provides an interface through which the front-end client can re
 
 OpsWeb's REST API has endpoints for different types of data that the system can visualize, such as passes, bookings and eclipses. The client makes HTTP requests to these endpoints with parameters specifying data filters such as the time range for which data is wanted. The data on back-end is stored in a MariaDB database, which is a fork of MySQL. \cite{mariadb} Django takes care of interfacing with the database with its model system; data models are defined, and data is stored and queried entirely with Python code. The data is then serialized into JSON format and returned in a HTTP response to the client.
 
-The data comes from multiple sources; these are listed in the table \ref{tab:opsweb_data_sources}. Some require the user to upload a file through the client while others are imported from other databases when the action is triggered by clicking a button in the client.
+The data comes from multiple sources; these are listed in the table \ref{tab:opsweb_data_sources}.
 
-Notably, SSR fill level works differently from other types of data. It is a synthetic parameter that comes from ESA's MUSTLink telemetry database. The fill level values are only valid during passes; between passes, there is no telemetry so the value is at zero even though there is data being recorded. The back-end filters the data so that the invalid values are ignored, and additionally predicts the SSR fill level in the future and between passes based on the TDA modes' data acquisition bitrate.
+Estrack Management System (EMS) contains information about bookings and ground station visibilities. Importing from EMS is triggered by clicking a button in the client, after which the back-end makes a request to the API, parses the response data and saves it to the database.
+
+Many different types of files need to be manually imported by uploading them through the client; Observation Request (OBRQ) files are provided by the science observation team for each planning period, Short-Term Event Files (STEF) are generated by the flight dynamics team and contain different orbital events which occur during a specified timeframe, and Long-Term Prediction (LTP) files also generated by the flight dynamics team contain information about eclipse times.
+
+SSR fill level works differently from other types of data. It is a synthetic parameter that comes from ESA's MUSTLink (Mission Utility and Support Tools) telemetry database. The fill level values are only valid during passes; between passes, there is no telemetry so the value is at zero even though there is data being recorded. The back-end filters the data so that the invalid values are ignored, and additionally predicts the SSR fill level in the future and between passes based on the TDA modes' data acquisition bitrate.
 
 \begin{table}[!ht]
 % Add some padding to the table cells:
