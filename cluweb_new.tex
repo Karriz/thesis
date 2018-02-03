@@ -196,7 +196,7 @@ http://cluweb.go.esa.int/schedule?configuration=2\&from=2017-10-20T22:00:00\&to=
 \subsection{Uberlog integration}
 Like Cluster Web, OpsWeb integrates the viewing of Überlog entries, however in a different way. In OpsWeb, the log entries are visible as icons on the timeline, their positions corresponding the log event time. 
 
-Because there are so many entries close to each other, it would not be viable to display them all as the icons would overlap each other when zoomed out. To improve the readability of the timeline, log entries which are close are grouped together and shown as a single icon with a number next to it. The icon being displayed depends on the highest severity level log entry in that group. The groups change dynamically when zoom level changes. This solution was inspired by PowerHA timeline groups log entries at different severity levels in a similar way. \cite{ibm_timeline}
+Because there are so many entries close to each other, it would not be viable to display them all as the icons would overlap each other when zoomed out. To improve the readability of the timeline, log entries which are close are grouped together and shown as a single icon with a number next to it. The icon being displayed depends on the highest severity level log entry in that group. The groups change dynamically when zoom level changes. This solution was inspired by PowerHA timeline \cite{ibm_timeline} which groups log entries at different severity levels in a similar way.
 
 When the user hovers the cursor over an icon, the times of the first and last entry in the group are displayed in a tooltip as well as the amount of entries for each severity level. If there is only one entry for the icon, the actual text of the log entry is displayed.
 
@@ -232,9 +232,9 @@ New data is requested from the back-end every time the schedule timeframe is mov
 
 \cite{d3js}
 \subsection{Back-end}
-OpsWeb's backend provides an interface through which the front-end client can receive and send data. It is built using Django REST Framework, which is a Python toolkit for programming web APIs. \cite{django} 
+OpsWeb's backend provides an interface through which the front-end client can receive and send data. It is built using Django REST Framework \cite{django}, which is a Python toolkit for programming web APIs.
 
-OpsWeb's REST API has endpoints for different types of data that the system can visualize, such as passes, bookings and eclipses. The client makes HTTP requests to these endpoints with parameters specifying data filters such as the time range for which data is wanted. The data on back-end is stored in a MariaDB database, which is a fork of MySQL. \cite{mariadb} Django takes care of interfacing with the database with its model system; data models are defined, and data is stored and queried entirely with Python code. The data is then serialized into JSON format and returned in a HTTP response to the client.
+OpsWeb's REST API has endpoints for different types of data that the system can visualize, such as passes, bookings and eclipses. The client makes HTTP requests to these endpoints with parameters specifying data filters such as the time range for which data is wanted. The data on back-end is stored in a MariaDB database \cite{mariadb}, which is a fork of MySQL. Django takes care of interfacing with the database with its model system; data models are defined, and data is stored and queried entirely with Python code. The data is then serialized into JSON format and returned in a HTTP response to the client.
 
 The data comes from multiple sources; these are listed in the table \ref{tab:opsweb_data_sources}.
 
@@ -267,7 +267,7 @@ SSR fill level works differently from other types of data. It is a synthetic par
   \end{center}
 \end{table}
 
-The back-end uses JSON Web Token authentication. The client sends a request with the username and password, and receives a token as a response. The token is then placed in the Authorization header in subsequent request to authorize the client. The tokens is set to expire in 5 days unless it is refreshed. Token refresh is done automatically each time page is loaded. \cite{jwt}
+The back-end uses JSON Web Token authentication \cite{jwt}. The client sends a request with the username and password, and receives a token as a response. The token is then placed in the Authorization header in subsequent request to authorize the client. The tokens is set to expire in 5 days unless it is refreshed. Token refresh is done automatically each time page is loaded.
 
 Timeline and style configurations of the front-end client are saved in the back-end's database. Each configuration is a combination of a timeline and a style configuration; these are in separate database tables, but there is a third table that contains the combinations by referring to the timeline and style configuration tables.
 
@@ -284,7 +284,7 @@ In order to keep the front-end code written by several people consistent, lintin
 
 By the end of the internship in October 2017, OpsWeb had most of the functionality needed for schedule monitoring purposes, which is the first release that will be used by the Cluster flight control team.
 \subsection{Scrum}
-OpsWeb development team uses Scrum for organizing the project. It is an Agile framework within which teams can address the development of complex products. Scrum is intended to be easy to understand and implement in practice. It sets certain events, rules and roles within which the development of a product can happen in a clearly defined way while leaving room for changes.
+OpsWeb development team uses Scrum for organizing the project. \cite{beck2001manifesto, scrum} It is an Agile framework within which teams can address the development of complex products. Scrum is intended to be easy to understand and implement in practice. It sets certain events, rules and roles within which the development of a product can happen in a clearly defined way while leaving room for changes.
 
 In Scrum, the project requirements are defined as user stories, which describe some functionality that the product should have from a user's point of view instead of giving a specification for the technical implementation. Product owner is the person who is responsible for providing this overall direction for the project, in OpsWeb's case the product owner is the Cluster II spacecraft operations manager.
 
@@ -296,7 +296,7 @@ OpsWeb development team has a daily stand-up meeting every morning to discuss wh
 
 At the end of each sprint, there is a sprint review meeting in which the current state of the project is shown to the product owner, who can then make requests about what could be improved and what should be focused on during the next sprint.
 
-The Scrum process is managed by a Scrum Master, who makes sure that Scrum is being correctly used for the project. Scrum Master is a member of the development team. \cite{beck2001manifesto, scrum} For OpsWeb's development, the team uses Taiga web application that provides an user interface for managing task status and allocation.  \cite{taiga}
+The Scrum process is managed by a Scrum Master, who makes sure that Scrum is being correctly used for the project. Scrum Master is a member of the development team. For OpsWeb's development, the team uses Taiga web application \cite{taiga} that provides an user interface for managing task status and allocation.
 
 \subsection{Continuous integration}
 OpsWeb's code is managed in two GitLab repositories, one for front-end and another for back-end. Initially both used to be in one repository but they were separated for easier and cleaner management.
@@ -323,4 +323,4 @@ A new, modular back-end will be built that has a flexible NoSQL  database and a 
 
 As other missions and other users adopt OpsWeb, the development will also eventually open up and allow third parties to do their own additions to the system as needed. If possible, OpsWeb could also be opened to users outside of ESA and spacecraft operations, to allow its use as a fully generic timeline visualization software.
 
-Other tools are also being integrated to the mission control systems, such as BOSS Dashboard. It provides a modern web-based interface for browsing and visualizing telemetry data. \cite{boss} Together with OpsWeb, BOSS Dashboard could be displayed on a big screen in mission control room to allow spacecraft controllers to overview the mission status easily.
+Other tools are also being integrated to the mission control systems, such as BOSS Dashboard. \cite{boss} It provides a modern web-based interface for browsing and visualizing telemetry data. Together with OpsWeb, BOSS Dashboard could be displayed on a big screen in mission control room to allow spacecraft controllers to overview the mission status easily.
