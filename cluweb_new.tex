@@ -181,7 +181,7 @@ This structuring allows a lot of flexibility for the users to change their timel
   \label{fig:new_cw_estrack}
 \end{figure}
 
-The visual style of OpsWeb can also be configured with style configurations. It is a CSS file that can be edited in another tab in the configuration dialog. This allows changing things like colors of the UI elements, visualization elements and different fonts. For example a dark theme can be created with colors easier for the eyes during night time, an example of this is shown in the figure \ref{fig:new_cw_dark}.
+The visual style of OpsWeb can also be configured with style configurations. It is a CSS file that can be edited in another tab in the configuration dialog. This allows changing parameters like colors of the UI elements, visualization elements and different fonts. For example a dark theme can be created with colors easier for the eyes during night time, an example of this is shown in the figure \ref{fig:new_cw_dark}.
 
  %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
 \begin{figure}[ht]
@@ -339,7 +339,7 @@ OpsWeb's first release in late 2017 provided the Cluster II spacecraft operation
 
 Dynamically adding elements on the timeline has been implemented in early 2018. Users can create, edit and delete different types of elements on the timeline through an UI, whether it is things like spacecraft controller shifts or planned activities for the spacecraft. This feature requires flexible data models in the back-end. This has been implemented in early 2018 by using a dynamic MongoDB database which allows the entry of different data types on the fly.
 
-The back-end was still specific to the Cluster mission's use case in late 2017. Things like SSR fill level prediction may not apply directly to other missions. Mission-specific back-end logic has been moved to separate "mission adapters" which are developed in their own repositories and are plugged into the core back-end. As of February 2018, two missions other than Cluster are planning on using OpsWeb for their operations: Sentinel 5P Earth observation mission which was launched in October 2017 and BepiColombo Mercury orbiter which will be launched in October 2018. Adapters will be developed for these missions.
+The back-end was still specific to the Cluster mission's use case in late 2017. Features like SSR fill level prediction may not apply directly to other missions. Mission-specific back-end logic has been moved to separate "mission adapters" which are developed in their own repositories and are plugged into the core back-end. As of February 2018, two missions other than Cluster are planning on using OpsWeb for their operations: Sentinel 5P Earth observation mission which was launched in October 2017 and BepiColombo Mercury orbiter which will be launched in October 2018. Adapters will be developed for these missions.
 
 As other missions and other users adopt OpsWeb, the development will also eventually open up and allow third parties to do their own additions to the system as needed. If possible, OpsWeb could also be opened to users outside of ESA and spacecraft operations, to allow its use as a fully generic timeline visualization software.
 
