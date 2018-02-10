@@ -79,13 +79,33 @@ While using real users in an empirical evaluation is time-consuming, is often th
 
 Hollingsed and Novick \cite{hollingsed2007usability} note that using both empirical evaluation and usability inspection would be the most effective solution that is often overlooked.
 
-An usability inspection such as heuristic evaluation can be performed by doing a walkthrough of the system from a developer's perspective.
+User evaluations can be done by remotely collecting data during day-to-day usage, for example by showing a survey to the user at random times, or by inspecting from logs how the users interact with the system. \cite{bevanevaluation} This way it is possible to collect large amounts of data, but it may not be as detailed as in-person evaluation.
 
-User evaluations can be done by collecting data during day-to-day usage, for example by showing a survey to the user at random times, or by inspecting from logs how the users interact with the system. \cite{bevanevaluation}
-
-Data can be collected concurrently during the test or after it retrospectively. Van den Haak et al. \cite{van2003retrospective} performed a comparative test between concurrent think-aloud (CTA) and retrospective think-aloud (RTA).
+Data can be collected concurrently during the user evaluation or after it retrospectively. Van den Haak et al. \cite{van2003retrospective} performed a comparative test between concurrent think-aloud (CTA) and retrospective think-aloud (RTA).
 
 CTA was found to find more task-oriented errors while RTA was good for gaining broader user reactions. There is some debate on whether or not CTA has a negative effect on task performance because talking aloud would distract the user, but some have found it to have a positive effect. When performing a complex task the user may verbalize less. RTA is less susceptible this problem. Task complexity for evaluation should be designed so that the users are required to think, but aren't over-burdened so much that they cannot make verbal observations.
+
+A general comparison of different methods can be seen in table \ref{methods_comparison}.
+
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{Usability evaluation methods comparison}
+    \label{methods_comparison}
+    \begin{tabular}{| l | l | l |  l | }
+    \hline
+    Method & Effort &  Data &  Accuracy  \\
+    \hline
+    Heuristic evaluation   & Low & General usability problems &  Medium     \\
+    Remote evaluation & Medium &  Large amount of information &  Medium     \\
+    In-person evaluation  & High & Real user impressions &  Good    \\
+    CTA  & High &  Detailed impressions. &  Good   \\
+    RTA  & High & Broad impressions & Good   \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
 
 \subsection{Participant selection}
 Selecting the right participants for the study is a very important aspect of user experience evaluation. The participants should be a representative sample of the target userbase of the system. If the test users are selected incorrectly the test results would not be a useful metric of the user experience in real use. \cite{rubin2008handbook, albert2013measuring}

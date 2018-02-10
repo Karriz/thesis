@@ -2,7 +2,7 @@ Cluster Web, detailed in the section \ref{clusterweb_section}, is a very powerfu
 
 Even though Cluster Web has proven its usefulness, it has certain usability issues, mainly the slow navigation of the timeline using buttons. It is also based on aging technologies and has the front-end and back-end tightly coupled together because data visualizations are generated on the back-end as seen in the figure \ref{fig:architecture_cw}. Ever since Cluster Web was developed in 2009, web applications have become much more interactive, and the use of touch screen devices has increased. In a modern web application stack, application logic is executed directly in the browser with Javascript and the back-end provides access to data through a generic REST interface.
 
-Other mission teams at ESA such as ExoMars and Swarm have interest in a tool like Cluster Web for their planning and monitoring purposes. While making a custom solution based on Cluster Web would be possible in theory, it would require a major rewrite for each mission as the codebase is specific to Cluster and is not built with expandability in mind.
+Other mission teams at ESA such as Sentinel 5P and BepiColombo have interest in a tool like Cluster Web for their planning and monitoring purposes. While making a custom solution based on Cluster Web would be possible in theory, it would require a major rewrite for each mission as the codebase is specific to Cluster and is not built with expandability in mind.
 
 \begin{table}[!ht]
 % Add some padding to the table cells:
@@ -65,11 +65,33 @@ OpsWeb should make use of a separated client-server architecture. The back-end s
 On the back-end side, OpsWeb should also allow users to define their data models and to edit database entries without editing the source code. If some kind of mission-specific data processing is required, it should be plugged in the back-end architecture in a modular way.
 
 \subsection{Openness}
-The eventual goal is to make OpsWeb open-source, at first within ESA and later to outsiders. As a generic timeline visualization tool, it could be applied to any kind time-based data visualizations, such as workplace shift schedules or TV guides. In order to make OpsWeb open-source, it needs to reach a release that is no longer subject to big changes in architecture. As of November 2017, OpsWeb is still being developed within the Cluster II Flight Control Team, with a few members from other teams at ESOC also being involved. 
+The eventual goal is to make OpsWeb open-source, at first within ESA and later to outsiders. As a generic timeline visualization tool, it could be applied to any kind time-based data visualizations, such as workplace shift schedules or TV guides. In order to make OpsWeb open-source, it needs to reach a release that is no longer subject to big changes in architecture. As of February 2018, OpsWeb is still being developed within the Cluster II Flight Control Team, with a few members from other teams at ESOC also being involved. 
 
-One example of a successful open-source project for space operations is NASA's OpenMCT (Open Mission Control Technologies). Like OpsWeb, it is a web-based data visualization tool but while OpsWeb is focused on timelines, OpenMCT is a more generic dashboard for overviewing and analyzing any kind of technical or scientific real-time data. Users link data to different widgets and place them on layouts. While OpenMCT also has a timeline widget, it is much more limited than Cluster Web and would not allow overlaying different types of elements and graphs without modifications. An example screenshot of OpenMCT can be seen in figure \ref{fig:openmct}.
+One example of a successful open-source project for space operations is NASA's OpenMCT (Open Mission Control Technologies). Like OpsWeb, it is a web-based data visualization tool but while OpsWeb is focused on timelines, OpenMCT is a more generic dashboard for overviewing and analyzing any kind of technical or scientific real-time data. Users link data to different widgets and place them on layouts. While OpenMCT also has a timeline widget, it is much more limited than Cluster Web and would not allow overlaying different types of elements and graphs without modifications. An example screenshot of OpenMCT can be seen in figure \ref{fig:openmct}, and comparison between OpsWeb and OpenMCT in table \ref{openmct_opsweb_comparison}.
 
 OpenMCT is planned to be used for future Lunar rover operations and it is already in use for Jason-3 Earth observation mission. As an open-source project, OpenMCT is not limited to only spacecraft operations, but can be used for any kind of activity that requires displaying data that is being produced in real-time, such as monitoring Internet Of Things- devices. Anyone can download the source code and add features to it. \cite{trimble2014reconfigurable, trimble2016open}
+
+\begin{table}[!ht]
+% Add some padding to the table cells:
+\def\arraystretch{1.1}%
+    \begin{center}
+    \caption{Comparison between OpsWeb and OpenMCT}
+    \label{openmct_opsweb_comparison}
+    \begin{tabular}{| l | l | l | }
+    \hline
+    Feature & OpsWeb & OpenMCT  \\
+    \hline
+    Back-end    &  Django & Node.js Express      \\
+    Front-end    & Angular &  Vue.js     \\
+    Data visualization   & d3.js &  d3.js     \\
+    Timeline    &  Advanced &  Limited     \\
+    Widget dashboard    &  No &  Yes      \\
+    Configurable    &  Yes &  Yes      \\
+    Open source    &  Eventually &  Yes      \\
+    \hline
+    \end{tabular}
+    \end{center}
+\end{table}
 
  %Pictures in .eps if you use latex, .pdf or .png if you use pdflatex. Don't specify the extension so you can use both!
 \begin{figure}[ht]
@@ -313,13 +335,11 @@ Deployment is done after the test stage has passed. For the front-end this is do
 
 Back-end deployment similarly connects to the server with SSH, pulls the commit and then runs a script to migrate any model changes to the database. Django automatically restarts the server when changes are detected.
 \section{Future development}
-OpsWeb's first release in late 2017 provides the Cluster II spacecraft operations engineers and spacecraft controllers the ability to display configurable operations schedules. However, it does not yet contain one of the most important features of Cluster Web: being able to schedule passes and export the schedule for mission planning system. This is a feature that users have said to be very important.
+OpsWeb's first release in late 2017 provided the Cluster II spacecraft operations engineers and spacecraft controllers the ability to display configurable operations schedules. However, it did not yet contain one of the most important features of Cluster Web: being able to schedule passes and export the schedule for mission planning system.
 
-Dynamically dragging and dropping elements on the timeline will be a feature to be developed for the next release. Users should be able to add any kind of data to the system in a flexible and intuitive way, whether it is things like spacecraft controller shifts or planned activities for the spacecraft.
+Dynamically adding elements on the timeline has been implemented in early 2018. Users can create, edit and delete different types of elements on the timeline through an UI, whether it is things like spacecraft controller shifts or planned activities for the spacecraft. This feature requires flexible data models in the back-end. This has been implemented in early 2018 by using a dynamic MongoDB database which allows the entry of different data types on the fly.
 
-The back-end is also for the time being specific to the Cluster mission's use case. Things like SSR fill level prediction do not apply directly to other mission, although similar concepts may be needed. There is also a need for flexible data models; users should be able to define new data types and what fields they contain, and add data to the system directly. Currently the data models are hard-coded in Django.
-
-A new, modular back-end will be built that has a flexible NoSQL  database and a generic data provider interface in which external databases can be plugged in. Mission- specific things like file importers and data processing will be moved into Python modules which can hook into the core system.
+The back-end was still specific to the Cluster mission's use case in late 2017. Things like SSR fill level prediction may not apply directly to other missions. Mission-specific back-end logic has been moved to separate "mission adapters" which are developed in their own repositories and are plugged into the core back-end. As of February 2018, two missions other than Cluster are planning on using OpsWeb for their operations: Sentinel 5P Earth observation mission which was launched in October 2017 and BepiColombo Mercury orbiter which will be launched in October 2018. Adapters will be developed for these missions.
 
 As other missions and other users adopt OpsWeb, the development will also eventually open up and allow third parties to do their own additions to the system as needed. If possible, OpsWeb could also be opened to users outside of ESA and spacecraft operations, to allow its use as a fully generic timeline visualization software.
 
